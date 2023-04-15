@@ -14,7 +14,29 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@lighthouse-automation/lha-backend/authentication": [
+        "libs/lha-backend/authentication/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/authentication-decorator": [
+        "libs/lha-backend/authentication-decorator/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/authentication-guard": [
+        "libs/lha-backend/authentication-guard/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/role": [
+        "libs/lha-backend/role/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/role-decorator": [
+        "libs/lha-backend/role-decorator/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/role-guard": [
+        "libs/lha-backend/role-guard/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/user": [
+        "libs/lha-backend/user/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

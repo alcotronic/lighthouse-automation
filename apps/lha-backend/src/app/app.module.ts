@@ -6,6 +6,8 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backend/authentication';
+import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 
 @Module({
   imports: [
@@ -32,16 +34,18 @@ import { AppService } from "./app.service";
       }),
       inject: [ConfigService],
     }),
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET'),
-        signOptions: {
-          expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
-        },
-      }),
-      inject: [ConfigService],
-    }),
+    // JwtModule.registerAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: async (configService: ConfigService) => ({
+    //     secret: configService.get<string>('JWT_SECRET'),
+    //     signOptions: {
+    //       expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
+    //     },
+    //   }),
+    //   inject: [ConfigService],
+    // }),
+    LhaBackendAuthenticationModule,
+    LhaBackendUserModule
   ],
   controllers: [AppController],
   providers: [AppService],
