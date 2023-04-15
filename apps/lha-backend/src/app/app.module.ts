@@ -8,6 +8,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backend/authentication';
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
+import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
 
 @Module({
   imports: [
@@ -45,7 +46,8 @@ import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
     //   inject: [ConfigService],
     // }),
     LhaBackendAuthenticationModule,
-    LhaBackendUserModule
+    LhaBackendUserModule,
+    LhaBackendSetupModule
   ],
   controllers: [AppController],
   providers: [AppService],
