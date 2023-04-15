@@ -35,16 +35,16 @@ import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup'
       }),
       inject: [ConfigService],
     }),
-    // JwtModule.registerAsync({
-    //   imports: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     secret: configService.get<string>('JWT_SECRET'),
-    //     signOptions: {
-    //       expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
-    //     },
-    //   }),
-    //   inject: [ConfigService],
-    // }),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET'),
+        signOptions: {
+          expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
+        },
+      }),
+      inject: [ConfigService],
+    }),
     LhaBackendAuthenticationModule,
     LhaBackendUserModule,
     LhaBackendSetupModule
