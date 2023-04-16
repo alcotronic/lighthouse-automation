@@ -1,6 +1,6 @@
 import { Body, Controller, Logger, Post } from '@nestjs/common';
 import { Public } from '@lighthouse-automation/lha-backend/authentication-decorator';
-import { Role } from '@lighthouse-automation/lha-backend/role';
+import { Role } from '@lighthouse-automation/lha-common';
 import { UserCreateDto, UserService } from '@lighthouse-automation/lha-backend/user';
 
 @Controller('setup')

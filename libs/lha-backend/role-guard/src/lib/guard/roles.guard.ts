@@ -1,7 +1,7 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { UserService } from '@lighthouse-automation/lha-backend/user';
-import { Role } from '@lighthouse-automation/lha-backend/role';
+import { Role } from '@lighthouse-automation/lha-common';
 import { ROLES_KEY } from '@lighthouse-automation/lha-backend/role-decorator';
 
 @Injectable()

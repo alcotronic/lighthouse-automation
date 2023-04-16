@@ -1,0 +1,30 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+
+import { Device } from '@lighthouse-automation/lha-common';
+
+export type ReportDocument = Report & Document;
+
+@Schema()
+export class Report {
+  id?: string;
+  _id?: string;
+  @Prop() taskId: string;
+  @Prop() executionId: string;
+  @Prop({ type: String }) formFactor: Device;
+  @Prop() timeCreate: number;
+  @Prop() timeOffsetCreate: number;
+  @Prop() timeStart: number;
+  @Prop() timeOffsetStart: number;
+  @Prop() timeFinish: number;
+  @Prop() timeOffsetFinish: number;
+  @Prop() finished: boolean;
+  @Prop() url: string;
+  @Prop() performanceScore: number;
+  @Prop() accessibilityScore: number;
+  @Prop() bestPracticeScore: number;
+  @Prop() seoScore: number;
+  @Prop() pwaScore: number;
+  @Prop() lighthouseLhrGzip: Buffer;
+}
+export const ReportSchema = SchemaFactory.createForClass(Report);

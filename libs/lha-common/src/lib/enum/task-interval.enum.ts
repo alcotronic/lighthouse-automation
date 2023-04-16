@@ -1,0 +1,8 @@
+export enum TaskInterval {
+    NEVER = 'NEVER',
+    EVERY_10_MINUTES = 'EVERY_10_MINUTES',
+    EVERY_HOUR = 'EVERY_HOUR',
+    EVERY_DAY = 'EVERY_DAY',
+    EVERY_WEEKEND = 'EVERY_WEEKEND',
+    EVERY_MONTH = 'EVERY_MONTH',
+  }

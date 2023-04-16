@@ -24,9 +24,6 @@
       "@lighthouse-automation/lha-backend/authentication-guard": [
         "libs/lha-backend/authentication-guard/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/role": [
-        "libs/lha-backend/role/src/index.ts"
-      ],
       "@lighthouse-automation/lha-backend/role-decorator": [
         "libs/lha-backend/role-decorator/src/index.ts"
       ],
@@ -38,7 +35,8 @@
       ],
       "@lighthouse-automation/lha-backend/user": [
         "libs/lha-backend/user/src/index.ts"
-      ]
+      ],
+      "@lighthouse-automation/lha-common": ["libs/lha-common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
