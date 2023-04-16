@@ -8,6 +8,8 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backend/authentication';
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
+import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -34,18 +36,20 @@ import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
       }),
       inject: [ConfigService],
     }),
-    // JwtModule.registerAsync({
-    //   imports: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     secret: configService.get<string>('JWT_SECRET'),
-    //     signOptions: {
-    //       expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
-    //     },
-    //   }),
-    //   inject: [ConfigService],
-    // }),
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET'),
+        signOptions: {
+          expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
+        },
+      }),
+      inject: [ConfigService],
+    }),
     LhaBackendAuthenticationModule,
-    LhaBackendUserModule
+    LhaBackendSetupModule,
+    LhaBackendUserModule,
+    TaskModule
   ],
   controllers: [AppController],
   providers: [AppService],

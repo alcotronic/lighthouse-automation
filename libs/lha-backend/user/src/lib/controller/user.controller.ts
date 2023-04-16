@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Header, Post, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthenticationGuard } from '@lighthouse-automation/lha-backend/authentication-guard';
-import { Role } from '@lighthouse-automation/lha-backend/role';
+import { Role } from '@lighthouse-automation/lha-common';
 import { Roles } from '@lighthouse-automation/lha-backend/role-decorator';
 import { UserCreateDto } from '../schema/user';
 import { UserService } from '../service/user.service';

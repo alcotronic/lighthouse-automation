@@ -1,0 +1,4 @@
+export enum TaskType {
+    MANUAL_REPORT = 'MANUAL_REPORT',
+    SCHEDULED_REPORT = 'SCHEDULED_REPORT',
+  }
