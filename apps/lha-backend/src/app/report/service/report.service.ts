@@ -1,19 +1,27 @@
 import { InjectQueue, Process, Processor } from '@nestjs/bull';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Job, Queue } from 'bull';
 import { Model } from 'mongoose';
+import { launch } from 'chrome-launcher';
+import lighthouse from 'lighthouse/core/index.cjs';
+//import { screenEmulationMetrics, userAgents } from 'lighthouse/core/config/constants';
+// import * as reportGenerator from 'lighthouse/report/generator/report-generator';
+import { gzip, ungzip } from 'node-gzip';
+
 import { Report, ReportDocument } from '../schema/report';
-import { ReportDto } from '@lighthouse-automation/lha-common';
+import { Device, ReportDto } from '@lighthouse-automation/lha-common';
 
 @Processor('reportQueue')
 @Injectable()
 export class ReportService {
+  private readonly logger = new Logger(ReportService.name);
+  
   constructor(
     @InjectModel('report') private reportModel: Model<ReportDocument>,
     @InjectQueue('reportQueue') private reportQueue: Queue,
     @InjectQueue('taskExecutionUpdateAverageQueue')
-    private taskExecutionUpdateAverageQueue: Queue,
+    private taskExecutionUpdateAverageQueue: Queue
   ) {}
 
   async create(reportDto: ReportDto): Promise<Report> {
@@ -32,6 +40,7 @@ export class ReportService {
       url: reportDto.url,
     });
     const reportSaved = await report.save();
+    this.reportQueue.add(reportSaved);
     return reportSaved;
   }
 
@@ -46,7 +55,9 @@ export class ReportService {
   }
 
   async findByTaskExecutionId(taskExecutionId: string): Promise<Report[]> {
-    const report = await this.reportModel.find({ taskExecutionId: taskExecutionId }).exec();
+    const report = await this.reportModel
+      .find({ taskExecutionId: taskExecutionId })
+      .exec();
     return report;
   }
 
@@ -65,7 +76,7 @@ export class ReportService {
             timeStart: timeStart.getTime(),
             timeOffsetStart: timeStart.getTimezoneOffset(),
           },
-        },
+        }
       )
       .exec();
     return reportSaved;
@@ -82,7 +93,7 @@ export class ReportService {
             timeOffsetFinish: timeFinish.getTimezoneOffset(),
             finished: true,
           },
-        },
+        }
       )
       .exec();
     return reportSaved;
@@ -94,7 +105,7 @@ export class ReportService {
     accessibilityScore: number,
     bestPracticeScore: number,
     seoScore: number,
-    pwaScore: number,
+    pwaScore: number
   ) {
     const reportSaved = await this.reportModel
       .updateOne(
@@ -107,7 +118,21 @@ export class ReportService {
             seoScore: seoScore,
             pwaScore: pwaScore,
           },
-        },
+        }
+      )
+      .exec();
+    return reportSaved;
+  }
+
+  async addLighthouseLhrGzip(report: Report, lighthouseLhrGzip: Buffer) {
+    const reportSaved = await this.reportModel
+      .updateOne(
+        { _id: report.id },
+        {
+          $set: {
+            lighthouseLhrGzip: lighthouseLhrGzip,
+          },
+        }
       )
       .exec();
     return reportSaved;
@@ -115,28 +140,37 @@ export class ReportService {
 
   @Process()
   async processReport(job: Job<Report>) {
-    console.info('processReport job recieved');
-    //console.info(job);
+    this.logger.debug('processReport job recieved');
     const report = job.data;
-    console.info(report);
+    this.logger.debug(report);
     await this.addStartTime(report);
-    //await this.reportLighthouseQueue.add(report);
-    /* const reportLighthouse = await this.client
-      .send<any>({ cmd: 'lighthouse' }, report)
-      .toPromise()
-      .then((reportLighthouse: ReportLighthouse) => {
-        return reportLighthouse;
-      });
+
+    //const chrome = await launch({ chromeFlags: ['--headless'] });
+    const chrome = await launch();
+    const flags = {
+      port: chrome.port,
+    };
+    const config = {
+      extends: report.formFactor === Device.DESKTOP ? 'lighthouse:desktop' : 'lighthouse:mobile',
+    };
+
+    const runnerResult = await lighthouse(report.url, flags, config);
+    const lighthouseLhr = JSON.stringify(runnerResult.lhr);
+    const lighthouseLhrGzip = await gzip(lighthouseLhr, { level: 9 });
+    await chrome.kill();
+
     await this.addScores(
       report,
-      reportLighthouse.performanceScore,
-      reportLighthouse.accessibilityScore,
-      reportLighthouse.bestPracticeScore,
-      reportLighthouse.seoScore,
-      reportLighthouse.pwaScore,
+      runnerResult.lhr.categories.performance.score,
+      runnerResult.lhr.categories.accessibility.score,
+      runnerResult.lhr.categories.bestPracticeScore.score,
+      runnerResult.lhr.categories.seo.score,
+      runnerResult.lhr.categories['pwa'].score
     );
-    await this.reportTaskRunUpdateAverageQueue.add(report);
-    await this.addFinishTime(report); */
+    await this.addLighthouseLhrGzip(report, lighthouseLhrGzip);
+
+    //await this.reportTaskRunUpdateAverageQueue.add(report);
+    await this.addFinishTime(report);
     console.info('processReport job finished');
     return {};
   }
