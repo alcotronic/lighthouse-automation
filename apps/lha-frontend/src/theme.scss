@@ -1,0 +1,79 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-palette: (
+ 50: #fce5f6,
+ 100: #f7bde8,
+ 200: #f190da,
+ 300: #ea5ccc,
+ 400: #e223c0,
+ 500: #da00b6,
+ 600: #ca00b1,
+ 700: #b700ac,
+ 800: #a600a7,
+ 900: #86009d,
+ contrast: (
+   50: rgba(#86009d, 0.87),
+   100: rgba(#a600a7, 0.87),
+   200: rgba(#b700ac, 0.87),
+   300: rgba(#ca00b1, 0.87),
+   400: rgba(#da00b6, 0.87),
+   500: rgba(#e223c0, 0.87),
+   600: rgba(#ea5ccc, 0.87),
+   700: rgba(#f190da, 0.87),
+   800: rgba(#f7bde8, 0.87),
+   900: rgba(#fce5f6, 0.87)
+ ),
+ A50: #fbe4eb,
+ A100: #f6bbce,
+ A200: #f18eae,
+ A300: #eb628f,
+ A400: #e64176,
+ A500: #e22360,
+ A600: #d2205d,
+ A700: #bc1d58,
+ A800: #a71954,
+ A900: #82134b,
+);
+
+$my-warn-palette: (
+ 50: #fae9e7,
+ 100: #fdcbbd,
+ 200: #fca994,
+ 300: #fc8769,
+ 400: #fb6d49,
+ 500: #fb532c,
+ 600: #f04d28,
+ 700: #e24623,
+ 800: #d43f1f,
+ 900: #bb3317,
+ contrast: (
+   50: rgba(#bb3317, 0.87),
+   100: rgba(#d43f1f, 0.87),
+   200: rgba(#e24623, 0.87),
+   300: rgba(#f04d28, 0.87),
+   400: rgba(#fb532c, 0.87),
+   500: rgba(#fb6d49, 0.87),
+   600: rgba(#fc8769, 0.87),
+   700: rgba(#fca994, 0.87),
+   800: rgba(#fdcbbd, 0.87),
+   900: rgba(#fae9e7, 0.87)
+ )
+);
+
+$my-primary: mat.define-palette($my-palette, 500);
+$my-accent: mat.define-palette($my-palette, A200, A100, A400);
+$my-warn: mat.define-palette($my-warn-palette);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);

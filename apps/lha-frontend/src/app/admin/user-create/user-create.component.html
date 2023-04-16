@@ -1,0 +1,46 @@
+<div class="user-create-container">
+  <h1>
+    Create user account
+  </h1>
+  <mat-card>
+    <form [formGroup]="createUserAccountForm" (ngSubmit)="clickCreateUser()">
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput required [formControl]="usernameControl" />
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput required [formControl]="emailControl" />
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput required [formControl]="passwordControl" type="password" />
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Repeat password</mat-label>
+          <input matInput required [formControl]="passwordRepeatedControl" type="password" />
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select required [formControl]="roleControl">
+            <mat-option value="ADMIN">Admin</mat-option>
+            <mat-option value="USER">User</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <div>
+          <mat-checkbox [formControl]="activatedControl">Activate</mat-checkbox>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button type="submit">Create</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

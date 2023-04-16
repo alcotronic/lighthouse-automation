@@ -1,0 +1,50 @@
+{
+  "name": "lha-frontend-api-status",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/lha-frontend/api/status/src",
+  "prefix": "lha",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/lha-frontend/api/status/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/lha-frontend/api/status/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/lha-frontend/api/status/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/lha-frontend/api/status/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/lha-frontend/api/status/**/*.ts",
+          "libs/lha-frontend/api/status/**/*.html"
+        ]
+      }
+    }
+  }
+}

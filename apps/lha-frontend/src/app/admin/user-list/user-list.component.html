@@ -1,0 +1,12 @@
+<div class="user-list-container">
+  <mat-list *ngIf="!!userList && userList !== undefined">
+    <mat-list-item *ngFor="let user of userList" mat-list-item (click)="selectUser(user)">
+      <span>ID: {{user._id}}</span>
+      <span class="report-task-run-list-spacer"></span>
+      <span>Username: {{user.username}}</span>
+      <span>Email: {{user.email}}</span>
+      <span>Roles: <span *ngFor="let role of user.roles">{{role}}</span></span>
+      <span>Activated: {{user.activated}}</span>
+    </mat-list-item>
+  </mat-list>
+</div>

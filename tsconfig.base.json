@@ -36,7 +36,19 @@
       "@lighthouse-automation/lha-backend/user": [
         "libs/lha-backend/user/src/index.ts"
       ],
-      "@lighthouse-automation/lha-common": ["libs/lha-common/src/index.ts"]
+      "@lighthouse-automation/lha-common": ["libs/lha-common/src/index.ts"],
+      "@lighthouse-automation/lha-frontend/api/authentication": [
+        "libs/lha-frontend/api/authentication/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/api/setup": [
+        "libs/lha-frontend/api/setup/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/api/status": [
+        "libs/lha-frontend/api/status/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/toolbar": [
+        "libs/lha-frontend/feature/toolbar/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
