@@ -19,7 +19,7 @@ import { Task } from '../schema/task';
 import { TaskService } from '../service/task.service';
 import { TaskSchedulerService } from '../service/task-scheduler.service';
 
-@Controller('report-task')
+@Controller('task')
 export class TaskController {
   constructor(
     private taskService: TaskService,
