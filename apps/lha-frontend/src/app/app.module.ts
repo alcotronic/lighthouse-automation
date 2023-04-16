@@ -12,12 +12,10 @@ import { LoginModule } from './login/login.module';
 import { AuthModule } from './auth/auth.module';
 import { ReportModule } from './report/report.module';
 import { AdminModule } from './admin/admin.module';
-import { RoleModule } from './role/role.module';
 import { AccountModule } from './account/account.module';
 import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
 import { LhaFrontendApiStatusModule } from '@lighthouse-automation/lha-frontend/api/status';
-// import { ServiceWorkerModule } from '@angular/service-worker';
-// import { environment } from '../environments/environment';
+import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
 
 
 export function tokenGetter() {
@@ -44,10 +42,10 @@ registerLocaleData(localeDE);
     AccountModule,
     ReportModule,
     LhaFrontendApiAuthenticationModule,
+    LhaFrontendApiRoleModule,
     LhaFrontendApiStatusModule,
     SetupModule,
     LoginModule,
-    RoleModule,
     BrowserAnimationsModule
   ],
   providers: [

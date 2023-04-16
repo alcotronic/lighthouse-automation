@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,8 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ReportTaskCreateDto, ReportTaskInterval, ReportTaskType } from './report-task-create';
-import { ReportTaskCreateService } from './report-task-create.service';
+import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
+import {
+  TaskCreateDto,
+  TaskInterval,
+  TaskType,
+} from '@lighthouse-automation/lha-common';
 
 @Component({
   selector: 'lha-app-report-task-create',
@@ -15,21 +19,22 @@ import { ReportTaskCreateService } from './report-task-create.service';
   styleUrls: ['./report-task-create.component.scss'],
 })
 export class ReportTaskCreateComponent {
-  URL_REGEXP = /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:;.?+=&%@\-/]*)?$/;
+  URL_REGEXP =
+    /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:;.?+=&%@\-/]*)?$/;
 
   createTaskForm: FormGroup;
   nameControl = new FormControl('');
-  typeControl = new FormControl(ReportTaskType.MANUAL_REPORT);
-  intervalControl = new FormControl(ReportTaskInterval.EVERY_DAY);
+  typeControl = new FormControl(TaskType.MANUAL_REPORT);
+  intervalControl = new FormControl(TaskInterval.EVERY_DAY);
   enabledControl = new FormControl(false);
   urlListControl = new FormControl('', Validators.pattern(this.URL_REGEXP));
 
   urlList: Array<string> = [];
 
   constructor(
-    private reportTaskCreateService: ReportTaskCreateService,
+    private taskService: TaskService,
     private formBuilder: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {
     this.createTaskForm = formBuilder.group({});
   }
@@ -56,16 +61,20 @@ export class ReportTaskCreateComponent {
       console.log('typeControl is valid.');
       if (this.typeControl.value === 'MANUAL_REPORT') {
         console.log('Validate MANUAL_REPORT');
-        if (this.nameControl.value && this.nameControl.valid && this.urlList.length > 0) {
-          const reportTaskCreateDto: ReportTaskCreateDto = {
+        if (
+          this.nameControl.value &&
+          this.nameControl.valid &&
+          this.urlList.length > 0
+        ) {
+          const reportTaskCreateDto: TaskCreateDto = {
             name: this.nameControl.value,
-            reportType: this.typeControl.value,
+            taskType: this.typeControl.value,
             enabled: false,
-            reportTaskInterval: ReportTaskInterval.NEVER,
+            taskInterval: TaskInterval.NEVER,
             urlList: this.urlList,
           };
-          this.reportTaskCreateService
-            .submitTaskCreate(reportTaskCreateDto)
+          this.taskService
+            .createTask(reportTaskCreateDto)
             .subscribe((result: any) => {
               console.log(result);
               if (result._id) {
@@ -85,15 +94,15 @@ export class ReportTaskCreateComponent {
           this.enabledControl.value &&
           this.intervalControl.value
         ) {
-          const reportTaskCreateDto: ReportTaskCreateDto = {
+          const reportTaskCreateDto: TaskCreateDto = {
             name: this.nameControl.value,
-            reportType: this.typeControl.value,
+            taskType: this.typeControl.value,
             enabled: this.enabledControl.value,
-            reportTaskInterval: this.intervalControl.value,
+            taskInterval: this.intervalControl.value,
             urlList: this.urlList,
           };
-          this.reportTaskCreateService
-            .submitTaskCreate(reportTaskCreateDto)
+          this.taskService
+            .createTask(reportTaskCreateDto)
             .subscribe((result: any) => {
               console.log(result);
               if (result._id) {

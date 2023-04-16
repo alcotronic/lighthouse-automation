@@ -2,17 +2,17 @@
   <h1>
     Report Task Run
   </h1>
-  <div *ngIf="!!reportTask && reportTask !== undefined && !!reportTaskRun && reportTaskRun !== undefined">
+  <div *ngIf="!!task && task !== undefined && !!taskRun && taskRun !== undefined">
     <mat-card>
       <mat-card-title class="purple bold">
-        {{reportTask.name}}
+        {{task.name}}
       </mat-card-title>
       <mat-card-header>
         <mat-card-subtitle>
-          <span style="color:cyan;">Id: </span>{{reportTask._id}} |
-          <span style="color:cyan;">Type: </span>{{reportTask.reportType}} |
-          <span *ngIf="reportTask.reportTaskInterval"><span style="color:cyan;">Interval: </span>{{reportTask.reportTaskInterval}} | </span>
-          <span style="color:cyan;">Enabled: </span>{{reportTask.enabled}}
+          <span style="color:cyan;">Id: </span>{{task._id}} |
+          <span style="color:cyan;">Type: </span>{{task.reportType}} |
+          <span *ngIf="task.taskInterval"><span style="color:cyan;">Interval: </span>{{task.taskInterval}} | </span>
+          <span style="color:cyan;">Enabled: </span>{{task.enabled}}
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -20,8 +20,8 @@
       </mat-card-content>
       <mat-card-header>
         <mat-card-subtitle>
-          <span><span style="color:cyan;">Id: </span>{{reportTaskRun._id}} | </span>
-          <span style="color:cyan;">Date: </span>{{reportTaskRun.timestamp | date:'medium':'+0100':'de'}}
+          <span><span style="color:cyan;">Id: </span>{{taskRun._id}} | </span>
+          <span style="color:cyan;">Date: </span>{{taskRun.timestamp | date:'medium':'+0100':'de'}}
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -29,11 +29,11 @@
       </mat-card-content>
       <mat-card-header>
         <mat-card-subtitle>
-          <span *ngIf="reportTaskRun.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{reportTaskRun.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{reportTaskRun.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{reportTaskRun.bestPracticeScoreDesktop * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{reportTaskRun.seoScoreDesktop * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{reportTaskRun.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
+          <span *ngIf="taskRun.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{taskRun.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{taskRun.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{taskRun.bestPracticeScoreDesktop * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{taskRun.seoScoreDesktop * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{taskRun.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -41,11 +41,11 @@
       </mat-card-content>
       <mat-card-header>
         <mat-card-subtitle>
-          <span *ngIf="reportTaskRun.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{reportTaskRun.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{reportTaskRun.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{reportTaskRun.bestPracticeScoreMobile * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{reportTaskRun.seoScoreMobile * 100 | number: '1.0-0'}} | </span>
-          <span *ngIf="reportTaskRun.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{reportTaskRun.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
+          <span *ngIf="taskRun.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{taskRun.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{taskRun.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{taskRun.bestPracticeScoreMobile * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{taskRun.seoScoreMobile * 100 | number: '1.0-0'}} | </span>
+          <span *ngIf="taskRun.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{taskRun.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content >
@@ -58,7 +58,7 @@
           </mat-card-subtitle>
         </button>
         <mat-list dense *ngIf="showUrls">
-          <mat-list-item *ngFor="let url of reportTask.urlList">{{url}}</mat-list-item>
+          <mat-list-item *ngFor="let url of task.urlList">{{url}}</mat-list-item>
         </mat-list>
       </mat-card-content>
       <mat-card-content>
@@ -70,7 +70,7 @@
             <mat-icon *ngIf="showJobs">keyboard_arrow_up</mat-icon>
           </mat-card-subtitle>
         </button>
-        <lha-app-report-task-job-list *ngIf="showJobs" [reportTaskRunId]="reportTaskRun._id"></lha-app-report-task-job-list>
+        <lha-app-report-task-job-list *ngIf="showJobs" [taskRunId]="taskRun._id"></lha-app-report-task-job-list>
       </mat-card-content>
   </mat-card>
   </div>

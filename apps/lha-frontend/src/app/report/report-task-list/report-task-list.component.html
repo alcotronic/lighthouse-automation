@@ -3,16 +3,16 @@
     Report Task List
   </h1>
     <mat-action-list>
-      <mat-card mat-list-item *ngFor="let reportTask of reportTaskList" (click)="selectReportTask(reportTask)">
+      <mat-card mat-list-item *ngFor="let task of taskList" (click)="selectReportTask(task)">
         <mat-card-title class="purple bold">
-          {{reportTask.name}}
+          {{task.name}}
         </mat-card-title>
         <mat-card-header>
           <mat-card-subtitle>
-            <span style="color:cyan;">Id: </span>{{reportTask._id}} |
-            <span style="color:cyan;">Type: </span>{{reportTask.reportType}} |
-            <span *ngIf="reportTask.reportTaskInterval"><span style="color:cyan;">Interval: </span>{{reportTask.reportTaskInterval}} | </span>
-            <span style="color:cyan;">Enabled: </span>{{reportTask.enabled}}
+            <span style="color:cyan;">Id: </span>{{task._id}} |
+            <span style="color:cyan;">Type: </span>{{task.reportType}} |
+            <span *ngIf="task.taskInterval"><span style="color:cyan;">Interval: </span>{{task.taskInterval}} | </span>
+            <span style="color:cyan;">Enabled: </span>{{task.enabled}}
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -20,11 +20,11 @@
         </mat-card-content>
         <mat-card-header>
           <mat-card-subtitle>
-            <span *ngIf="reportTask.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{reportTask.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{reportTask.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{reportTask.bestPracticeScoreDesktop * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{reportTask.seoScoreDesktop * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{reportTask.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
+            <span *ngIf="task.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{task.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{task.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{task.bestPracticeScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{task.seoScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{task.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -32,11 +32,11 @@
         </mat-card-content>
         <mat-card-header>
           <mat-card-subtitle>
-            <span *ngIf="reportTask.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{reportTask.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{reportTask.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{reportTask.bestPracticeScoreMobile * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{reportTask.seoScoreMobile * 100 | number: '1.0-0'}} | </span>
-            <span *ngIf="reportTask.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{reportTask.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
+            <span *ngIf="task.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{task.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{task.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{task.bestPracticeScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{task.seoScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{task.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
           </mat-card-subtitle>
         </mat-card-header>
       </mat-card>
@@ -44,18 +44,18 @@
 
 </div>
 
-<!-- <span>{{reportTask.name}}</span>
+<!-- <span>{{task.name}}</span>
       <span class="report-task-list-spacer"></span>
-      <span *ngIf="reportTask.performanceScoreDesktop"><span style="color:cyan;">Desktop - Performance: </span>{{reportTask.performanceScoreDesktop}} | </span>
-      <span *ngIf="reportTask.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{reportTask.accessibilityScoreDesktop}} | </span>
-      <span *ngIf="reportTask.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{reportTask.bestPracticeScoreDesktop}} | </span>
-      <span *ngIf="reportTask.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{reportTask.seoScoreDesktop}} | </span>
-      <span *ngIf="reportTask.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{reportTask.pwaScoreDesktop}}</span>
+      <span *ngIf="task.performanceScoreDesktop"><span style="color:cyan;">Desktop - Performance: </span>{{task.performanceScoreDesktop}} | </span>
+      <span *ngIf="task.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{task.accessibilityScoreDesktop}} | </span>
+      <span *ngIf="task.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{task.bestPracticeScoreDesktop}} | </span>
+      <span *ngIf="task.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{task.seoScoreDesktop}} | </span>
+      <span *ngIf="task.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{task.pwaScoreDesktop}}</span>
       <span class="report-task-list-spacer"></span>
-      <span *ngIf="reportTask.performanceScoreMobile"><span style="color:cyan;">Mobile - Performance: </span>{{reportTask.performanceScoreMobile}} | </span>
-      <span *ngIf="reportTask.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{reportTask.accessibilityScoreMobile}} | </span>
-      <span *ngIf="reportTask.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{reportTask.bestPracticeScoreMobile}} | </span>
-      <span *ngIf="reportTask.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{reportTask.seoScoreMobile}} | </span>
-      <span *ngIf="reportTask.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{reportTask.pwaScoreMobile}}</span>
+      <span *ngIf="task.performanceScoreMobile"><span style="color:cyan;">Mobile - Performance: </span>{{task.performanceScoreMobile}} | </span>
+      <span *ngIf="task.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{task.accessibilityScoreMobile}} | </span>
+      <span *ngIf="task.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{task.bestPracticeScoreMobile}} | </span>
+      <span *ngIf="task.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{task.seoScoreMobile}} | </span>
+      <span *ngIf="task.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{task.pwaScoreMobile}}</span>
       <span class="report-task-list-spacer"></span>
-      <span>{{reportTypeName(reportTask.reportType)}}</span> -->
+      <span>{{reportTypeName(task.reportType)}}</span> -->

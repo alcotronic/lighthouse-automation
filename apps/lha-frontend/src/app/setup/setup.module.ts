@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialImportModule } from '../material-import/material-import.module';
 import { SetupComponent } from './setup.component';
-import { SetupService } from './setup.service';
-import { ToolbarModule } from '../toolbar/toolbar.module';
+import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
+import { LhaFrontendApiSetupModule } from '@lighthouse-automation/lha-frontend/api/setup';
 
 @NgModule({
   imports: [
@@ -12,9 +12,9 @@ import { ToolbarModule } from '../toolbar/toolbar.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialImportModule,
-    ToolbarModule,
+    LhaFrontendApiSetupModule,
+    LhaFrontendFeatureToolbarModule,
   ],
-  declarations: [SetupComponent],
-  providers: [SetupService],
+  declarations: [SetupComponent]
 })
 export class SetupModule {}

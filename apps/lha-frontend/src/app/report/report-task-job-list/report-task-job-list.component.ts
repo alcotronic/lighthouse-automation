@@ -9,16 +9,16 @@ import { ReportTaskJobListService } from './report-task-job-list.service';
 export class ReportTaskJobListComponent implements OnInit {
 
   @Input()
-  reportTaskRunId!: string;
-  reportTaskJobList: any;
+  taskRunId!: string;
+  taskJobList: any;
 
   constructor(
-    private reportTaskJobListService: ReportTaskJobListService
+    private taskJobListService: ReportTaskJobListService
   ) { }
 
   ngOnInit() {
-    this.reportTaskJobListService.getJobsByTaskRun(this.reportTaskRunId).subscribe((result) => {
-      this.reportTaskJobList = result;
+    this.taskJobListService.getJobsByTaskRun(this.taskRunId).subscribe((result) => {
+      this.taskJobList = result;
     });
   }
 

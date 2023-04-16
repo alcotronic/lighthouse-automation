@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { RoleService } from '../role/role.service';
+import { RoleService } from '@lighthouse-automation/lha-frontend/api/role';
 import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
 
 @Injectable()

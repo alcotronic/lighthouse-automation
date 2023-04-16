@@ -9,7 +9,7 @@ import { ReportTaskJobService } from './report-task-job.service';
 })
 export class ReportTaskJobComponent implements OnInit {
   @Input()
-  reportTaskJob: any;
+  taskJob: any;
   showHtml = false;
   showJson = false;
 
@@ -28,13 +28,13 @@ export class ReportTaskJobComponent implements OnInit {
 
   async ngOnInit() {
     this.reportHtmlUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report-lighthouse/html/' + this.reportTaskJob._id,
+      '/api/report-lighthouse/html/' + this.taskJob._id,
     );
     this.reportJsonUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report-lighthouse/json/' + this.reportTaskJob._id,
+      '/api/report-lighthouse/json/' + this.taskJob._id,
     );
     this.reportCsvUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report-lighthouse/csv/' + this.reportTaskJob._id,
+      '/api/report-lighthouse/csv/' + this.taskJob._id,
     );
   }
 

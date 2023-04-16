@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
-import { RoleService } from '../../role/role.service';
+import { RoleService } from '@lighthouse-automation/lha-frontend/api/role';
 
 @Component({
   selector: 'lha-app-account-toolbar',

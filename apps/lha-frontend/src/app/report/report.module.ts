@@ -4,7 +4,7 @@ import { ReportComponent } from './report.component';
 import { MaterialImportModule } from '../material-import/material-import.module';
 import { ReportRoutingModule } from './report-routing.module';
 import { ReportTaskModule } from './report-task/report-task.module';
-import { ReportToolbarModule } from './report-toolbar/report-toolbar.module';
+//import { ReportToolbarModule } from './report-toolbar/report-toolbar.module';
 import { ReportTaskCreateModule } from './report-task-create/report-task-create.module';
 import { ReportTaskEditModule } from './report-task-edit/report-task-edit.module';
 import { ReportTaskJobModule } from './report-task-job/report-task-job.module';
@@ -13,6 +13,7 @@ import { ReportTaskRunModule } from './report-task-run/report-task-run.module';
 import { ReportTaskRunListModule } from './report-task-run-list/report-task-run-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReportTaskListModule } from './report-task-list/report-task-list.module';
+import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { ReportTaskListModule } from './report-task-list/report-task-list.module
     ReportTaskJobListModule,
     ReportTaskRunModule,
     ReportTaskRunListModule,
-    ReportToolbarModule,
+    LhaFrontendFeatureToolbarModule,
   ],
   declarations: [ReportComponent],
 })

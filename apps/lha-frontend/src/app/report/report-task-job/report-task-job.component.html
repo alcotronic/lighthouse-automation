@@ -1,18 +1,18 @@
 <div class="report-task-job-container">
   <mat-card class="bottom-margin">
     <mat-card-content>
-      <mat-card-subtitle ><span class="purple bold">Url: </span>{{reportTaskJob.url}}</mat-card-subtitle>
+      <mat-card-subtitle ><span class="purple bold">Url: </span>{{taskJob.url}}</mat-card-subtitle>
       <mat-card-subtitle >
-        <span style="color:cyan;">Device: </span>{{reportTaskJob.formFactor}} |
-        <span style="color:cyan;">Finished: </span>{{reportTaskJob.finished}} |
-        <span style="color:cyan;">Date: </span>{{reportTaskJob.timeStart | date:'medium':'+0100':'de'}}
+        <span style="color:cyan;">Device: </span>{{taskJob.formFactor}} |
+        <span style="color:cyan;">Finished: </span>{{taskJob.finished}} |
+        <span style="color:cyan;">Date: </span>{{taskJob.timeStart | date:'medium':'+0100':'de'}}
       </mat-card-subtitle>
       <mat-card-subtitle>
-        <span *ngIf="reportTaskJob.performanceScore"><span style="color:cyan;">Performance: </span>{{reportTaskJob.performanceScore * 100 | number: '1.0-0'}} | </span>
-        <span *ngIf="reportTaskJob.accessibilityScore"><span style="color:cyan;">Accessibility: </span>{{reportTaskJob.accessibilityScore * 100 | number: '1.0-0'}} | </span>
-        <span *ngIf="reportTaskJob.bestPracticeScore"><span style="color:cyan;">Best Practice: </span>{{reportTaskJob.bestPracticeScore * 100 | number: '1.0-0'}} | </span>
-        <span *ngIf="reportTaskJob.seoScore"><span style="color:cyan;">SEO: </span>{{reportTaskJob.seoScore * 100 | number: '1.0-0'}} | </span>
-        <span *ngIf="reportTaskJob.pwaScore"><span style="color:cyan;">PWA: </span>{{reportTaskJob.pwaScore * 100 | number: '1.0-0'}}</span>
+        <span *ngIf="taskJob.performanceScore"><span style="color:cyan;">Performance: </span>{{taskJob.performanceScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskJob.accessibilityScore"><span style="color:cyan;">Accessibility: </span>{{taskJob.accessibilityScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskJob.bestPracticeScore"><span style="color:cyan;">Best Practice: </span>{{taskJob.bestPracticeScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskJob.seoScore"><span style="color:cyan;">SEO: </span>{{taskJob.seoScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskJob.pwaScore"><span style="color:cyan;">PWA: </span>{{taskJob.pwaScore * 100 | number: '1.0-0'}}</span>
       </mat-card-subtitle>
     </mat-card-content>
     <mat-card-actions>

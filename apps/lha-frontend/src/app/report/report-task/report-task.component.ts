@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 import { ReportTaskRunListService } from '../report-task-run-list/report-task-run-list.service';
 import { ReportTaskRun } from '../report-task-run/report-task-run';
-import { ReportTaskService } from './report-task.service';
+import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
 
 @Component({
   selector: 'lha-app-report-task',
@@ -16,8 +16,7 @@ export class ReportTaskComponent implements OnInit {
   showUrls = true;
   showRuns = true;
 
-  barChartOptions: ChartOptions = {
-  };
+  barChartOptions: ChartOptions = {};
   barChartLabels: string[] = [];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
@@ -26,18 +25,18 @@ export class ReportTaskComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private reportTaskService: ReportTaskService,
-    private reportTaskRunListService: ReportTaskRunListService,
+    private taskService: TaskService,
+    private reportTaskRunListService: ReportTaskRunListService
   ) {}
 
   ngOnInit() {
-    const reportTaskId = this.route.snapshot.paramMap.get('id');
-    if (reportTaskId) {
-      this.reportTaskService.getReportTask(reportTaskId).subscribe((result) => {
+    const taskId = this.route.snapshot.paramMap.get('id');
+    if (taskId) {
+      this.taskService.getTask(taskId).subscribe((result) => {
         this.reportTask = result;
       });
       this.reportTaskRunListService
-        .getAllReportTaskRuns(reportTaskId)
+        .getAllReportTaskRuns(taskId)
         .subscribe((result) => {
           this.reportTaskRunList = result;
           this.barChartLabels = [];
@@ -51,10 +50,10 @@ export class ReportTaskComponent implements OnInit {
             this.barChartLabels.push(label);
             console.log(element);
             barCharDataDesktop.push(
-              +(element.performanceScoreDesktop * 100).toFixed(0),
+              +(element.performanceScoreDesktop * 100).toFixed(0)
             );
             barCharDataMobile.push(
-              +(element.performanceScoreMobile * 100).toFixed(0),
+              +(element.performanceScoreMobile * 100).toFixed(0)
             );
           });
           this.barChartData.push({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReportTaskListService } from './report-task-list.service';
+import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
 
 @Component({
   selector: 'lha-app-report-task-list',
@@ -8,16 +8,16 @@ import { ReportTaskListService } from './report-task-list.service';
   styleUrls: ['./report-task-list.component.scss'],
 })
 export class ReportTaskListComponent implements OnInit {
-  reportTaskList: any;
+  taskList: any;
 
   constructor(
-    private reportTaskService: ReportTaskListService,
+    private taskService: TaskService,
     private router: Router,
   ) {}
 
   ngOnInit() {
-    this.reportTaskService.getAllReportTasks().subscribe((result: any) => {
-      this.reportTaskList = result;
+    this.taskService.getAllTasks().subscribe((result: any) => {
+      this.taskList = result;
     });
   }
 
@@ -29,8 +29,8 @@ export class ReportTaskListComponent implements OnInit {
     }
   }
 
-  selectReportTask(reportTask: any) {
-    console.info(reportTask._id);
-    this.router.navigate(['/report-task/task/' + reportTask._id]);
+  selectReportTask(task: any) {
+    console.log(task._id);
+    this.router.navigate(['/report-task/task/' + task._id]);
   }
 }

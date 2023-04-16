@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ReportTaskService } from '../report-task/report-task.service';
+import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
 import { ReportTaskRunService } from './report-task-run.service';
 
 @Component({
@@ -10,31 +10,31 @@ import { ReportTaskRunService } from './report-task-run.service';
 })
 export class ReportTaskRunComponent implements OnInit {
 
-  reportTask: any;
-  reportTaskRun: any;
-  reportTaskJobList: any;
+  task: any;
+  taskRun: any;
+  taskJobList: any;
   showUrls = true;
   showJobs = true;
 
   constructor(
     private route: ActivatedRoute,
-    private reportTaskService: ReportTaskService,
-    private reportTaskRunService: ReportTaskRunService,
+    private taskService: TaskService,
+    private taskRunService: ReportTaskRunService,
   ) {}
 
   ngOnInit() {
-    const reportTaskId = this.route.snapshot.paramMap.get('taskId');
-    const reportTaskRunId = this.route.snapshot.paramMap.get('runId');
-    if (!!reportTaskId && !!reportTaskRunId) {
-      console.info(reportTaskId);
-      console.info(reportTaskRunId);
-      this.reportTaskService.getReportTask(reportTaskId).subscribe((result) => {
-        this.reportTask = result;
+    const taskId = this.route.snapshot.paramMap.get('taskId');
+    const taskRunId = this.route.snapshot.paramMap.get('runId');
+    if (!!taskId && !!taskRunId) {
+      console.log(taskId);
+      console.log(taskRunId);
+      this.taskService.getTask(taskId).subscribe((result) => {
+        this.task = result;
       });
-      this.reportTaskRunService
-        .getTaskRun(reportTaskRunId)
+      this.taskRunService
+        .getTaskRun(taskRunId)
         .subscribe((result) => {
-          this.reportTaskRun = result;
+          this.taskRun = result;
         });
     }
   }
