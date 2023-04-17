@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
 
 @Component({
-  selector: 'lha-app-login',
+  selector: 'lha-frontend-feature-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
@@ -34,7 +34,7 @@ export class LoginComponent {
           if (result && result.access_token) {
             this.authenticationService.setAccessToken(result.access_token);
             //this.authenticationService.decodeToken();
-            this.router.navigate(['report-task']);
+            this.router.navigate(['task/list']);
           }
         });
     }

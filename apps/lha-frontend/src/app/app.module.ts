@@ -16,6 +16,7 @@ import { AccountModule } from './account/account.module';
 import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
 import { LhaFrontendApiStatusModule } from '@lighthouse-automation/lha-frontend/api/status';
 import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
+import { LhaFrontendFeatureLoginModule } from '@lighthouse-automation/lha-frontend/feature/login';
 import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 import { TaskModule } from './task/task.module';
 
@@ -47,9 +48,9 @@ registerLocaleData(localeDE);
     LhaFrontendApiAuthenticationModule,
     LhaFrontendApiRoleModule,
     LhaFrontendApiStatusModule,
+    LhaFrontendFeatureLoginModule,
     LhaFrontendFeatureToolbarModule,
     SetupModule,
-    LoginModule,
     TaskModule
   ],
   providers: [

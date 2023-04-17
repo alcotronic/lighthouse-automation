@@ -58,6 +58,9 @@
       "@lighthouse-automation/lha-frontend/api/task-execution": [
         "libs/lha-frontend/api/task-execution/src/index.ts"
       ],
+      "@lighthouse-automation/lha-frontend/feature/login": [
+        "libs/lha-frontend/feature/login/src/index.ts"
+      ],
       "@lighthouse-automation/lha-frontend/feature/task": [
         "libs/lha-frontend/feature/task/src/index.ts"
       ],

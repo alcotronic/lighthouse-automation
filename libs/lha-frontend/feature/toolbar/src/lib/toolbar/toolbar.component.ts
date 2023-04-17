@@ -6,7 +6,7 @@ import { RoleService } from '@lighthouse-automation/lha-frontend/api/role';
 @Component({
   selector: 'lha-frontend-feature-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent {
   isLoggedIn = false;
@@ -16,20 +16,23 @@ export class ToolbarComponent {
   constructor(
     private authenticationService: AuthenticationService,
     private roleService: RoleService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.isLoggedIn = this.authenticationService.loggedIn();
-    this.roleService.isAdmin().subscribe((result: any) => {
-      if (result && result.isAdmin && result.isAdmin === true) {
-        this.isAdmin = true;
-      }
-    });
+    if (this.isLoggedIn) {
+      this.roleService.isAdmin().subscribe((result: any) => {
+        if (result && result.isAdmin && result.isAdmin === true) {
+          this.isAdmin = true;
+        }
+      });
+    }
   }
 
   logout() {
     this.authenticationService.logout();
+    this.isLoggedIn = false;
     this.router.navigate(['']);
   }
 }
