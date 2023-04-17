@@ -18,7 +18,7 @@ export class TaskSchedulerService {
     private queueService: QueueService
   ) {}
 
-  @Cron(CronExpression.EVERY_10_MINUTES)
+  @Cron(CronExpression.EVERY_MINUTE)
   async generateTenMinuteReport() {
     const tasks = await this.taskService.findByTaskIntervalAndEnabled(TaskInterval.EVERY_10_MINUTES);
     console.info('Running every 10 minutes tasks.');
@@ -61,31 +61,20 @@ export class TaskSchedulerService {
   async createExecutionsForTask(task: Task) {
     const taskExecution = await this.taskExecutionService.create(task);
     task.urlList.forEach(async (url: string) => {
-      const reportMobile = await this.reportService.create({
-        taskId: task.id,
-        taskExecutionId: taskExecution.id,
-        formFactor: Device.MOBILE,
-        url: url,
-      });
       const reportDesktop = await this.reportService.create({
         taskId: task.id,
         taskExecutionId: taskExecution.id,
         formFactor: Device.DESKTOP,
         url: url,
       });
-      this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportMobile);
+      const reportMobile = await this.reportService.create({
+        taskId: task.id,
+        taskExecutionId: taskExecution.id,
+        formFactor: Device.MOBILE,
+        url: url,
+      });
       this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportDesktop);
-      console.info(
-        'task._id: ' +
-          task.id +
-          ' taskExecution._id: ' +
-          taskExecution.id +
-          ' reportMobile._id: ' +
-          reportMobile.id +
-          ' reportDesktop._id: ' +
-          reportDesktop.id,
-      );
-      //console.info(job);
+      this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportMobile);
     });
     return {};
   }

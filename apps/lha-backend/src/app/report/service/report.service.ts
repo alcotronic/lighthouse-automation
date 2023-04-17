@@ -5,13 +5,12 @@ import { Job, Queue } from 'bull';
 import { Model } from 'mongoose';
 import { launch } from 'chrome-launcher';
 import lighthouse from 'lighthouse/core/index.cjs';
-//import { screenEmulationMetrics, userAgents } from 'lighthouse/core/config/constants';
 // import * as reportGenerator from 'lighthouse/report/generator/report-generator';
 import { gzip, ungzip } from 'node-gzip';
 
 import { Report, ReportDocument } from '../schema/report';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
-import { Config, Flags } from 'lighthouse';
+import { Config, Flags, ScreenEmulationSettings } from 'lighthouse';
 import { QueueService } from '../../queue/service/queue.service';
 
 @Processor('reportGenerateLighthouseLhrQueue')
@@ -137,13 +136,20 @@ export class ReportService {
     const flags: Flags = {
       port: chrome.port,
     };
-    const config: Config = {
-      extends: 'lighthouse:default'
+    const screenEmulationConfig: ScreenEmulationSettings = {
+      width: report.formFactor === Device.DESKTOP ? 1920 : 360,
+      height: report.formFactor === Device.DESKTOP ? 1080 : 800,
+      deviceScaleFactor: 0,
+      mobile: report.formFactor === Device.DESKTOP ? false : true,
+      disabled: false
     };
-    // const config: Config = {
-    //   extends: report.formFactor === Device.DESKTOP ? 'lighthouse:desktop' : 'lighthouse:mobile',
-    // };
-
+    const config: Config = {
+      extends: 'lighthouse:default',
+      settings: {
+        formFactor: report.formFactor === Device.DESKTOP ? 'desktop' : 'mobile',
+        screenEmulation: screenEmulationConfig
+      }
+    };
     const runnerResult = await lighthouse(report.url, flags, config);
 
     await chrome.kill();
