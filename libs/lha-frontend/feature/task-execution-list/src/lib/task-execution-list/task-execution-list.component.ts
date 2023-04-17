@@ -22,9 +22,9 @@ export class TaskExecutionListComponent implements OnInit {
     });
   }
 
-  selectReportTaskRun(reportTaskRun: any) {
-    console.log(reportTaskRun._id)
-    this.router.navigate(['/task/'+this.task._id+'/execution/'+reportTaskRun._id]);
+  selectTaskExecution(taskExecution: TaskExecutionDto) {
+    console.log(taskExecution._id)
+    this.router.navigate(['/task/'+this.task._id+'/execution/'+taskExecution._id]);
   }
 
 }

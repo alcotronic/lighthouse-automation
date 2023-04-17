@@ -1,6 +1,6 @@
 <div class="report-task-run-container">
   <h1>
-    Report Task Run
+    Task Execution
   </h1>
   <div *ngIf="!!task && task !== undefined && !!taskExecution && taskExecution !== undefined">
     <mat-card>
@@ -15,19 +15,15 @@
           <span style="color:cyan;">Enabled: </span>{{task.enabled}}
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <mat-card-subtitle class="purple bold">Report Task Run</mat-card-subtitle>
-      </mat-card-content>
       <mat-card-header>
+        <mat-card-subtitle class="purple bold">Task Execution</mat-card-subtitle>
         <mat-card-subtitle>
           <span><span style="color:cyan;">Id: </span>{{taskExecution._id}} | </span>
           <span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <mat-card-subtitle class="purple bold">Desktop averege</mat-card-subtitle>
-      </mat-card-content>
       <mat-card-header>
+        <mat-card-subtitle class="purple bold">Desktop averege</mat-card-subtitle>
         <mat-card-subtitle>
           <span *ngIf="taskExecution.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{taskExecution.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
           <span *ngIf="taskExecution.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{taskExecution.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
@@ -36,10 +32,8 @@
           <span *ngIf="taskExecution.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{taskExecution.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <mat-card-subtitle class="purple bold">Mobile averege</mat-card-subtitle>
-      </mat-card-content>
       <mat-card-header>
+        <mat-card-subtitle class="purple bold">Mobile averege</mat-card-subtitle>
         <mat-card-subtitle>
           <span *ngIf="taskExecution.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{taskExecution.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
           <span *ngIf="taskExecution.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{taskExecution.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
@@ -49,7 +43,7 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content >
-        <button class="nopaddingleft" (click)="toggleShowUrls()">
+        <button mat-flat-button class="nopaddingleft" (click)="toggleShowUrls()">
           <mat-card-subtitle class="flextitle purple bold">
             <span>Test Urls</span>
             <span class="spacer"></span>
@@ -62,9 +56,9 @@
         </mat-list>
       </mat-card-content>
       <mat-card-content>
-        <button class="nopaddingleft" (click)="toggleShowJobs()">
+        <button mat-flat-button class="nopaddingleft" (click)="toggleShowJobs()">
           <mat-card-subtitle class="flextitle purple bold">
-            <span>Report Task Jobs</span>
+            <span>Reports</span>
             <span class="spacer"></span>
             <mat-icon *ngIf="!showJobs">keyboard_arrow_down</mat-icon>
             <mat-icon *ngIf="showJobs">keyboard_arrow_up</mat-icon>

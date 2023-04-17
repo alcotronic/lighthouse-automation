@@ -1,6 +1,6 @@
 <div class="report-task-run-list-container">
   <mat-action-list dense *ngIf="taskExecutionList && taskExecutionList !== undefined">
-    <button *ngFor="let taskExecution of taskExecutionList" mat-list-item (click)="selectReportTaskRun(taskExecution)">
+    <button *ngFor="let taskExecution of taskExecutionList" mat-list-item (click)="selectTaskExecution(taskExecution)">
       <span matLine><span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}</span>
       <span matLine><span style="color:cyan;">ID: </span>{{taskExecution._id}}</span>
       <span matLine>

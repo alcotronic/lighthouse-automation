@@ -25,7 +25,7 @@ export class TaskExecutionComponent implements OnInit {
 
   ngOnInit() {
     const taskId = this.route.snapshot.paramMap.get('taskId');
-    const taskExecutionId = this.route.snapshot.paramMap.get('runId');
+    const taskExecutionId = this.route.snapshot.paramMap.get('taskExecutionId');
     if (!!taskId && !!taskExecutionId) {
       console.log(taskId);
       console.log(taskExecutionId);
