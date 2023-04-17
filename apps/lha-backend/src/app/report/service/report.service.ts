@@ -11,6 +11,7 @@ import { gzip, ungzip } from 'node-gzip';
 
 import { Report, ReportDocument } from '../schema/report';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
+import { Config, Flags } from 'lighthouse';
 
 @Processor('reportQueue')
 @Injectable()
@@ -147,12 +148,15 @@ export class ReportService {
 
     //const chrome = await launch({ chromeFlags: ['--headless'] });
     const chrome = await launch();
-    const flags = {
+    const flags: Flags = {
       port: chrome.port,
     };
-    const config = {
-      extends: report.formFactor === Device.DESKTOP ? 'lighthouse:desktop' : 'lighthouse:mobile',
+    const config: Config = {
+      extends: 'lighthouse:default'
     };
+    // const config: Config = {
+    //   extends: report.formFactor === Device.DESKTOP ? 'lighthouse:desktop' : 'lighthouse:mobile',
+    // };
 
     const runnerResult = await lighthouse(report.url, flags, config);
     const lighthouseLhr = JSON.stringify(runnerResult.lhr);

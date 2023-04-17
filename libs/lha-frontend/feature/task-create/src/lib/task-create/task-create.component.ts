@@ -66,19 +66,20 @@ export class TaskCreateComponent {
           this.nameControl.valid &&
           this.urlList.length > 0
         ) {
-          const reportTaskCreateDto: TaskCreateDto = {
+          const taskCreateDto: TaskCreateDto = {
             name: this.nameControl.value,
-            taskType: this.typeControl.value,
+            taskType: TaskType.MANUAL_REPORT,
             enabled: false,
             taskInterval: TaskInterval.NEVER,
             urlList: this.urlList,
           };
+          console.log(taskCreateDto);
           this.taskService
-            .createTask(reportTaskCreateDto)
+            .createTask(taskCreateDto)
             .subscribe((result: any) => {
               console.log(result);
               if (result._id) {
-                this.router.navigate(['report-task']);
+                this.router.navigate(['task/list']);
               }
             });
         }
@@ -96,7 +97,7 @@ export class TaskCreateComponent {
         ) {
           const reportTaskCreateDto: TaskCreateDto = {
             name: this.nameControl.value,
-            taskType: this.typeControl.value,
+            taskType: TaskType.SCHEDULED_REPORT,
             enabled: this.enabledControl.value,
             taskInterval: this.intervalControl.value,
             urlList: this.urlList,
