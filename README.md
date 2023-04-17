@@ -10,12 +10,12 @@ At the moment I am moving the seperated old projects to a single nx-workspace (h
 
 ## Backend
 
-The backend is based on nestjs and uses chrome-launcher (https://github.com/GoogleChrome/chrome-launcher), so some kind of installation of chrome or chromium is needed. MongoDB is used as database and redis for the job queues.
+The backend is based on nestjs and uses chrome-launcher (https://github.com/GoogleChrome/chrome-launcher), so some kind of installation of chrome or chromium is needed. MongoDB (https://www.mongodb.com/) is used as database and Redis (https://redis.io) for the job queues for now.
 The backend still needs some rework.
 
 ### Backend Development server
 
-For developing I added a docker-compose file with dockers for MongoDB and Redis..
+For developing I added a docker-compose file with dockers for MongoDB and Redis.
 
 Run `nx serve lha-backend` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
 
