@@ -1,10 +1,12 @@
 # Lighthouse Report Automation
 
+*work in progress*
+
 Solution with nestjs backend and angular frontend for manual or scheduled creation of google lighthouse reports (https://github.com/GoogleChrome/lighthouse).
 
 The project started more than two years ago for quality checks of https://taz.de.
 It was not finished and was abandoned for a while.
-I move the seperated old projects to a single nx-workspace (https://nx.dev) at the moment, including a lot of refactoring and lib creation.
+At the moment I am moving the seperated old projects to a single nx-workspace (https://nx.dev), including a lot of refactoring and lib creation.
 
 ## Backend
 
