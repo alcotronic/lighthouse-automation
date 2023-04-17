@@ -14,10 +14,12 @@ import { AccountModule } from './account/account.module';
 import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
 import { LhaFrontendApiStatusModule } from '@lighthouse-automation/lha-frontend/api/status';
 import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
+
 import { LhaFrontendFeatureLoginModule } from '@lighthouse-automation/lha-frontend/feature/login';
 import { LhaFrontendFeatureSetupModule } from '@lighthouse-automation/lha-frontend/feature/setup';
 import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 import { TaskModule } from './task/task.module';
+import { LhaFrontendApiTaskExecutionModule } from '@lighthouse-automation/lha-frontend/api/task-execution';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -45,6 +47,7 @@ registerLocaleData(localeDE);
     ReportModule,
     LhaFrontendApiAuthenticationModule,
     LhaFrontendApiRoleModule,
+    LhaFrontendApiTaskExecutionModule,
     LhaFrontendApiStatusModule,
     LhaFrontendFeatureLoginModule,
     LhaFrontendFeatureSetupModule,

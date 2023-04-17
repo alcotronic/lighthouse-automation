@@ -106,7 +106,7 @@ export class TaskCreateComponent {
             .subscribe((result: any) => {
               console.log(result);
               if (result._id) {
-                this.router.navigate(['report-task']);
+                this.router.navigate(['task/list']);
               }
             });
         }
@@ -117,6 +117,6 @@ export class TaskCreateComponent {
   }
 
   clickCancleCreateTask() {
-    this.router.navigate(['report-task/list']);
+    this.router.navigate(['task/list']);
   }
 }

@@ -1,8 +1,8 @@
 <div class="task-container">
     <h1>
-      Report Task
+      Task
     </h1>
-    <div *ngIf="!!task && task !== undefined">
+    <div *ngIf="task && task !== undefined">
       <mat-card>
         <mat-card-title class="purple bold">
           {{task.name}}
@@ -10,7 +10,7 @@
         <mat-card-header>
           <mat-card-subtitle>
             <span style="color:cyan;">Id: </span>{{task._id}} |
-            <span style="color:cyan;">Type: </span>{{task.reportType}} |
+            <span style="color:cyan;">Type: </span>{{task.taskType}} |
             <span *ngIf="task.taskInterval"><span style="color:cyan;">Interval: </span>{{task.taskInterval}} | </span>
             <span style="color:cyan;">Enabled: </span>{{task.enabled}}
           </mat-card-subtitle>
@@ -62,13 +62,13 @@
         <mat-card-content>
           <button class="nopaddingleft" (click)="toggleShowRuns()">
             <mat-card-subtitle class="flextitle purple bold">
-              Report Task Runs:
+              Task Executions:
               <span class="spacer"></span>
               <mat-icon *ngIf="!showRuns">keyboard_arrow_down</mat-icon>
               <mat-icon *ngIf="showRuns">keyboard_arrow_up</mat-icon>
             </mat-card-subtitle>
           </button>
-          <!-- <lha-app-report-task-run-list [taskId]="task._id" [taskRunList]="taskRunList" *ngIf="showRuns"></lha-app-report-task-run-list> -->
+          <lha-frontend-feature-task-execution-list [task]="task" *ngIf="showRuns"></lha-frontend-feature-task-execution-list>
         </mat-card-content>
       </mat-card>
     </div>

@@ -58,7 +58,7 @@ export class TaskController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('byId/:taskId')
+  @Get('id/:taskId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   async getTask(@Param() params, @Request() request: any): Promise<Task> {

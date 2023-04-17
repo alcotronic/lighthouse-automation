@@ -61,6 +61,9 @@
       "@lighthouse-automation/lha-frontend/feature/login": [
         "libs/lha-frontend/feature/login/src/index.ts"
       ],
+      "@lighthouse-automation/lha-frontend/feature/report": [
+        "libs/lha-frontend/feature/report/src/index.ts"
+      ],
       "@lighthouse-automation/lha-frontend/feature/setup": [
         "libs/lha-frontend/feature/setup/src/index.ts"
       ],
@@ -69,6 +72,12 @@
       ],
       "@lighthouse-automation/lha-frontend/feature/task-create": [
         "libs/lha-frontend/feature/task-create/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/task-execution": [
+        "libs/lha-frontend/feature/task-execution/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/task-execution-list": [
+        "libs/lha-frontend/feature/task-execution-list/src/index.ts"
       ],
       "@lighthouse-automation/lha-frontend/feature/task-list": [
         "libs/lha-frontend/feature/task-list/src/index.ts"

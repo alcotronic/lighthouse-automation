@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TaskCreateDto } from '@lighthouse-automation/lha-common';
+import { TaskCreateDto, TaskDto } from '@lighthouse-automation/lha-common';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TaskService {
@@ -12,11 +13,11 @@ export class TaskService {
     return this.http.post(this.taskUrl + '/create', taskCreateDto);
   }
 
-  getTask(taskId: string) {
-    return this.http.get(this.taskUrl + '/byId/' + taskId);
+  getTask(taskId: string): Observable<TaskDto> {
+    return this.http.get<TaskDto>(this.taskUrl + '/id/' + taskId);
   }
 
-  getAllTasks() {
-    return this.http.get(this.taskUrl + '/tasks');
+  getAllTasks():Observable<TaskDto[]> {
+    return this.http.get<TaskDto[]>(this.taskUrl + '/tasks');
   }
 }

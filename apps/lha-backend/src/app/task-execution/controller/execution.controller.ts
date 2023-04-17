@@ -12,7 +12,7 @@ export class TaskExecutionController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('by-id/:taskExecutionId')
+  @Get('id/:taskExecutionId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   getByExecutionId(@Param() params) {
@@ -21,7 +21,7 @@ export class TaskExecutionController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('by-task/:taskId')
+  @Get('taskId/:taskId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   getByTaskId(@Param() params) {

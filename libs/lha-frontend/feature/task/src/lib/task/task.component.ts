@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TaskDto } from '@lighthouse-automation/lha-common';
 import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 
@@ -9,8 +10,7 @@ import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
-  task: any;
-  taskRunList: any;
+  task?: TaskDto;
   showUrls = true;
   showRuns = true;
 

@@ -1,22 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TaskExecutionDto } from '@lighthouse-automation/lha-common';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TaskExecutionService {
-  taskUrl = '/api/task';
+  taskExecutionUrl = '/api/task-execution';
 
   constructor(private readonly http: HttpClient) { }
 
-  createTaskExecution(taskCreateDto: TaskExecutionCreateDto) {
-    return this.http.post(this.taskUrl + '/create', taskCreateDto);
+  getTaskExecution(taskExecutionId: string): Observable<TaskExecutionDto> {
+    return this.http.get<TaskExecutionDto>(this.taskExecutionUrl + '/id/' + taskExecutionId);
   }
 
-  getTaskExecution(taskId: string) {
-    return this.http.get(this.taskUrl + '/' + taskId);
-  }
-
-  getAllTaskExecutions() {
-    return this.http.get(this.taskUrl + '/tasks');
+  getAllTaskExecutionsByTaskId(taskId: string): Observable<TaskExecutionDto[]> {
+    return this.http.get<TaskExecutionDto[]>(this.taskExecutionUrl + '/taskId/' + taskId);
   }
 }
