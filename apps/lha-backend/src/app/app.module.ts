@@ -36,16 +36,16 @@ import { TaskModule } from './task/task.module';
       }),
       inject: [ConfigService],
     }),
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET'),
-        signOptions: {
-          expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
-        },
-      }),
-      inject: [ConfigService],
-    }),
+    // JwtModule.registerAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: async (configService: ConfigService) => ({
+    //     secret: configService.get<string>('JWT_SECRET'),
+    //     signOptions: {
+    //       expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
+    //     },
+    //   }),
+    //   inject: [ConfigService],
+    // }),
     LhaBackendAuthenticationModule,
     LhaBackendSetupModule,
     LhaBackendUserModule,

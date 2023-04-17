@@ -1,0 +1,31 @@
+.report-task-job-container {
+  padding: 16px;
+
+  .mat-card {
+    background: #303030;
+  }
+  .mat-card-subtitle {
+    color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .bottom-margin {
+    margin-bottom: 16px;
+  }
+  .right-margin {
+    margin-right: 5px;
+  }
+  .purple {
+    color: #b82dd0;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .report-task-job-spacer {
+    flex: 1 1 auto;
+  }
+}

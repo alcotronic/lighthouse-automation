@@ -1,0 +1,77 @@
+<div class="task-container">
+    <h1>
+      Task
+    </h1>
+    <div *ngIf="task && task !== undefined">
+      <mat-card>
+        <mat-card-title class="purple bold">
+          {{task.name}}
+        </mat-card-title>
+        <mat-card-header>
+          <mat-card-subtitle>
+            <span style="color:cyan;">Id: </span>{{task._id}} |
+            <span style="color:cyan;">Type: </span>{{task.taskType}} |
+            <span *ngIf="task.taskInterval"><span style="color:cyan;">Interval: </span>{{task.taskInterval}} | </span>
+            <span style="color:cyan;">Enabled: </span>{{task.enabled}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-header>
+          <!-- <div style="display: block; height:250px;">
+            <canvas style="height:250px;" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+              [legend]="barChartLegend" [type]="barChartType" (chartHover)="chartHovered()"
+              (chartClick)="chartClicked()"></canvas>
+          </div> -->
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-subtitle class="purple bold">Desktop averege</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-header>
+          <mat-card-subtitle>
+            <span *ngIf="task.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{task.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{task.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.bestPracticeScoreDesktop"><span style="color:cyan;">Best Practice: </span>{{task.bestPracticeScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.seoScoreDesktop"><span style="color:cyan;">SEO: </span>{{task.seoScoreDesktop * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.pwaScoreDesktop"><span style="color:cyan;">PWA: </span>{{task.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-subtitle class="purple bold">Mobile averege</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-header>
+          <mat-card-subtitle>
+            <span *ngIf="task.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{task.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{task.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.bestPracticeScoreMobile"><span style="color:cyan;">Best Practice: </span>{{task.bestPracticeScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.seoScoreMobile"><span style="color:cyan;">SEO: </span>{{task.seoScoreMobile * 100 | number: '1.0-0'}} | </span>
+            <span *ngIf="task.pwaScoreMobile"><span style="color:cyan;">PWA: </span>{{task.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <button class="nopaddingleft" (click)="toggleShowUrls()">
+            <mat-card-subtitle class="flextitle purple bold">
+              Test Urls
+              <span class="spacer"></span>
+              <mat-icon *ngIf="!showUrls">keyboard_arrow_down</mat-icon>
+              <mat-icon *ngIf="showUrls">keyboard_arrow_up</mat-icon>
+            </mat-card-subtitle>
+          </button>
+          <mat-list dense *ngIf="showUrls">
+            <mat-list-item *ngFor="let url of task.urlList">{{url}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-content>
+          <button class="nopaddingleft" (click)="toggleShowRuns()">
+            <mat-card-subtitle class="flextitle purple bold">
+              Task Executions:
+              <span class="spacer"></span>
+              <mat-icon *ngIf="!showRuns">keyboard_arrow_down</mat-icon>
+              <mat-icon *ngIf="showRuns">keyboard_arrow_up</mat-icon>
+            </mat-card-subtitle>
+          </button>
+          <lha-frontend-feature-task-execution-list [task]="task" *ngIf="showRuns"></lha-frontend-feature-task-execution-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
+  

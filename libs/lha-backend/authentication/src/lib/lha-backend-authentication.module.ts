@@ -13,7 +13,16 @@ import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
   imports: [
     ConfigModule,
     PassportModule,
-    JwtModule,
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET'),
+        signOptions: {
+          expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
+        },
+      }),
+      inject: [ConfigService],
+    }),
     LhaBackendUserModule
   ],
   controllers: [AuthenticationController],

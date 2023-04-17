@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Header,
+  Logger,
   Param,
   Post,
   Request,
@@ -21,6 +22,8 @@ import { TaskSchedulerService } from '../service/task-scheduler.service';
 
 @Controller('task')
 export class TaskController {
+  private readonly logger = new Logger(TaskController.name);
+
   constructor(
     private taskService: TaskService,
     private taskSchedulerService: TaskSchedulerService
@@ -40,9 +43,9 @@ export class TaskController {
       taskCreateDto
     );
     if (task.taskType === TaskType.MANUAL_REPORT) {
-      console.info('Running manual task.');
+      this.logger.log('Running manual task.');
       await this.taskSchedulerService.createExecutionsForTask(task);
-      console.info('Finished manual task.');
+      this.logger.log('Finished manual task.');
     }
     return task;
   }
@@ -58,7 +61,7 @@ export class TaskController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('task/:taskId')
+  @Get('id/:taskId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   async getTask(@Param() params, @Request() request: any): Promise<Task> {

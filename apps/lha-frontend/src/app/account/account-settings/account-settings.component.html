@@ -1,0 +1,40 @@
+<div class="account-settings-container">
+  <h1>
+    Account settings
+  </h1>
+  <div *ngIf="!!account && account !== undefined">
+    <mat-card>
+      <mat-card-title class="purple bold">
+        Username: {{account.username}}
+      </mat-card-title>
+      <mat-card-header>
+        <mat-card-subtitle>
+          Email: {{account.email}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <button *ngIf="!showChangePasswordForm" mat-button (click)="displayChangePasswordForm()">Change Password</button>
+        <mat-card *ngIf="!!showChangePasswordForm">
+          <form [formGroup]="changePasswordForm" (ngSubmit)="saveNewPassword()">
+            <mat-card-content>
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput required [formControl]="passwordControl" type="password" />
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Repeat password</mat-label>
+                <input matInput required [formControl]="passwordRepeatedControl" type="password" />
+              </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button type="submit">Save</button>
+              <button mat-button (click)="cancle()">Cancle</button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

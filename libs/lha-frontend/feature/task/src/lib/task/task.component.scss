@@ -1,0 +1,53 @@
+.task-container {
+    padding: 30px;
+  
+    .mat-card-header {
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+  
+    .mat-card-title {
+      margin-bottom: 16px;
+    }
+  
+    .mat-card-subtitle {
+      color: #fff;
+      margin-bottom: 0px;
+    }
+  
+    .mat-button{
+      width: 100%;
+    }
+  
+    .mat-button-wrapper {
+      padding: 0;
+    }
+  
+    .mat-icon {
+      line-height: 36px;
+    }
+  
+    .nopaddingleft {
+      padding-left: 0px;
+    }
+  
+    .flextitle {
+      display: flex;
+    }
+  
+    .spacer {
+      flex: 1 1 auto;
+    }
+  
+    .purple {
+      color: #b82dd0;
+    }
+  
+    .bold {
+      font-weight: bold;
+    }
+  
+  }
+  
+  
+  

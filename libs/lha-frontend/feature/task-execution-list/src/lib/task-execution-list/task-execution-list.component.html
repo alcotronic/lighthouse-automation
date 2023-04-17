@@ -1,0 +1,32 @@
+<div class="report-task-run-list-container">
+  <mat-action-list dense *ngIf="taskExecutionList && taskExecutionList !== undefined">
+    <button *ngFor="let taskExecution of taskExecutionList" mat-list-item (click)="selectReportTaskRun(taskExecution)">
+      <span matLine><span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}</span>
+      <span matLine><span style="color:cyan;">ID: </span>{{taskExecution._id}}</span>
+      <span matLine>
+        <span *ngIf="taskExecution.performanceScoreDesktop" style="color:cyan;">Desktop - Performance: </span>
+        <span *ngIf="taskExecution.performanceScoreDesktop">{{taskExecution.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.accessibilityScoreDesktop" style="color:cyan;">Accessibility: </span>
+        <span *ngIf="taskExecution.accessibilityScoreDesktop">{{taskExecution.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.bestPracticeScoreDesktop" style="color:cyan;">Best Practice: </span>
+        <span *ngIf="taskExecution.bestPracticeScoreDesktop">{{taskExecution.bestPracticeScoreDesktop * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.seoScoreDesktop" style="color:cyan;">SEO: </span>
+        <span *ngIf="taskExecution.seoScoreDesktop">{{taskExecution.seoScoreDesktop * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.pwaScoreDesktop" style="color:cyan;">PWA: </span>
+        <span *ngIf="taskExecution.pwaScoreDesktop">{{taskExecution.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
+      </span>
+      <span matLine>
+        <span *ngIf="taskExecution.performanceScoreMobile" style="color:cyan;">Mobile - Performance: </span>
+        <span *ngIf="taskExecution.performanceScoreMobile">{{taskExecution.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.accessibilityScoreMobile" style="color:cyan;">Accessibility: </span>
+        <span *ngIf="taskExecution.accessibilityScoreMobile">{{taskExecution.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.bestPracticeScoreMobile" style="color:cyan;">Best Practice: </span>
+        <span *ngIf="taskExecution.bestPracticeScoreMobile">{{taskExecution.bestPracticeScoreMobile * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.seoScoreMobile" style="color:cyan;">SEO: </span>
+        <span *ngIf="taskExecution.seoScoreMobile">{{taskExecution.seoScoreMobile * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="taskExecution.pwaScoreMobile" style="color:cyan;">PWA: </span>
+        <span *ngIf="taskExecution.pwaScoreMobile">{{taskExecution.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
+      </span>
+    </button>
+  </mat-action-list>
+</div>

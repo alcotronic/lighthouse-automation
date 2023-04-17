@@ -11,14 +11,14 @@ export class TaskService {
     private taskModel: Model<TaskDocument>
   ) {}
 
-  create(userId: string, TaskCreateDto: TaskCreateDto) {
+  create(userId: string, taskCreateDto: TaskCreateDto) {
     const createdTask = new this.taskModel({
       userId: userId,
-      name: TaskCreateDto.name,
-      reportType: TaskCreateDto.taskType,
-      taskInterval: TaskCreateDto.taskInterval,
-      enabled: TaskCreateDto.enabled,
-      urlList: TaskCreateDto.urlList,
+      name: taskCreateDto.name,
+      taskType: taskCreateDto.taskType,
+      taskInterval: taskCreateDto.taskInterval,
+      enabled: taskCreateDto.enabled,
+      urlList: taskCreateDto.urlList,
     });
     return createdTask.save();
   }
