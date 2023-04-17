@@ -9,6 +9,7 @@ I move the seperated old projects to a single nx-workspace (https://nx.dev) at t
 ## Backend
 
 The backend is based on nestjs and uses chrome-launcher (https://github.com/GoogleChrome/chrome-launcher), so some kind of installation of chrome or chromium is needed.
+The backend still needs some rework.
 
 ### Backend Development server
 
@@ -16,7 +17,8 @@ Run `nx serve lha-backend` for a dev server. Navigate to http://localhost:3000/.
 
 ## Frontend
 
-The frontend is baded on angular (https://angular.io). At the moment I move parts of it to libs in the nx-workspace.
+The frontend is based on angular (https://angular.io).
+At the moment I move parts of it to libs in the nx-workspace.
 
 ### Frontend Development server
 
