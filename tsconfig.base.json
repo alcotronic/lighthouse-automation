@@ -61,6 +61,9 @@
       "@lighthouse-automation/lha-frontend/feature/login": [
         "libs/lha-frontend/feature/login/src/index.ts"
       ],
+      "@lighthouse-automation/lha-frontend/feature/setup": [
+        "libs/lha-frontend/feature/setup/src/index.ts"
+      ],
       "@lighthouse-automation/lha-frontend/feature/task": [
         "libs/lha-frontend/feature/task/src/index.ts"
       ],

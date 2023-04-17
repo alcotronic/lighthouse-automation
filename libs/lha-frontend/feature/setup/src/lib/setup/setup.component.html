@@ -1,29 +1,39 @@
-<lha-frontend-feature-toolbar></lha-frontend-feature-toolbar>
 <div class="setup-container">
-  <h1>
-    Create first admin account
-  </h1>
+  <h1>Create first admin account</h1>
   <mat-card>
-    <form [formGroup]="createFirstAdminForm" (ngSubmit)="clickCreateFirstAdmin()">
+    <form
+      [formGroup]="createFirstAdminForm"
+      (ngSubmit)="clickCreateFirstAdmin()"
+    >
       <mat-card-content>
         <mat-form-field appearance="fill">
           <mat-label>Username</mat-label>
           <input matInput required [formControl]="usernameControl" />
         </mat-form-field>
-        <br>
+        <br />
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput required [formControl]="emailControl" />
         </mat-form-field>
-        <br>
+        <br />
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput required [formControl]="passwordControl" type="password" />
+          <input
+            matInput
+            required
+            [formControl]="passwordControl"
+            type="password"
+          />
         </mat-form-field>
-        <br>
+        <br />
         <mat-form-field appearance="fill">
           <mat-label>Repeat password</mat-label>
-          <input matInput required [formControl]="passwordRepeatedControl" type="password" />
+          <input
+            matInput
+            required
+            [formControl]="passwordRepeatedControl"
+            type="password"
+          />
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>

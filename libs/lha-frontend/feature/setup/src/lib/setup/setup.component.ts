@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import { SetupService } from '@lighthouse-automation/lha-frontend/api/setup';
 
 @Component({
-  selector: 'lha-app-setup',
+  selector: 'lha-frontend-feature-setup',
   templateUrl: './setup.component.html',
   styleUrls: ['./setup.component.scss'],
 })
@@ -19,7 +19,7 @@ export class SetupComponent {
   constructor(
     private setupService: SetupService,
     private formBuilder: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {
     this.createFirstAdminForm = formBuilder.group({});
   }
@@ -32,15 +32,19 @@ export class SetupComponent {
       this.passwordRepeatedControl.valid &&
       this.passwordControl.value === this.passwordRepeatedControl.value
     ) {
-      if (this.usernameControl.value && this.emailControl.value && this.passwordControl.value) {
+      if (
+        this.usernameControl.value &&
+        this.emailControl.value &&
+        this.passwordControl.value
+      ) {
         const pass = CryptoJS.SHA256(this.passwordControl.value).toString(
-          CryptoJS.enc.Base64,
+          CryptoJS.enc.Base64
         );
         this.setupService
           .createFirstAdminUser(
             this.usernameControl.value,
             this.emailControl.value,
-            pass,
+            pass
           )
           .subscribe((result: any) => {
             if (result && result.success && result.success === true) {
@@ -48,7 +52,6 @@ export class SetupComponent {
             }
           });
       }
-
     }
   }
 }

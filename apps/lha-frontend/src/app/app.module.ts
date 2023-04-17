@@ -7,7 +7,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import localeDE from '@angular/common/locales/de';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SetupModule } from './setup/setup.module';
 import { AuthModule } from './auth/auth.module';
 import { ReportModule } from './report/report.module';
 import { AdminModule } from './admin/admin.module';
@@ -16,9 +15,9 @@ import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-f
 import { LhaFrontendApiStatusModule } from '@lighthouse-automation/lha-frontend/api/status';
 import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
 import { LhaFrontendFeatureLoginModule } from '@lighthouse-automation/lha-frontend/feature/login';
+import { LhaFrontendFeatureSetupModule } from '@lighthouse-automation/lha-frontend/feature/setup';
 import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 import { TaskModule } from './task/task.module';
-
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -48,9 +47,9 @@ registerLocaleData(localeDE);
     LhaFrontendApiRoleModule,
     LhaFrontendApiStatusModule,
     LhaFrontendFeatureLoginModule,
+    LhaFrontendFeatureSetupModule,
     LhaFrontendFeatureToolbarModule,
-    SetupModule,
-    TaskModule
+    TaskModule,
   ],
   providers: [
     {
