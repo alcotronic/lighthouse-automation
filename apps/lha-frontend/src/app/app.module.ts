@@ -8,7 +8,6 @@ import localeDE from '@angular/common/locales/de';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SetupModule } from './setup/setup.module';
-import { LoginModule } from './login/login.module';
 import { AuthModule } from './auth/auth.module';
 import { ReportModule } from './report/report.module';
 import { AdminModule } from './admin/admin.module';
