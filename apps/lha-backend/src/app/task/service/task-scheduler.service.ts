@@ -7,14 +7,15 @@ import { TaskExecutionService } from '../../task-execution/service/task-executio
 import { ReportService } from '../../report/service/report.service';
 import { Task } from '../schema/task';
 import { TaskService } from './task.service';
+import { QueueService } from '../../queue/service/queue.service';
 
-@Processor('taskUpdateAverageQueue')
 @Injectable()
 export class TaskSchedulerService {
   constructor(
     private taskService: TaskService,
     private reportService: ReportService,
     private taskExecutionService: TaskExecutionService,
+    private queueService: QueueService
   ) {}
 
   @Cron(CronExpression.EVERY_10_MINUTES)
@@ -72,8 +73,8 @@ export class TaskSchedulerService {
         formFactor: Device.DESKTOP,
         url: url,
       });
-      const jobMobile = await this.reportService.addJobToQueue(reportMobile);
-      const jobDesktop = await this.reportService.addJobToQueue(reportDesktop);
+      this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportMobile);
+      this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportDesktop);
       console.info(
         'task._id: ' +
           task.id +

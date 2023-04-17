@@ -10,6 +10,9 @@ import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backe
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
 import { TaskModule } from './task/task.module';
+import { ReportModule } from './report/report.module';
+import { TaskExecutionModule } from './task-execution/task-execution.module';
+import { QueueModule } from './queue/queue.module';
 
 @Module({
   imports: [
@@ -49,7 +52,10 @@ import { TaskModule } from './task/task.module';
     LhaBackendAuthenticationModule,
     LhaBackendSetupModule,
     LhaBackendUserModule,
-    TaskModule
+    QueueModule,
+    ReportModule,
+    TaskModule,
+    TaskExecutionModule
   ],
   controllers: [AppController],
   providers: [AppService],

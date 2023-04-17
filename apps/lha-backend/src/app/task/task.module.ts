@@ -8,16 +8,16 @@ import { TaskService } from './service/task.service';
 import { TaskSchedulerService } from './service/task-scheduler.service';
 import { ReportModule } from '../report/report.module';
 import { TaskExecutionModule } from '../task-execution/task-execution.module';
+import { QueueModule } from '../queue/queue.module';
 
 @Module({
   imports: [
-    BullModule.registerQueue({
-      name: 'taskUpdateAverageQueue',
-    }),
+    BullModule,
     MongooseModule.forFeature([{ name: 'task', schema: TaskSchema }]),
     LhaBackendUserModule,
     ReportModule,
-    TaskExecutionModule
+    TaskExecutionModule,
+    QueueModule
   ],
   controllers: [TaskController],
   providers: [TaskService, TaskSchedulerService],

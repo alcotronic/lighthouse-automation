@@ -12,17 +12,16 @@ import { gzip, ungzip } from 'node-gzip';
 import { Report, ReportDocument } from '../schema/report';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
 import { Config, Flags } from 'lighthouse';
+import { QueueService } from '../../queue/service/queue.service';
 
-@Processor('reportQueue')
+@Processor('reportGenerateLighthouseLhrQueue')
 @Injectable()
 export class ReportService {
   private readonly logger = new Logger(ReportService.name);
   
   constructor(
     @InjectModel('report') private reportModel: Model<ReportDocument>,
-    @InjectQueue('reportQueue') private reportQueue: Queue,
-    @InjectQueue('taskExecutionUpdateAverageQueue')
-    private taskExecutionUpdateAverageQueue: Queue
+    private queueService: QueueService
   ) {}
 
   async create(reportDto: ReportDto): Promise<Report> {
@@ -41,7 +40,6 @@ export class ReportService {
       url: reportDto.url,
     });
     const reportSaved = await report.save();
-    this.reportQueue.add(reportSaved);
     return reportSaved;
   }
 
@@ -62,32 +60,26 @@ export class ReportService {
     return report;
   }
 
-  async addJobToQueue(report: Report) {
-    const jobInQueue = await this.reportQueue.add(report);
-    return jobInQueue;
-  }
-
   async addStartTime(report: Report) {
     const timeStart = new Date();
-    const reportSaved = await this.reportModel
+
+    await this.reportModel
       .updateOne(
-        { _id: report.id },
+        { _id: report._id },
         {
           $set: {
             timeStart: timeStart.getTime(),
             timeOffsetStart: timeStart.getTimezoneOffset(),
           },
         }
-      )
-      .exec();
-    return reportSaved;
+      ).exec();
   }
 
   async addFinishTime(report: Report) {
     const timeFinish = new Date();
-    const reportSaved = await this.reportModel
+    await this.reportModel
       .updateOne(
-        { _id: report.id },
+        { _id: report._id },
         {
           $set: {
             timeFinish: timeFinish.getTime(),
@@ -95,9 +87,7 @@ export class ReportService {
             finished: true,
           },
         }
-      )
-      .exec();
-    return reportSaved;
+      ).exec();
   }
 
   async addScores(
@@ -108,9 +98,9 @@ export class ReportService {
     seoScore: number,
     pwaScore: number
   ) {
-    const reportSaved = await this.reportModel
+    await this.reportModel
       .updateOne(
-        { _id: report.id },
+        { _id: report._id },
         {
           $set: {
             performanceScore: performanceScore,
@@ -120,15 +110,13 @@ export class ReportService {
             pwaScore: pwaScore,
           },
         }
-      )
-      .exec();
-    return reportSaved;
+      ).exec();
   }
 
   async addLighthouseLhrGzip(report: Report, lighthouseLhrGzip: Buffer) {
-    const reportSaved = await this.reportModel
+    await this.reportModel
       .updateOne(
-        { _id: report.id },
+        { _id: report._id },
         {
           $set: {
             lighthouseLhrGzip: lighthouseLhrGzip,
@@ -136,15 +124,13 @@ export class ReportService {
         }
       )
       .exec();
-    return reportSaved;
   }
 
   @Process()
-  async processReport(job: Job<Report>) {
-    this.logger.debug('processReport job recieved');
+  async reportGenerateLighthouseLhr(job: Job<Report>) {
+    this.logger.debug('generateLighthouseLhr job recieved');
     const report = job.data;
-    this.logger.debug(report);
-    await this.addStartTime(report);
+    this.addStartTime(report);
 
     //const chrome = await launch({ chromeFlags: ['--headless'] });
     const chrome = await launch();
@@ -159,23 +145,27 @@ export class ReportService {
     // };
 
     const runnerResult = await lighthouse(report.url, flags, config);
+
+    await chrome.kill();
+
     const lighthouseLhr = JSON.stringify(runnerResult.lhr);
     const lighthouseLhrGzip = await gzip(lighthouseLhr, { level: 9 });
-    await chrome.kill();
 
     await this.addScores(
       report,
       runnerResult.lhr.categories.performance.score,
       runnerResult.lhr.categories.accessibility.score,
-      runnerResult.lhr.categories.bestPracticeScore.score,
+      runnerResult.lhr.categories['best-practices'].score,
       runnerResult.lhr.categories.seo.score,
-      runnerResult.lhr.categories['pwa'].score
+      runnerResult.lhr.categories.pwa.score
     );
     await this.addLighthouseLhrGzip(report, lighthouseLhrGzip);
-
-    //await this.reportTaskRunUpdateAverageQueue.add(report);
     await this.addFinishTime(report);
-    console.info('processReport job finished');
-    return {};
+
+    const updatedReport = await this.reportModel.findById(report._id).exec();
+
+    this.queueService.addJobToTaskExecutionUpdateScoresQueue(updatedReport);
+
+    this.logger.debug('reportGenerateLighthouseLhr job finished');
   }
 }
