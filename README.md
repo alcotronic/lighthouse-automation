@@ -1,4 +1,4 @@
-# LighthouseAutomation
+# Lighthouse Report Automation
 
 Solution with nestjs backend and angular frontend for manual or scheduled creation of google lighthouse reports.
 
