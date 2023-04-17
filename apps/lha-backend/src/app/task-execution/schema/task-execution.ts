@@ -8,13 +8,11 @@ export class TaskExecution {
   @Prop() taskId: string;
   @Prop() timestamp: number;
   @Prop() timestampOffset: number;
-  @Prop() countDesktop: number;
   @Prop() performanceScoreDesktop: number;
   @Prop() accessibilityScoreDesktop: number;
   @Prop() bestPracticeScoreDesktop: number;
   @Prop() seoScoreDesktop: number;
   @Prop() pwaScoreDesktop: number;
-  @Prop() countMobile: number;
   @Prop() performanceScoreMobile: number;
   @Prop() accessibilityScoreMobile: number;
   @Prop() bestPracticeScoreMobile: number;

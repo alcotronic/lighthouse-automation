@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
 
 @Component({
-  selector: 'lha-app-report-task-list',
-  templateUrl: './report-task-list.component.html',
-  styleUrls: ['./report-task-list.component.scss'],
+  selector: 'lha-frontend-feature-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.scss'],
 })
-export class ReportTaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit {
   taskList: any;
 
   constructor(

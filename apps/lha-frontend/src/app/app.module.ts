@@ -16,6 +16,8 @@ import { AccountModule } from './account/account.module';
 import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
 import { LhaFrontendApiStatusModule } from '@lighthouse-automation/lha-frontend/api/status';
 import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
+import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
+import { TaskModule } from './task/task.module';
 
 
 export function tokenGetter() {
@@ -28,6 +30,7 @@ registerLocaleData(localeDE);
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     JwtModule.forRoot({
       config: {
@@ -44,9 +47,10 @@ registerLocaleData(localeDE);
     LhaFrontendApiAuthenticationModule,
     LhaFrontendApiRoleModule,
     LhaFrontendApiStatusModule,
+    LhaFrontendFeatureToolbarModule,
     SetupModule,
     LoginModule,
-    BrowserAnimationsModule
+    TaskModule
   ],
   providers: [
     {

@@ -1,0 +1,57 @@
+<div class="task-create-container">
+  <h1>
+    Create Task
+  </h1>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="createTaskForm" (ngSubmit)="clickCreateTask()">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput required [formControl]="nameControl" />
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select required [formControl]="typeControl">
+            <mat-option value="MANUAL_REPORT">Manual Report</mat-option>
+            <mat-option value="SCHEDULED_REPORT">Scheduled Report</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <div *ngIf="typeControl.value === 'SCHEDULED_REPORT'">
+          <mat-form-field appearance="fill">
+            <mat-label>Interval</mat-label>
+            <mat-select required [formControl]="intervalControl">
+              <mat-option value="EVERY_10_MINUTES">Every ten minutes</mat-option>
+              <mat-option value="EVERY_HOUR">Every hour</mat-option>
+              <mat-option value="EVERY_DAY">Every day</mat-option>
+              <mat-option value="EVERY_WEEKEND">Every weekend</mat-option>
+              <mat-option value="EVERY_MONTH">Every month</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <div>
+            <mat-checkbox [formControl]="enabledControl">Task Active</mat-checkbox>
+          </div>
+          <br>
+        </div>
+        <div *ngIf="urlList.length > 0">
+          <mat-label>Url List</mat-label>
+          <mat-list>
+            <mat-list-item *ngFor="let url of urlList" >{{url}} <button (click)="removeUrl(url)">Delete</button></mat-list-item>
+          </mat-list>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Url</mat-label>
+          <input matInput [formControl]="urlListControl" />
+        </mat-form-field>
+        <button type="button" (click)="addUrl()">Add</button>
+        <br>
+        <mat-card-actions>
+          <button type="submit">Create</button>
+          <button type="button" (click)="clickCancleCreateTask()">Cancle</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

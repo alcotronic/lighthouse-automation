@@ -28,7 +28,7 @@ export class AppComponent {
       if (!this.loggedIn && this.status.initiated) {
         this.router.navigate(['login']);
       } else if (this.loggedIn && this.status.initiated) {
-        this.router.navigate(['report-task']);
+        this.router.navigate(['task/list']);
       } else {
         this.router.navigate(['setup']);
       }

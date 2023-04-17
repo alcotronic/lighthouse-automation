@@ -9,7 +9,7 @@ import { ReportComponent } from './report.component';
 
 const reportRoutes: Routes = [
   {
-    path: 'report-task',
+    path: 'report',
     component: ReportComponent,
     canActivate: [AuthGuard],
     children: [

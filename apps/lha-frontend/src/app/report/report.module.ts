@@ -13,7 +13,6 @@ import { ReportTaskRunModule } from './report-task-run/report-task-run.module';
 import { ReportTaskRunListModule } from './report-task-run-list/report-task-run-list.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReportTaskListModule } from './report-task-list/report-task-list.module';
-import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 
 @NgModule({
   imports: [
@@ -27,8 +26,7 @@ import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-fron
     ReportTaskJobModule,
     ReportTaskJobListModule,
     ReportTaskRunModule,
-    ReportTaskRunListModule,
-    LhaFrontendFeatureToolbarModule,
+    ReportTaskRunListModule
   ],
   declarations: [ReportComponent],
 })
