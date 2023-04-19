@@ -1,6 +1,6 @@
 # Lighthouse Report Automation
 
-*work in progress*
+*work in progress, basicly working now*
 
 Solution with nestjs backend and angular frontend for manual or scheduled creation of google lighthouse reports (https://github.com/GoogleChrome/lighthouse).
 
