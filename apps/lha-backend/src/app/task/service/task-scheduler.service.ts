@@ -18,7 +18,7 @@ export class TaskSchedulerService {
     private queueService: QueueService
   ) {}
 
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_10_MINUTES)
   async generateTenMinuteReport() {
     const tasks = await this.taskService.findByTaskIntervalAndEnabled(TaskInterval.EVERY_10_MINUTES);
     console.info('Running every 10 minutes tasks.');

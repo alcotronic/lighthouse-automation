@@ -56,15 +56,15 @@
         </mat-list>
       </mat-card-content>
       <mat-card-content>
-        <button mat-flat-button class="nopaddingleft" (click)="toggleShowJobs()">
+        <button mat-flat-button class="nopaddingleft" (click)="toggleShowReports()">
           <mat-card-subtitle class="flextitle purple bold">
             <span>Reports</span>
             <span class="spacer"></span>
-            <mat-icon *ngIf="!showJobs">keyboard_arrow_down</mat-icon>
-            <mat-icon *ngIf="showJobs">keyboard_arrow_up</mat-icon>
+            <mat-icon *ngIf="!showReports">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="showReports">keyboard_arrow_up</mat-icon>
           </mat-card-subtitle>
         </button>
-        <!-- <lha-app-report-task-job-list *ngIf="showJobs" [taskExecutionId]="taskExecution._id"></lha-app-report-task-job-list> -->
+        <lha-frontend-feature-report-list *ngIf="showReports" [taskExecutionId]="taskExecution._id"></lha-frontend-feature-report-list>
       </mat-card-content>
   </mat-card>
   </div>

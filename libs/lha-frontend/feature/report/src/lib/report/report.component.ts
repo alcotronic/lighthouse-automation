@@ -33,10 +33,10 @@ export class ReportComponent implements OnInit {
       '/api/report/html/' + this.report._id,
     );
     this.reportJsonUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report-lighthouse/json/' + this.report._id,
+      '/api/report/json/' + this.report._id,
     );
     this.reportCsvUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report-lighthouse/csv/' + this.report._id,
+      '/api/report/csv/' + this.report._id,
     );
   }
 

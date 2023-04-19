@@ -13,9 +13,8 @@ export class TaskExecutionComponent implements OnInit {
 
   task?: TaskDto;
   taskExecution?: TaskExecutionDto;
-  taskJobList: any;
   showUrls = true;
-  showJobs = true;
+  showReports = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,11 +47,11 @@ export class TaskExecutionComponent implements OnInit {
     }
   }
 
-  toggleShowJobs() {
-    if (this.showJobs) {
-      this.showJobs = false;
+  toggleShowReports() {
+    if (this.showReports) {
+      this.showReports = false;
     } else {
-      this.showJobs = true;
+      this.showReports = true;
     }
   }
 }

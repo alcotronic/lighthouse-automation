@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TaskCreateDto, TaskDto } from '@lighthouse-automation/lha-common';
+import { ReportDto } from '@lighthouse-automation/lha-common';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -8,6 +8,10 @@ export class ReportService {
   reportUrl = '/api/report';
 
   constructor(private readonly http: HttpClient) { }
+  
+  getReportsByTaskExecutionId(taskExecutionId: string): Observable<ReportDto[]> {
+    return this.http.get<ReportDto[]>(this.reportUrl + '/byTaskExecutionId/' + taskExecutionId);
+  }
 
   getReportHtml(reportJobId: string) {
     const headers = new HttpHeaders();
