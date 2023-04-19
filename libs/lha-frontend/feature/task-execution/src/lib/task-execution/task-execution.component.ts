@@ -13,9 +13,8 @@ export class TaskExecutionComponent implements OnInit {
 
   task?: TaskDto;
   taskExecution?: TaskExecutionDto;
-  taskJobList: any;
   showUrls = true;
-  showJobs = true;
+  showReports = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +24,7 @@ export class TaskExecutionComponent implements OnInit {
 
   ngOnInit() {
     const taskId = this.route.snapshot.paramMap.get('taskId');
-    const taskExecutionId = this.route.snapshot.paramMap.get('runId');
+    const taskExecutionId = this.route.snapshot.paramMap.get('taskExecutionId');
     if (!!taskId && !!taskExecutionId) {
       console.log(taskId);
       console.log(taskExecutionId);
@@ -48,11 +47,11 @@ export class TaskExecutionComponent implements OnInit {
     }
   }
 
-  toggleShowJobs() {
-    if (this.showJobs) {
-      this.showJobs = false;
+  toggleShowReports() {
+    if (this.showReports) {
+      this.showReports = false;
     } else {
-      this.showJobs = true;
+      this.showReports = true;
     }
   }
 }

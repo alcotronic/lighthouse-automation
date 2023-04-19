@@ -10,7 +10,7 @@ export class Report {
   id?: string;
   _id?: string;
   @Prop() taskId: string;
-  @Prop() executionId: string;
+  @Prop() taskExecutionId: string;
   @Prop({ type: String }) formFactor: Device;
   @Prop() timeCreate: number;
   @Prop() timeOffsetCreate: number;

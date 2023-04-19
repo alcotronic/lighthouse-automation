@@ -3,6 +3,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
+import { ScheduleModule } from '@nestjs/schedule';
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -10,6 +11,9 @@ import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backe
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
 import { TaskModule } from './task/task.module';
+import { ReportModule } from './report/report.module';
+import { TaskExecutionModule } from './task-execution/task-execution.module';
+import { QueueModule } from './queue/queue.module';
 
 @Module({
   imports: [
@@ -46,10 +50,14 @@ import { TaskModule } from './task/task.module';
     //   }),
     //   inject: [ConfigService],
     // }),
+    ScheduleModule.forRoot(),
     LhaBackendAuthenticationModule,
     LhaBackendSetupModule,
     LhaBackendUserModule,
-    TaskModule
+    QueueModule,
+    ReportModule,
+    TaskModule,
+    TaskExecutionModule
   ],
   controllers: [AppController],
   providers: [AppService],

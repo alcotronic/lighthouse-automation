@@ -64,6 +64,9 @@
       "@lighthouse-automation/lha-frontend/feature/report": [
         "libs/lha-frontend/feature/report/src/index.ts"
       ],
+      "@lighthouse-automation/lha-frontend/feature/report-list": [
+        "libs/lha-frontend/feature/report-list/src/index.ts"
+      ],
       "@lighthouse-automation/lha-frontend/feature/setup": [
         "libs/lha-frontend/feature/setup/src/index.ts"
       ],

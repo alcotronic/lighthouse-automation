@@ -12,7 +12,7 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('by-task/:reportTaskId')
+  @Get('by-TaskId:reportTaskId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   getByTaskId(@Param() params) {
@@ -21,7 +21,7 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('by-task-run/:reportTaskRunId')
+  @Get('byTaskExecutionId/:reportTaskRunId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   getByExecutionId(@Param() params) {

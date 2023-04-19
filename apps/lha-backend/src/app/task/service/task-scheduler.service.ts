@@ -7,14 +7,15 @@ import { TaskExecutionService } from '../../task-execution/service/task-executio
 import { ReportService } from '../../report/service/report.service';
 import { Task } from '../schema/task';
 import { TaskService } from './task.service';
+import { QueueService } from '../../queue/service/queue.service';
 
-@Processor('taskUpdateAverageQueue')
 @Injectable()
 export class TaskSchedulerService {
   constructor(
     private taskService: TaskService,
     private reportService: ReportService,
     private taskExecutionService: TaskExecutionService,
+    private queueService: QueueService
   ) {}
 
   @Cron(CronExpression.EVERY_10_MINUTES)
@@ -60,31 +61,20 @@ export class TaskSchedulerService {
   async createExecutionsForTask(task: Task) {
     const taskExecution = await this.taskExecutionService.create(task);
     task.urlList.forEach(async (url: string) => {
-      const reportMobile = await this.reportService.create({
-        taskId: task.id,
-        taskExecutionId: taskExecution.id,
-        formFactor: Device.MOBILE,
-        url: url,
-      });
       const reportDesktop = await this.reportService.create({
         taskId: task.id,
         taskExecutionId: taskExecution.id,
         formFactor: Device.DESKTOP,
         url: url,
       });
-      const jobMobile = await this.reportService.addJobToQueue(reportMobile);
-      const jobDesktop = await this.reportService.addJobToQueue(reportDesktop);
-      console.info(
-        'task._id: ' +
-          task.id +
-          ' taskExecution._id: ' +
-          taskExecution.id +
-          ' reportMobile._id: ' +
-          reportMobile.id +
-          ' reportDesktop._id: ' +
-          reportDesktop.id,
-      );
-      //console.info(job);
+      const reportMobile = await this.reportService.create({
+        taskId: task.id,
+        taskExecutionId: taskExecution.id,
+        formFactor: Device.MOBILE,
+        url: url,
+      });
+      this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportDesktop);
+      this.queueService.addJobToReportGenerateLighthouseLhrQueue(reportMobile);
     });
     return {};
   }

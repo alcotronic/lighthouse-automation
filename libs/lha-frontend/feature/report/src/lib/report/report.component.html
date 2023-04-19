@@ -1,0 +1,46 @@
+<div class="report-task-job-container">
+  <mat-card class="bottom-margin">
+    <mat-card-content>
+      <mat-card-subtitle ><span class="purple bold">Url: </span>{{report.url}}</mat-card-subtitle>
+      <mat-card-subtitle >
+        <span style="color:cyan;">Device: </span>{{report.formFactor}} |
+        <span style="color:cyan;">Finished: </span>{{report.finished}} |
+        <span style="color:cyan;">Date: </span>{{report.timeStart | date:'medium':'+0100':'de'}}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <span *ngIf="report.performanceScore"><span style="color:cyan;">Performance: </span>{{report.performanceScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="report.accessibilityScore"><span style="color:cyan;">Accessibility: </span>{{report.accessibilityScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="report.bestPracticeScore"><span style="color:cyan;">Best Practice: </span>{{report.bestPracticeScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="report.seoScore"><span style="color:cyan;">SEO: </span>{{report.seoScore * 100 | number: '1.0-0'}} | </span>
+        <span *ngIf="report.pwaScore"><span style="color:cyan;">PWA: </span>{{report.pwaScore * 100 | number: '1.0-0'}}</span>
+      </mat-card-subtitle>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="right-margin" (click)="toggleShowHtmlReport()">
+        HTML
+        <mat-icon class="purple" *ngIf="!showHtml">keyboard_arrow_down</mat-icon>
+        <mat-icon class="purple" *ngIf="showHtml">keyboard_arrow_up</mat-icon>
+      </button>
+      <button class="right-margin" (click)="toggleShowJsonReport()">
+        JSON
+        <mat-icon class="purple" *ngIf="!showJson">keyboard_arrow_down</mat-icon>
+        <mat-icon class="purple" *ngIf="showJson">keyboard_arrow_up</mat-icon>
+      </button>
+      <a [href]="reportCsvUrl">
+        <button >
+          CSV
+          <mat-icon class="purple">download</mat-icon>
+        </button>
+      </a>
+    </mat-card-actions>
+    <mat-card-content>
+      <div *ngIf="showHtml">
+        <iframe width="100%" height="768" [src]="reportHtmlUrl"></iframe>
+      </div>
+      <div *ngIf="showJson">
+        <iframe width="100%" height="768" [src]="reportJsonUrl"></iframe>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
