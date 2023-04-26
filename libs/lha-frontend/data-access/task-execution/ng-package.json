@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../../dist/libs/lha-frontend/api/task-execution",
+  "dest": "../../../../dist/libs/lha-frontend/data-access/task-execution",
   "lib": {
     "entryFile": "src/index.ts"
   }
