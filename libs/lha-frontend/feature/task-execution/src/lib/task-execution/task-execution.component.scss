@@ -1,5 +1,13 @@
 .report-task-run-container {
-  padding: 30px;
+  padding: 15px;
+
+  mat-card {
+    margin-bottom: 15px;
+  }
+
+  mat-expansion-panel {
+    margin-bottom: 15px;
+  }
 
   .mat-card-header {
     margin-top: 12px;
