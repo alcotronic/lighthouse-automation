@@ -5,6 +5,7 @@ import { JwtAuthenticationGuard } from '@lighthouse-automation/lha-backend/authe
 import { Role } from '@lighthouse-automation/lha-common';
 import { Roles } from '@lighthouse-automation/lha-backend/role-decorator';
 import { ReportService } from '../service/report.service';
+import { Public } from '@lighthouse-automation/lha-backend/authentication-decorator';
 
 @Controller('report')
 export class ReportController {
@@ -12,7 +13,7 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('by-TaskId:reportTaskId')
+  @Get('byTaskId:reportTaskId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   getByTaskId(@Param() params) {
@@ -21,10 +22,43 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  @Get('byTaskExecutionId/:reportTaskRunId')
+  @Get('byTaskExecutionId/:taskExecutionId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
   getByExecutionId(@Param() params) {
     return this.reportService.findByTaskExecutionId(params.taskExecutionId);
+  }
+
+  @UseGuards(JwtAuthenticationGuard)
+  @Roles(Role.User)
+  //@Public()
+  @Get('html/:reportId')
+  //@Header('Accept', 'text/html')
+  @Header('Content-Type', 'text/html')
+  async postConvertToHtml(@Param() params) {
+    const report = await this.reportService.findById(params.reportId);
+    return this.reportService.unzipHtml(report);
+  }
+
+  @UseGuards(JwtAuthenticationGuard)
+  @Roles(Role.User)
+  //@Public()
+  @Get('json/:reportId')
+  @Header('Accept', 'application/json')
+  @Header('Content-Type', 'application/json')
+  async postConvertToJson(@Param() params) {
+    const report = await this.reportService.findById(params.reportId);
+    return this.reportService.unzipJson(report);
+  }
+
+  @UseGuards(JwtAuthenticationGuard)
+  @Roles(Role.User)
+  //@Public()
+  @Get('csv/:reportId')
+  @Header('Accept', 'application/csv')
+  @Header('Content-Type', 'application/csv')
+  async postConvertToCsv(@Param() params) {
+    const report = await this.reportService.findById(params.reportId);
+    return this.reportService.unzipCsv(report);
   }
 }

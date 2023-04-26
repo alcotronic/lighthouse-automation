@@ -48,7 +48,6 @@ export class TaskComponent {
             const label =
               date.toLocaleTimeString() + ', ' + date.toLocaleDateString();
             this.barChartLabels.push(label);
-            console.log(element);
             barCharDataDesktop.push(
               +(element.performanceScoreDesktop * 100).toFixed(0)
             );
@@ -90,13 +89,5 @@ export class TaskComponent {
     } else {
       this.showRuns = true;
     }
-  }
-
-  chartClicked(): void {
-    console.log('chartClicked');
-  }
-
-  chartHovered(): void {
-    console.log('chartHovered');
   }
 }

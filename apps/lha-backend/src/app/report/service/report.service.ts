@@ -1,23 +1,22 @@
-import { InjectQueue, Process, Processor } from '@nestjs/bull';
+import { Process, Processor } from '@nestjs/bull';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Job, Queue } from 'bull';
+import { Job } from 'bull';
 import { Model } from 'mongoose';
 import { launch } from 'chrome-launcher';
 import lighthouse from 'lighthouse/core/index.cjs';
-// import * as reportGenerator from 'lighthouse/report/generator/report-generator';
 import { gzip, ungzip } from 'node-gzip';
 
 import { Report, ReportDocument } from '../schema/report';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
-import { Config, Flags, ScreenEmulationSettings } from 'lighthouse';
+import { Config, Flags, ScreenEmulationSettings, OutputMode } from 'lighthouse';
 import { QueueService } from '../../queue/service/queue.service';
 
 @Processor('reportGenerateLighthouseLhrQueue')
 @Injectable()
 export class ReportService {
   private readonly logger = new Logger(ReportService.name);
-  
+
   constructor(
     @InjectModel('report') private reportModel: Model<ReportDocument>,
     private queueService: QueueService
@@ -125,6 +124,65 @@ export class ReportService {
       .exec();
   }
 
+  async addLighthouseHtmlGzip(report: Report, lighthouseHtmlGzip: Buffer) {
+    await this.reportModel
+      .updateOne(
+        { _id: report._id },
+        {
+          $set: {
+            lighthouseHtmlGzip: lighthouseHtmlGzip,
+          },
+        }
+      )
+      .exec();
+  }
+
+  async addLighthouseJsonGzip(report: Report, lighthouseJsonGzip: Buffer) {
+    await this.reportModel
+      .updateOne(
+        { _id: report._id },
+        {
+          $set: {
+            lighthouseJsonGzip: lighthouseJsonGzip,
+          },
+        }
+      )
+      .exec();
+  }
+
+  async addLighthouseCsvGzip(report: Report, lighthouseCsvGzip: Buffer) {
+    await this.reportModel
+      .updateOne(
+        { _id: report._id },
+        {
+          $set: {
+            lighthouseCsvGzip: lighthouseCsvGzip,
+          },
+        }
+      )
+      .exec();
+  }
+
+  async unzipJson(report: Report) {
+    const jsonBuffer = await ungzip(report.lighthouseJsonGzip);
+    return jsonBuffer.toString();
+  }
+
+  async unzipHtml(report: Report) {
+    const htmlBuffer = await ungzip(report.lighthouseHtmlGzip);
+    return htmlBuffer.toString();
+  }
+
+  async unzipCsv(report: Report) {
+    const csvBuffer = await ungzip(report.lighthouseCsvGzip);
+    return csvBuffer.toString();
+  }
+
+  async unzipLhr(report: Report) {
+    const lhrBuffer = await ungzip(report.lighthouseLhrGzip);
+    return JSON.parse(lhrBuffer.toString());
+  }
+
   @Process()
   async reportGenerateLighthouseLhr(job: Job<Report>) {
     this.logger.debug('generateLighthouseLhr job recieved');
@@ -147,15 +205,20 @@ export class ReportService {
       extends: 'lighthouse:default',
       settings: {
         formFactor: report.formFactor === Device.DESKTOP ? 'desktop' : 'mobile',
-        screenEmulation: screenEmulationConfig
+        screenEmulation: screenEmulationConfig,
+        output: ['html', 'json', 'csv']
       }
     };
     const runnerResult = await lighthouse(report.url, flags, config);
 
+    this.logger.debug(runnerResult.report[0]);
+
     await chrome.kill();
 
-    const lighthouseLhr = JSON.stringify(runnerResult.lhr);
-    const lighthouseLhrGzip = await gzip(lighthouseLhr, { level: 9 });
+    const lighthouseLhrGzip = await gzip(JSON.stringify(runnerResult.lhr), { level: 9 });
+    const lighthouseHtmlGzip = await gzip(runnerResult.report[0], { level: 9 });
+    const lighthouseJsonGzip = await gzip(runnerResult.report[2], { level: 9 });
+    const lighthouseCsvGzip = await gzip(runnerResult.report[1], { level: 9 });
 
     await this.addScores(
       report,
@@ -166,6 +229,9 @@ export class ReportService {
       runnerResult.lhr.categories.pwa.score
     );
     await this.addLighthouseLhrGzip(report, lighthouseLhrGzip);
+    await this.addLighthouseHtmlGzip(report, lighthouseHtmlGzip);
+    await this.addLighthouseCsvGzip(report, lighthouseJsonGzip);
+    await this.addLighthouseJsonGzip(report, lighthouseCsvGzip);
     await this.addFinishTime(report);
 
     const updatedReport = await this.reportModel.findById(report._id).exec();

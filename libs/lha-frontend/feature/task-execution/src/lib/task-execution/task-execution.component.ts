@@ -26,8 +26,6 @@ export class TaskExecutionComponent implements OnInit {
     const taskId = this.route.snapshot.paramMap.get('taskId');
     const taskExecutionId = this.route.snapshot.paramMap.get('taskExecutionId');
     if (!!taskId && !!taskExecutionId) {
-      console.log(taskId);
-      console.log(taskExecutionId);
       this.taskService.getTask(taskId).subscribe((result: TaskDto) => {
         this.task = result;
       });
