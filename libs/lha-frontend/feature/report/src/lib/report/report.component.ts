@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { ReportDto } from '@lighthouse-automation/lha-common';
 import { ReportService } from '@lighthouse-automation/lha-frontend/api/report';
@@ -14,14 +14,11 @@ export class ReportComponent implements OnInit {
   report!: ReportDto;
   showHtml = false;
   showJson = false;
+  showCsv = false;
 
-  reportHtml: SafeHtml | undefined;
-  reportJson: SafeUrl | undefined;
-  reportCsv: SafeUrl | undefined;
-
-  reportHtmlUrl: SafeUrl | undefined;
-  reportJsonUrl: SafeUrl | undefined;
-  reportCsvUrl: SafeUrl | undefined;
+  reportHtml?: SafeHtml;
+  reportJson?: string;
+  reportCsv?: string;
 
   constructor(
     private reportService: ReportService,
@@ -29,32 +26,34 @@ export class ReportComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.reportHtmlUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report/html/' + this.report._id,
-    );
-    this.reportJsonUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report/json/' + this.report._id,
-    );
-    this.reportCsvUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      '/api/report/csv/' + this.report._id,
-    );
+    if(this.report._id) {
+      this.reportService.getReportHtml(this.report._id).subscribe((reportHtml) => {
+        this.reportHtml = this.sanitizer.bypassSecurityTrustHtml(reportHtml);
+      });
+      this.reportService.getReportJson(this.report._id).subscribe((reportJson) => {
+        this.reportJson = reportJson;
+      });
+      this.reportService.getReportCsv(this.report._id).subscribe((resultCsv) => {
+        this.reportCsv = resultCsv;
+      });
+    }
   }
 
   toggleShowHtmlReport() {
-    if (this.showHtml === false) {
-      this.showHtml = true;
-    } else {
-      this.showHtml = false;
-    }
     this.showJson = false;
+    this.showCsv = false;
+    this.showHtml = this.showHtml ? false : true;
   }
 
   toggleShowJsonReport() {
     this.showHtml = false;
-    if (this.showJson === false) {
-      this.showJson = true;
-    } else {
-      this.showJson = false;
-    }
+    this.showCsv = false;
+    this.showJson = this.showJson ? false : true;
+  }
+
+  toggleShowCsvReport() {
+    this.showHtml = false;
+    this.showJson = false;
+    this.showCsv = this.showCsv ? false : true;
   }
 }

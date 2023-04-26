@@ -26,19 +26,21 @@
         <mat-icon class="purple" *ngIf="!showJson">keyboard_arrow_down</mat-icon>
         <mat-icon class="purple" *ngIf="showJson">keyboard_arrow_up</mat-icon>
       </button>
-      <a [href]="reportCsvUrl">
-        <button >
-          CSV
-          <mat-icon class="purple">download</mat-icon>
-        </button>
-      </a>
+      <button class="right-margin" (click)="toggleShowCsvReport()">
+        CSV
+        <mat-icon class="purple" *ngIf="!showCsv">keyboard_arrow_down</mat-icon>
+        <mat-icon class="purple" *ngIf="showCsv">keyboard_arrow_up</mat-icon>
+      </button>
     </mat-card-actions>
     <mat-card-content>
-      <div *ngIf="showHtml">
-        <iframe width="100%" height="768" [src]="reportHtmlUrl"></iframe>
+      <div *ngIf="showHtml && reportHtml">
+        <iframe width="100%" height="768" [srcdoc]="reportHtml"></iframe>
       </div>
       <div *ngIf="showJson">
-        <iframe width="100%" height="768" [src]="reportJsonUrl"></iframe>
+        <iframe width="100%" height="768" [srcdoc]="reportJson"></iframe>
+      </div>
+      <div *ngIf="showCsv">
+        <iframe width="100%" height="768" [srcdoc]="reportCsv"></iframe>
       </div>
     </mat-card-content>
   </mat-card>

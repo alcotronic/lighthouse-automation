@@ -26,5 +26,8 @@ export class Report {
   @Prop() seoScore: number;
   @Prop() pwaScore: number;
   @Prop() lighthouseLhrGzip: Buffer;
+  @Prop() lighthouseHtmlGzip: Buffer;
+  @Prop() lighthouseCsvGzip: Buffer;
+  @Prop() lighthouseJsonGzip: Buffer;
 }
 export const ReportSchema = SchemaFactory.createForClass(Report);

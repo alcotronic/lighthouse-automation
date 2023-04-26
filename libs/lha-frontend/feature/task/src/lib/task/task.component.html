@@ -18,8 +18,7 @@
         <mat-card-header>
           <div style="display: block; height:250px;">
             <canvas style="height:250px;" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-              [legend]="barChartLegend" [type]="barChartType" (chartHover)="chartHovered()"
-              (chartClick)="chartClicked()"></canvas>
+              [legend]="barChartLegend" [type]="barChartType"></canvas>
           </div>
         </mat-card-header>
         <mat-card-content>
@@ -73,5 +72,4 @@
       </mat-card>
     </div>
   </div>
-  
-  
+
