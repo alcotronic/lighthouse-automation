@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
+import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
 
 @Component({
   selector: 'lha-frontend-feature-task-list',
@@ -10,10 +10,7 @@ import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
 export class TaskListComponent implements OnInit {
   taskList: any;
 
-  constructor(
-    private taskService: TaskService,
-    private router: Router,
-  ) {}
+  constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit() {
     this.taskService.getAllTasks().subscribe((result: any) => {

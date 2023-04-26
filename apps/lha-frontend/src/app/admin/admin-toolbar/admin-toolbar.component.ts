@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
+import { AuthenticationService } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 
 @Component({
   selector: 'lha-app-admin-toolbar',
@@ -8,7 +8,10 @@ import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/a
   styleUrls: ['./admin-toolbar.component.scss'],
 })
 export class AdminToolbarComponent {
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   logout() {
     this.authenticationService.logout();

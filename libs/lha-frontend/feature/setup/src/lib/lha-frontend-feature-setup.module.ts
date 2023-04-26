@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { LhaFrontendApiSetupModule } from '@lighthouse-automation/lha-frontend/api/setup';
+import { LhaFrontendDataAccessSetupModule } from '@lighthouse-automation/lha-frontend/data-access/setup';
 import { SetupComponent } from './setup/setup.component';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { SetupComponent } from './setup/setup.component';
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    LhaFrontendApiSetupModule
+    LhaFrontendDataAccessSetupModule,
   ],
   declarations: [SetupComponent],
 })

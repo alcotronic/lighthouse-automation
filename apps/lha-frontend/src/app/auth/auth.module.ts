@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthGuard } from './auth.guard';
-import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
-import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
-
+import { LhaFrontendDataAccessAuthenticationModule } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @NgModule({
   imports: [
     CommonModule,
-    LhaFrontendApiAuthenticationModule,
-    LhaFrontendApiRoleModule
+    LhaFrontendDataAccessAuthenticationModule,
+    LhaFrontendDataAccessRoleModule,
   ],
   declarations: [],
   providers: [AuthGuard],

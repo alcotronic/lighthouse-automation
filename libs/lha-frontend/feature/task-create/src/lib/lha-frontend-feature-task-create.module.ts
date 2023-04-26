@@ -6,7 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { LhaFrontendApiTaskModule } from '@lighthouse-automation/lha-frontend/api/task';
+import { LhaFrontendDataAccessTaskModule } from '@lighthouse-automation/lha-frontend/data-access/task';
 import { TaskCreateComponent } from './task-create/task-create.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { TaskCreateComponent } from './task-create/task-create.component';
     MatInputModule,
     MatListModule,
     MatSelectModule,
-    LhaFrontendApiTaskModule,
+    LhaFrontendDataAccessTaskModule,
   ],
   declarations: [TaskCreateComponent],
   exports: [TaskCreateComponent],

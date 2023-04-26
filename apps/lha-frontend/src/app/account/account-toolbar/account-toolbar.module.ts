@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 import { AccountToolbarComponent } from './account-toolbar.component';
 import { RouterModule } from '@angular/router';
 import { MaterialImportModule } from '../../material-import/material-import.module';
-import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
+import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([]),
     MaterialImportModule,
-    LhaFrontendApiRoleModule
+    LhaFrontendDataAccessRoleModule,
   ],
   declarations: [AccountToolbarComponent],
-  exports: [AccountToolbarComponent]
+  exports: [AccountToolbarComponent],
 })
-export class AccountToolbarModule { }
+export class AccountToolbarModule {}

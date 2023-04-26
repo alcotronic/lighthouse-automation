@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
-import { StatusService } from '@lighthouse-automation/lha-frontend/api/status';
+import { AuthenticationService } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { StatusService } from '@lighthouse-automation/lha-frontend/data-access/status';
 
 @Component({
   selector: 'lha-root',
@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(
     private authenticationService: AuthenticationService,
     private statusService: StatusService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {

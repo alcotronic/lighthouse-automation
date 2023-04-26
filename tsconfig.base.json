@@ -37,26 +37,26 @@
         "libs/lha-backend/user/src/index.ts"
       ],
       "@lighthouse-automation/lha-common": ["libs/lha-common/src/index.ts"],
-      "@lighthouse-automation/lha-frontend/api/authentication": [
-        "libs/lha-frontend/api/authentication/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/authentication": [
+        "libs/lha-frontend/data-access/authentication/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/api/report": [
-        "libs/lha-frontend/api/report/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/report": [
+        "libs/lha-frontend/data-access/report/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/api/role": [
-        "libs/lha-frontend/api/role/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/role": [
+        "libs/lha-frontend/data-access/role/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/api/setup": [
-        "libs/lha-frontend/api/setup/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/setup": [
+        "libs/lha-frontend/data-access/setup/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/api/status": [
-        "libs/lha-frontend/api/status/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/status": [
+        "libs/lha-frontend/data-access/status/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/api/task": [
-        "libs/lha-frontend/api/task/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/task": [
+        "libs/lha-frontend/data-access/task/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/api/task-execution": [
-        "libs/lha-frontend/api/task-execution/src/index.ts"
+      "@lighthouse-automation/lha-frontend/data-access/task-execution": [
+        "libs/lha-frontend/data-access/task-execution/src/index.ts"
       ],
       "@lighthouse-automation/lha-frontend/feature/login": [
         "libs/lha-frontend/feature/login/src/index.ts"

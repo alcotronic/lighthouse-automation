@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
-import { RoleService } from '@lighthouse-automation/lha-frontend/api/role';
+import { AuthenticationService } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { RoleService } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @Component({
   selector: 'lha-frontend-feature-toolbar',

@@ -6,15 +6,15 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { RoleService } from '@lighthouse-automation/lha-frontend/api/role';
-import { AuthenticationService } from '@lighthouse-automation/lha-frontend/api/authentication';
+import { RoleService } from '@lighthouse-automation/lha-frontend/data-access/role';
+import { AuthenticationService } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
     private authenticationService: AuthenticationService,
     private roleService: RoleService,
-    private router: Router,
+    private router: Router
   ) {}
 
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

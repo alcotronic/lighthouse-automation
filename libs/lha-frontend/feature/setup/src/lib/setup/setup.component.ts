@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
-import { SetupService } from '@lighthouse-automation/lha-frontend/api/setup';
+import { SetupService } from '@lighthouse-automation/lha-frontend/data-access/setup';
 
 @Component({
   selector: 'lha-frontend-feature-setup',

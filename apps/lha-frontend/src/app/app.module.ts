@@ -10,18 +10,18 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { AccountModule } from './account/account.module';
-import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
-import { LhaFrontendApiStatusModule } from '@lighthouse-automation/lha-frontend/api/status';
-import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
+import { LhaFrontendDataAccessAuthenticationModule } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { LhaFrontendDataAccessStatusModule } from '@lighthouse-automation/lha-frontend/data-access/status';
+import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 import { LhaFrontendFeatureLoginModule } from '@lighthouse-automation/lha-frontend/feature/login';
 import { LhaFrontendFeatureSetupModule } from '@lighthouse-automation/lha-frontend/feature/setup';
 import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 import { TaskModule } from './task/task.module';
 
-import { LhaFrontendApiTaskModule } from '@lighthouse-automation/lha-frontend/api/task';
-import { LhaFrontendApiTaskExecutionModule } from '@lighthouse-automation/lha-frontend/api/task-execution';
-import { LhaFrontendApiReportModule } from '@lighthouse-automation/lha-frontend/api/report';
+import { LhaFrontendDataAccessTaskModule } from '@lighthouse-automation/lha-frontend/data-access/task';
+import { LhaFrontendDataAccessTaskExecutionModule } from '@lighthouse-automation/lha-frontend/data-access/task-execution';
+import { LhaFrontendDataAccessReportModule } from '@lighthouse-automation/lha-frontend/data-access/report';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -46,12 +46,12 @@ registerLocaleData(localeDE);
     AppRoutingModule,
     AdminModule,
     AccountModule,
-    LhaFrontendApiAuthenticationModule,
-    LhaFrontendApiRoleModule,
-    LhaFrontendApiReportModule,
-    LhaFrontendApiTaskModule,
-    LhaFrontendApiTaskExecutionModule,
-    LhaFrontendApiStatusModule,
+    LhaFrontendDataAccessAuthenticationModule,
+    LhaFrontendDataAccessRoleModule,
+    LhaFrontendDataAccessReportModule,
+    LhaFrontendDataAccessTaskModule,
+    LhaFrontendDataAccessTaskExecutionModule,
+    LhaFrontendDataAccessStatusModule,
     LhaFrontendFeatureLoginModule,
     LhaFrontendFeatureSetupModule,
     LhaFrontendFeatureToolbarModule,
