@@ -1,0 +1,67 @@
+import { Injectable, OnDestroy, inject } from '@angular/core';
+import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Subject, of } from 'rxjs';
+import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
+import * as AuthenticationActions from './authentication.actions';
+import * as AuthenticationFeature from './authentication.reducer';
+import { AuthenticationService } from '../service/authentication.service';
+import { LoginResultDto } from '../authentication.models';
+
+@Injectable()
+export class AuthenticationEffects implements OnDestroy {
+  private unsubscribe$ = new Subject<void>();
+  private actions$ = inject(Actions);
+
+  postLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.postLogin),
+      switchMap((postLoginAction) => {
+        return this.authenticationService
+          .postLogin(
+            postLoginAction.loginDto.username,
+            postLoginAction.loginDto.password
+          )
+          .pipe(mergeMap((loginResult: LoginResultDto) => {
+            if (loginResult.access_token) {
+              return of(AuthenticationActions.postLoginSuccess({accessToken: loginResult.access_token}));
+            } else {
+              return of(AuthenticationActions.postLoginFailure({ error: new Error('no-access-token') }));
+            }
+          }));
+      }),
+      catchError((error) => {
+        console.error('Error', error);
+        return of(AuthenticationActions.postLoginFailure({ error }));
+      })
+    )
+  );
+
+  postLoginSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.postLoginSuccess),
+      tap((postLoginSuccessAction) => {
+        console.log('postLoginSuccess$');
+        console.log(postLoginSuccessAction);
+        this.authenticationService.setAccessToken(postLoginSuccessAction.accessToken);
+      })
+    ), { dispatch: false }
+  );
+
+  postLoginFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.postLoginFailure),
+      tap((error) => {
+        console.log('postLoginFailure$');
+        console.log(error);
+        this.authenticationService.removeAccessToken();
+      })
+    ), { dispatch: false }
+  );
+
+  constructor(private authenticationService: AuthenticationService) {}
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+}

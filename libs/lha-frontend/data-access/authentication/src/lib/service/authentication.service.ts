@@ -8,7 +8,7 @@ export class AuthenticationService {
 
   constructor(private readonly http: HttpClient) {}
 
-  login(username: string, password: string) {
+  postLogin(username: string, password: string) {
     return this.http.post(this.loginUrl, {
       username: username,
       password: password,
@@ -17,7 +17,7 @@ export class AuthenticationService {
 
   decodeToken() {
     const helper = new JwtHelperService();
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
       const decodedToken = helper.decodeToken(accessToken);
       const expirationDate = helper.getTokenExpirationDate(accessToken);
@@ -29,14 +29,14 @@ export class AuthenticationService {
   }
 
   setAccessToken(accessToken: string) {
-    localStorage.setItem('access_token', accessToken);
+    localStorage.setItem('accessToken', accessToken);
   }
 
-  logout() {
-    localStorage.removeItem('access_token');
+  removeAccessToken() {
+    localStorage.removeItem('accessToken');
   }
 
-  loggedIn(): boolean {
-    return localStorage.getItem('access_token') !== null;
-  }
+  // loggedIn(): boolean {
+  //   return localStorage.getItem('access_token') !== null;
+  // }
 }

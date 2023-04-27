@@ -27,7 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
 export function tokenGetter() {
-  return localStorage.getItem('access_token');
+  return localStorage.getItem('accessToken');
 }
 
 registerLocaleData(localeDE);

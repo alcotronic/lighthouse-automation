@@ -11,6 +11,6 @@ import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-fron
     LhaFrontendDataAccessRoleModule,
   ],
   declarations: [],
-  providers: [AuthGuard],
+  providers: [],
 })
 export class AuthModule {}

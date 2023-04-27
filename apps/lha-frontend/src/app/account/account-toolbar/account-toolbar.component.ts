@@ -15,7 +15,7 @@ export class AccountToolbarComponent {
   ) {}
 
   logout() {
-    this.authenticationService.logout();
+    //this.authenticationService.logout();
     this.router.navigate(['']);
   }
 }

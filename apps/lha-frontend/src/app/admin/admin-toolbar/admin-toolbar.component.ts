@@ -14,7 +14,7 @@ export class AdminToolbarComponent {
   ) {}
 
   logout() {
-    this.authenticationService.logout();
+    //this.authenticationService.logout();
     this.router.navigate(['']);
   }
 }
