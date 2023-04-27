@@ -29,6 +29,7 @@ export class AppComponent {
           this.authenticated = true;
         } else {
           this.authenticated = false;
+          this.router.navigate(['login']);
         }
       });
   }

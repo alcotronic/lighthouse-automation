@@ -1,18 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { LoginResultDto, LogoutResultDto } from '../authentication.models';
 
 @Injectable()
 export class AuthenticationService {
-  loginUrl = '/api/authentication/login';
+  authenticationUrl = '/api/authentication';
 
   constructor(private readonly http: HttpClient) {}
 
-  postLogin(username: string, password: string) {
-    return this.http.post(this.loginUrl, {
+  postLogin(username: string, password: string): Observable<LoginResultDto> {
+    return this.http.post<LoginResultDto>(this.authenticationUrl + '/login', {
       username: username,
       password: password,
     });
+  }
+
+  getLogout(): Observable<LogoutResultDto> {
+    return this.http.get<LogoutResultDto>(this.authenticationUrl + '/logout');
   }
 
   decodeToken() {
@@ -34,6 +40,10 @@ export class AuthenticationService {
 
   removeAccessToken() {
     localStorage.removeItem('accessToken');
+  }
+
+  gAccessToken() {
+    localStorage.getItem('accessToken');
   }
 
   // loggedIn(): boolean {

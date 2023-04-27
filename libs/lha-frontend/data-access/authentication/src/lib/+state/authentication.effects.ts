@@ -5,7 +5,7 @@ import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
 import * as AuthenticationActions from './authentication.actions';
 import * as AuthenticationFeature from './authentication.reducer';
 import { AuthenticationService } from '../service/authentication.service';
-import { LoginResultDto } from '../authentication.models';
+import { LoginResultDto, LogoutResultDto } from '../authentication.models';
 
 @Injectable()
 export class AuthenticationEffects implements OnDestroy {
@@ -52,6 +52,49 @@ export class AuthenticationEffects implements OnDestroy {
       ofType(AuthenticationActions.postLoginFailure),
       tap((error) => {
         console.log('postLoginFailure$');
+        console.log(error);
+        this.authenticationService.removeAccessToken();
+      })
+    ), { dispatch: false }
+  );
+
+  postLogout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.postLogout),
+      switchMap((postLogoutAction) => {
+        return this.authenticationService
+          .getLogout()
+          .pipe(mergeMap((logoutResult: LogoutResultDto) => {
+            if (logoutResult.success) {
+              return of(AuthenticationActions.postLogoutSuccess({success: logoutResult.success}));
+            } else {
+              return of(AuthenticationActions.postLogoutFailure({ error: new Error('no-logout-success') }));
+            }
+          }));
+      }),
+      catchError((error) => {
+        console.error('Error', error);
+        return of(AuthenticationActions.postLoginFailure({ error }));
+      })
+    )
+  );
+
+  postLogoutSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.postLogoutSuccess),
+      tap((postLogoutSuccessAction) => {
+        console.log('postLogoutSuccess$');
+        console.log(postLogoutSuccessAction);
+        this.authenticationService.removeAccessToken();
+      })
+    ), { dispatch: false }
+  );
+
+  postLogoutFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.postLogoutFailure),
+      tap((error) => {
+        console.log('postLogoutFailure$');
         console.log(error);
         this.authenticationService.removeAccessToken();
       })

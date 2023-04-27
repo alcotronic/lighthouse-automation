@@ -49,7 +49,15 @@ const reducer = createReducer(
   on(AuthenticationActions.postLoginFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(
+    AuthenticationActions.postLogoutSuccess,
+    (state) => ({ ...state, accessToken: undefined, loaded: false })
+  ),
+  on(AuthenticationActions.postLogoutFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
 );
 
 export function authenticationReducer(

@@ -31,4 +31,11 @@ export class AuthenticationService {
       };
     }
 
+    async logout(user: any) {
+      this.userService.updateRenewToken(user.userId, undefined);
+      return {
+        success: true
+      };
+    }
+
 }

@@ -91,13 +91,13 @@ export class UserService {
     return user;
   }
 
-  async updateRenewToken(id: string, renewToken: string) {
+  async updateRenewToken(id: string, renewToken?: string) {
     const user = await this.userModel
       .updateOne(
         { _id: id },
         {
           $set: {
-            renewToken: await this.hashRenewToken(renewToken),
+            renewToken: renewToken ? await this.hashRenewToken(renewToken) : undefined,
           },
         }
       )

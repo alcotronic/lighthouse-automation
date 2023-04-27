@@ -17,7 +17,7 @@ export const postLoginFailure = createAction(
 );
 
 export const postLogout = createAction(
-  '[Authentication/API] Post Logout init'
+  '[Authentication/API] Post Logout init',
 );
 
 export const postLogoutSuccess = createAction(
