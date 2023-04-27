@@ -55,7 +55,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       .select<AuthenticationState>(selectAuthenticationState)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((state) => {
-        if (state.accessToken && state.loaded) {
+        if (state.accessToken) {
           this.authenticated = true;
         } else {
           this.authenticated = false;

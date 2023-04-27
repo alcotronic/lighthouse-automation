@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { LhaFrontendDataAccessAuthenticationModule } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 import { LoginComponent } from './login/login.component';
-import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-fron
     MatInputModule,
     ReactiveFormsModule,
     LhaFrontendDataAccessAuthenticationModule,
-    LhaFrontendDataAccessRoleModule,
     LhaFrontendFeatureToolbarModule,
   ],
   declarations: [LoginComponent],

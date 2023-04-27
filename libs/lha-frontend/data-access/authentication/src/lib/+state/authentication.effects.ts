@@ -44,6 +44,7 @@ export class AuthenticationEffects implements OnDestroy {
       tap((postLoginSuccessAction) => {
         this.authenticationService.setAccessToken(postLoginSuccessAction.accessToken);
         this.storeRole.dispatch(loadRoles());
+        this.router.navigate(['task/list']);
       })
     ), { dispatch: false }
   );
