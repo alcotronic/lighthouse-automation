@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { ReportDto } from '@lighthouse-automation/lha-common';
-import { ReportService } from '@lighthouse-automation/lha-frontend/api/report';
+import { ReportService } from '@lighthouse-automation/lha-frontend/data-access/report';
 
 @Component({
   selector: 'lha-frontend-feature-report',
@@ -22,20 +22,26 @@ export class ReportComponent implements OnInit {
 
   constructor(
     private reportService: ReportService,
-    private sanitizer: DomSanitizer,
+    private sanitizer: DomSanitizer
   ) {}
 
   async ngOnInit() {
-    if(this.report._id) {
-      this.reportService.getReportHtml(this.report._id).subscribe((reportHtml) => {
-        this.reportHtml = this.sanitizer.bypassSecurityTrustHtml(reportHtml);
-      });
-      this.reportService.getReportJson(this.report._id).subscribe((reportJson) => {
-        this.reportJson = reportJson;
-      });
-      this.reportService.getReportCsv(this.report._id).subscribe((resultCsv) => {
-        this.reportCsv = resultCsv;
-      });
+    if (this.report._id) {
+      this.reportService
+        .getReportHtml(this.report._id)
+        .subscribe((reportHtml) => {
+          this.reportHtml = this.sanitizer.bypassSecurityTrustHtml(reportHtml);
+        });
+      this.reportService
+        .getReportJson(this.report._id)
+        .subscribe((reportJson) => {
+          this.reportJson = reportJson;
+        });
+      this.reportService
+        .getReportCsv(this.report._id)
+        .subscribe((resultCsv) => {
+          this.reportCsv = resultCsv;
+        });
     }
   }
 

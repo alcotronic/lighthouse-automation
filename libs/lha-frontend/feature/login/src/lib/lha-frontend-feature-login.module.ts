@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
+import { LhaFrontendDataAccessAuthenticationModule } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { LhaFrontendFeatureToolbarModule } from '@lighthouse-automation/lha-frontend/feature/toolbar';
 import { LoginComponent } from './login/login.component';
 
@@ -14,10 +14,10 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
-    LhaFrontendApiAuthenticationModule,
+    LhaFrontendDataAccessAuthenticationModule,
     LhaFrontendFeatureToolbarModule,
   ],
   declarations: [LoginComponent],
-  exports: [LoginComponent]
+  exports: [LoginComponent],
 })
 export class LhaFrontendFeatureLoginModule {}

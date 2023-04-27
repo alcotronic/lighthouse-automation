@@ -6,8 +6,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { LhaFrontendApiAuthenticationModule } from '@lighthouse-automation/lha-frontend/api/authentication';
-import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/api/role';
+import { LhaFrontendDataAccessAuthenticationModule } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { LhaFrontendDataAccessRoleModule } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @NgModule({
   imports: [
@@ -17,8 +17,8 @@ import { LhaFrontendApiRoleModule } from '@lighthouse-automation/lha-frontend/ap
     MatIconModule,
     MatToolbarModule,
     RouterModule,
-    LhaFrontendApiAuthenticationModule,
-    LhaFrontendApiRoleModule
+    LhaFrontendDataAccessAuthenticationModule,
+    LhaFrontendDataAccessRoleModule,
   ],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent],

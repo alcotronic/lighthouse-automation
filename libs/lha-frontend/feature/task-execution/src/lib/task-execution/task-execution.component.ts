@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskDto, TaskExecutionDto } from '@lighthouse-automation/lha-common';
-import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
-import { TaskExecutionService } from '@lighthouse-automation/lha-frontend/api/task-execution';
+import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
+import { TaskExecutionService } from '@lighthouse-automation/lha-frontend/data-access/task-execution';
 
 @Component({
   selector: 'lha-frontend-feature-task-execution',
   templateUrl: './task-execution.component.html',
-  styleUrls: ['./task-execution.component.scss']
+  styleUrls: ['./task-execution.component.scss'],
 })
 export class TaskExecutionComponent implements OnInit {
-
   task?: TaskDto;
   taskExecution?: TaskExecutionDto;
   showUrls = true;
@@ -19,7 +18,7 @@ export class TaskExecutionComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private taskService: TaskService,
-    private taskExecutionService: TaskExecutionService,
+    private taskExecutionService: TaskExecutionService
   ) {}
 
   ngOnInit() {

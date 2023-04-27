@@ -7,7 +7,7 @@ export class AuthenticationService {
     private readonly logger = new Logger(AuthenticationService.name);
 
     constructor(private userService: UserService, private jwtService: JwtService) {}
-  
+
     async validateUser(username: string, password: string): Promise<any> {
       const user = await this.userService.findByUsername(username);
       if (user && user.activated) {
@@ -19,14 +19,22 @@ export class AuthenticationService {
       }
       return null;
     }
-  
+
     async login(user: any) {
       const payload = { userId: user._doc._id, username: user._doc.username };
       const accessToken = this.jwtService.sign(payload, { expiresIn: '5m' });
       const renewToken = this.jwtService.sign(payload, { expiresIn: '10m' });
       this.userService.updateRenewToken(payload.userId, renewToken);
       return {
-        access_token: accessToken,
+        username: payload.username,
+        accessToken: accessToken,
+      };
+    }
+
+    async logout(user: any) {
+      await this.userService.updateRenewToken(user.userId, undefined);
+      return {
+        success: true
       };
     }
 

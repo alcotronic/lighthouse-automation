@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TaskService } from '@lighthouse-automation/lha-frontend/api/task';
+import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
 import {
   TaskCreateDto,
   TaskInterval,
