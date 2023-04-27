@@ -7,6 +7,7 @@ import { AuthenticationService } from '../service/authentication.service';
 import { LoginResultDto, LogoutResultDto } from '../authentication.models';
 import { Store } from '@ngrx/store';
 import { RoleState, clearRoles, loadRoles } from '@lighthouse-automation/lha-frontend/data-access/role';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationEffects implements OnDestroy {
@@ -86,6 +87,7 @@ export class AuthenticationEffects implements OnDestroy {
         console.log(postLogoutSuccessAction);
         this.authenticationService.removeAccessToken();
         this.storeRole.dispatch(clearRoles());
+        this.router.navigate(['']);
       })
     ), { dispatch: false }
   );
@@ -97,11 +99,12 @@ export class AuthenticationEffects implements OnDestroy {
         console.error('Error', error);
         this.authenticationService.removeAccessToken();
         this.storeRole.dispatch(clearRoles());
+        this.router.navigate(['']);
       })
     ), { dispatch: false }
   );
 
-  constructor(private storeRole: Store<RoleState>, private authenticationService: AuthenticationService) {}
+  constructor(private router: Router,private storeRole: Store<RoleState>, private authenticationService: AuthenticationService) {}
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
