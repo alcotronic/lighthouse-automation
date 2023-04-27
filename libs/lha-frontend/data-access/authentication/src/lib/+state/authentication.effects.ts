@@ -40,8 +40,6 @@ export class AuthenticationEffects implements OnDestroy {
     this.actions$.pipe(
       ofType(AuthenticationActions.postLoginSuccess),
       tap((postLoginSuccessAction) => {
-        console.log('postLoginSuccess$');
-        console.log(postLoginSuccessAction);
         this.authenticationService.setAccessToken(postLoginSuccessAction.accessToken);
       })
     ), { dispatch: false }
@@ -51,8 +49,7 @@ export class AuthenticationEffects implements OnDestroy {
     this.actions$.pipe(
       ofType(AuthenticationActions.postLoginFailure),
       tap((error) => {
-        console.log('postLoginFailure$');
-        console.log(error);
+        console.error('Error', error);
         this.authenticationService.removeAccessToken();
       })
     ), { dispatch: false }
@@ -61,7 +58,7 @@ export class AuthenticationEffects implements OnDestroy {
   postLogout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthenticationActions.postLogout),
-      switchMap((postLogoutAction) => {
+      switchMap(() => {
         return this.authenticationService
           .getLogout()
           .pipe(mergeMap((logoutResult: LogoutResultDto) => {
@@ -83,7 +80,6 @@ export class AuthenticationEffects implements OnDestroy {
     this.actions$.pipe(
       ofType(AuthenticationActions.postLogoutSuccess),
       tap((postLogoutSuccessAction) => {
-        console.log('postLogoutSuccess$');
         console.log(postLogoutSuccessAction);
         this.authenticationService.removeAccessToken();
       })
@@ -94,8 +90,7 @@ export class AuthenticationEffects implements OnDestroy {
     this.actions$.pipe(
       ofType(AuthenticationActions.postLogoutFailure),
       tap((error) => {
-        console.log('postLogoutFailure$');
-        console.log(error);
+        console.error('Error', error);
         this.authenticationService.removeAccessToken();
       })
     ), { dispatch: false }

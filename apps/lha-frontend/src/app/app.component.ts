@@ -35,9 +35,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-
     this.statusService.getStatus().subscribe((status: any) => {
-      console.log(status);
       this.status = status;
       if (!this.authenticated && this.status.initiated) {
         this.router.navigate(['login']);
