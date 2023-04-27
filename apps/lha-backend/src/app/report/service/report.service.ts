@@ -189,8 +189,8 @@ export class ReportService {
     const report = job.data;
     this.addStartTime(report);
 
-    //const chrome = await launch({ chromeFlags: ['--headless'] });
-    const chrome = await launch();
+    const chrome = await launch({ chromeFlags: ['--headless'] });
+    //const chrome = await launch();
     const flags: Flags = {
       port: chrome.port,
     };
@@ -210,8 +210,6 @@ export class ReportService {
       }
     };
     const runnerResult = await lighthouse(report.url, flags, config);
-
-    this.logger.debug(runnerResult.report[0]);
 
     await chrome.kill();
 

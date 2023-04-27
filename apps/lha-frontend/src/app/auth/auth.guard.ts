@@ -5,6 +5,7 @@ import { RoleService } from '@lighthouse-automation/lha-frontend/data-access/rol
 import {
   AuthenticationService,
   AuthenticationState,
+  postLogout,
   selectAuthenticationState,
 } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { Observable, Subject, map, take, takeUntil, tap } from 'rxjs';
@@ -27,7 +28,7 @@ export class AuthGuard implements OnDestroy {
     .select<AuthenticationState>(selectAuthenticationState)
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe((state: AuthenticationState) => {
-      if (state.accessToken && state.loaded) {
+      if (state.accessToken) {
         this.authenticated = true;
       } else {
         this.authenticated = false;
@@ -41,7 +42,17 @@ export class AuthGuard implements OnDestroy {
   }
 
   canActivate(): boolean {
-    // const helper = new JwtHelperService();
+    const helper = new JwtHelperService();
+    const accessToken = this.authenticationService.getAccessToken();
+    if (accessToken) {
+      const isExpired = helper.isTokenExpired(accessToken);
+      if (isExpired) {
+        this.store.dispatch(postLogout());
+        this.router.navigate(['']);
+        return false;
+      }
+    }
+
     // const accessToken = localStorage.getItem('access_token');
     // if (accessToken) {
     //   const isExpired = helper.isTokenExpired(accessToken);
@@ -64,6 +75,7 @@ export class AuthGuard implements OnDestroy {
     // }
 
     // this.router.navigate(['login']);
+    console.log(this.authenticated);
     if (this.authenticated) {
       return true;
     }

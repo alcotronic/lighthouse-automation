@@ -8,7 +8,7 @@ export const postLogin = createAction(
 
 export const postLoginSuccess = createAction(
   '[Authentication/API] Post Login Success',
-  props<{ accessToken: string }>()
+  props<{ username: string, accessToken: string }>()
 );
 
 export const postLoginFailure = createAction(
@@ -17,7 +17,7 @@ export const postLoginFailure = createAction(
 );
 
 export const postLogout = createAction(
-  '[Authentication/API] Post Logout init',
+  '[Authentication/API] Post Logout',
 );
 
 export const postLogoutSuccess = createAction(

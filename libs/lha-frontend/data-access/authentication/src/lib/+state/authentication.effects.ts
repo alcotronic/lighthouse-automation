@@ -3,9 +3,10 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Subject, of } from 'rxjs';
 import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
 import * as AuthenticationActions from './authentication.actions';
-import * as AuthenticationFeature from './authentication.reducer';
 import { AuthenticationService } from '../service/authentication.service';
 import { LoginResultDto, LogoutResultDto } from '../authentication.models';
+import { Store } from '@ngrx/store';
+import { RoleState, clearRoles, loadRoles } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @Injectable()
 export class AuthenticationEffects implements OnDestroy {
@@ -22,8 +23,8 @@ export class AuthenticationEffects implements OnDestroy {
             postLoginAction.loginDto.password
           )
           .pipe(mergeMap((loginResult: LoginResultDto) => {
-            if (loginResult.access_token) {
-              return of(AuthenticationActions.postLoginSuccess({accessToken: loginResult.access_token}));
+            if (loginResult.username && loginResult.accessToken) {
+              return of(AuthenticationActions.postLoginSuccess({username: loginResult.username, accessToken: loginResult.accessToken}));
             } else {
               return of(AuthenticationActions.postLoginFailure({ error: new Error('no-access-token') }));
             }
@@ -41,6 +42,7 @@ export class AuthenticationEffects implements OnDestroy {
       ofType(AuthenticationActions.postLoginSuccess),
       tap((postLoginSuccessAction) => {
         this.authenticationService.setAccessToken(postLoginSuccessAction.accessToken);
+        this.storeRole.dispatch(loadRoles());
       })
     ), { dispatch: false }
   );
@@ -51,6 +53,7 @@ export class AuthenticationEffects implements OnDestroy {
       tap((error) => {
         console.error('Error', error);
         this.authenticationService.removeAccessToken();
+        this.storeRole.dispatch(clearRoles());
       })
     ), { dispatch: false }
   );
@@ -71,7 +74,7 @@ export class AuthenticationEffects implements OnDestroy {
       }),
       catchError((error) => {
         console.error('Error', error);
-        return of(AuthenticationActions.postLoginFailure({ error }));
+        return of(AuthenticationActions.postLogoutFailure({ error }));
       })
     )
   );
@@ -82,6 +85,7 @@ export class AuthenticationEffects implements OnDestroy {
       tap((postLogoutSuccessAction) => {
         console.log(postLogoutSuccessAction);
         this.authenticationService.removeAccessToken();
+        this.storeRole.dispatch(clearRoles());
       })
     ), { dispatch: false }
   );
@@ -92,11 +96,12 @@ export class AuthenticationEffects implements OnDestroy {
       tap((error) => {
         console.error('Error', error);
         this.authenticationService.removeAccessToken();
+        this.storeRole.dispatch(clearRoles());
       })
     ), { dispatch: false }
   );
 
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private storeRole: Store<RoleState>, private authenticationService: AuthenticationService) {}
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();

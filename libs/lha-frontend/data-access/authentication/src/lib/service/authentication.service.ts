@@ -42,8 +42,8 @@ export class AuthenticationService {
     localStorage.removeItem('accessToken');
   }
 
-  gAccessToken() {
-    localStorage.getItem('accessToken');
+  getAccessToken() {
+    return localStorage.getItem('accessToken');
   }
 
   // loggedIn(): boolean {

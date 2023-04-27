@@ -4,7 +4,8 @@ export interface LoginDto {
 }
 
 export interface LoginResultDto {
-  access_token?: string;
+  username: string;
+  accessToken?: string;
 }
 
 export interface LogoutResultDto {
@@ -12,5 +13,6 @@ export interface LogoutResultDto {
 }
 
 export interface Authentication {
+  username: string;
   accessToken: string;
 }

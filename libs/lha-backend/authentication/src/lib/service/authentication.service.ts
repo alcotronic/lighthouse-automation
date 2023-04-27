@@ -27,12 +27,12 @@ export class AuthenticationService {
       this.userService.updateRenewToken(payload.userId, renewToken);
       return {
         username: payload.username,
-        access_token: accessToken,
+        accessToken: accessToken,
       };
     }
 
     async logout(user: any) {
-      this.userService.updateRenewToken(user.userId, undefined);
+      await this.userService.updateRenewToken(user.userId, undefined);
       return {
         success: true
       };

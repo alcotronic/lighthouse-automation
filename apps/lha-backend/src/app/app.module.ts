@@ -14,6 +14,7 @@ import { TaskModule } from './task/task.module';
 import { ReportModule } from './report/report.module';
 import { TaskExecutionModule } from './task-execution/task-execution.module';
 import { QueueModule } from './queue/queue.module';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -56,6 +57,7 @@ import { QueueModule } from './queue/queue.module';
     LhaBackendUserModule,
     QueueModule,
     ReportModule,
+    RoleModule,
     TaskModule,
     TaskExecutionModule
   ],

@@ -1,17 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import {
-  AuthenticationService,
   AuthenticationState,
   postLogin,
-  selectAuthenticationLoaded,
   selectAuthenticationState,
 } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'lha-frontend-feature-login',
@@ -28,11 +26,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private store: Store<AuthenticationState>
+    private storeAuthentication: Store<AuthenticationState>
   ) {}
 
   ngOnInit(): void {
-    this.store
+    this.storeAuthentication
       .select<AuthenticationState>(selectAuthenticationState)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((state) => {
@@ -53,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginForm.controls['usernameControl'].value &&
       this.loginForm.controls['passwordControl'].value
     ) {
-      this.store.dispatch(
+      this.storeAuthentication.dispatch(
         postLogin({
           loginDto: {
             username: this.loginForm.controls['usernameControl'].value,

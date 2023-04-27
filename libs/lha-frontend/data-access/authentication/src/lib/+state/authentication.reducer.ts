@@ -16,6 +16,7 @@ export function tokenGetter() {
 }
 
 export interface AuthenticationState {
+  username?: string;
   accessToken?: string;
   loaded: boolean; // has the Authentication list been loaded
   error?: string | null; // last known error (if any)
@@ -43,8 +44,8 @@ const reducer = createReducer(
   })),
   on(
     AuthenticationActions.postLoginSuccess,
-    (state, { accessToken }) =>
-     ({ ...state, accessToken: accessToken, loaded: true })
+    (state, { username, accessToken }) =>
+     ({ ...state, username: username, accessToken: accessToken, loaded: true })
   ),
   on(AuthenticationActions.postLoginFailure, (state, { error }) => ({
     ...state,
@@ -52,7 +53,7 @@ const reducer = createReducer(
   })),
   on(
     AuthenticationActions.postLogoutSuccess,
-    (state) => ({ ...state, accessToken: undefined, loaded: false })
+    (state) => ({ ...state, username: undefined, accessToken: undefined, loaded: false })
   ),
   on(AuthenticationActions.postLogoutFailure, (state, { error }) => ({
     ...state,

@@ -1,7 +1,22 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService, AuthenticationState, postLogout, selectAuthenticationLoaded, selectAuthenticationState } from '@lighthouse-automation/lha-frontend/data-access/authentication';
-import { RoleService } from '@lighthouse-automation/lha-frontend/data-access/role';
+import { Role } from '@lighthouse-automation/lha-common';
+import {
+  AuthenticationService,
+  AuthenticationState,
+  postLogout,
+  selectAuthenticationState,
+} from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import {
+  RoleService,
+  selectAllRoles,
+} from '@lighthouse-automation/lha-frontend/data-access/role';
 import { State, Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -24,7 +39,18 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    //this.authenticated = this.authenticationService.loggedIn();
+    this.store
+      .select(selectAllRoles)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((roles) => {
+        if (roles) {
+          roles.forEach((role) => {
+            if (role === Role.Admin) {
+              this.isAdmin = true;
+            }
+          });
+        }
+      });
     this.store
       .select<AuthenticationState>(selectAuthenticationState)
       .pipe(takeUntil(this.unsubscribe$))
@@ -36,13 +62,13 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         }
       });
 
-    if (this.authenticated) {
-      this.roleService.isAdmin().subscribe((result: any) => {
-        if (result && result.isAdmin && result.isAdmin === true) {
-          this.isAdmin = true;
-        }
-      });
-    }
+    // if (this.authenticated) {
+    //   this.roleService.isAdmin().subscribe((result: any) => {
+    //     if (result && result.isAdmin && result.isAdmin === true) {
+    //       this.isAdmin = true;
+    //     }
+    //   });
+    // }
   }
 
   ngOnDestroy(): void {
