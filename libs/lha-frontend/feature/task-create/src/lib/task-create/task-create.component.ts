@@ -6,9 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
+import { TaskFacade, TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
 import {
-  TaskCreateDto,
   TaskInterval,
   TaskType,
 } from '@lighthouse-automation/lha-common';
@@ -34,7 +33,8 @@ export class TaskCreateComponent {
   constructor(
     private taskService: TaskService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private taskFacade: TaskFacade
   ) {
     this.createTaskForm = formBuilder.group({});
   }
@@ -66,22 +66,13 @@ export class TaskCreateComponent {
           this.nameControl.valid &&
           this.urlList.length > 0
         ) {
-          const taskCreateDto: TaskCreateDto = {
+          this.taskFacade.createTask({
             name: this.nameControl.value,
             taskType: TaskType.MANUAL_REPORT,
             enabled: false,
             taskInterval: TaskInterval.NEVER,
             urlList: this.urlList,
-          };
-          console.log(taskCreateDto);
-          this.taskService
-            .createTask(taskCreateDto)
-            .subscribe((result: any) => {
-              console.log(result);
-              if (result._id) {
-                this.router.navigate(['task/list']);
-              }
-            });
+          });
         }
       } else if (this.typeControl.value === 'SCHEDULED_REPORT') {
         console.log('Validate SCHEDULED_REPORT');
@@ -94,22 +85,14 @@ export class TaskCreateComponent {
           this.typeControl.value &&
           this.enabledControl.value &&
           this.intervalControl.value
-        ) {
-          const reportTaskCreateDto: TaskCreateDto = {
+        ) {;
+          this.taskFacade.createTask({
             name: this.nameControl.value,
             taskType: TaskType.SCHEDULED_REPORT,
             enabled: this.enabledControl.value,
             taskInterval: this.intervalControl.value,
             urlList: this.urlList,
-          };
-          this.taskService
-            .createTask(reportTaskCreateDto)
-            .subscribe((result: any) => {
-              console.log(result);
-              if (result._id) {
-                this.router.navigate(['task/list']);
-              }
-            });
+          });
         }
       }
     } else {

@@ -5,6 +5,9 @@ import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
 import * as TaskActions from './task.actions';
 import { TaskService } from '../service/task.service';
 import { TaskDto } from '@lighthouse-automation/lha-common';
+import { Router } from '@angular/router';
+import { TaskState } from './task.reducer';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class TaskEffects {
@@ -14,6 +17,7 @@ export class TaskEffects {
     this.actions$.pipe(
       ofType(TaskActions.createTask),
       switchMap((createTaskAction) => {
+        console.log('Create Task', createTaskAction);
         return this.taskService
           .createTask(createTaskAction.taskToCreate)
           .pipe(
@@ -33,6 +37,9 @@ export class TaskEffects {
       ofType(TaskActions.createTaskSuccess),
       tap((createTaskSuccessAction) => {
         console.log('Create Task success', createTaskSuccessAction);
+        if (createTaskSuccessAction.task.id) {
+          this.router.navigate(['/task/' + createTaskSuccessAction.task.id]);
+        }
       })
     ), { dispatch: false }
   );
@@ -49,8 +56,38 @@ export class TaskEffects {
   selectTask$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TaskActions.selectTask),
-      tap((selectTaskAction) => {
+      switchMap((selectTaskAction) => {
         console.log('Select Task', selectTaskAction);
+        if (selectTaskAction.taskId && !selectTaskAction.task) {
+          return this.taskService.getTask(selectTaskAction.taskId).pipe(mergeMap((task) => {
+            return of(TaskActions.selectTaskSuccess({task: task}));
+          }))
+        } else if (!selectTaskAction.taskId && selectTaskAction.task) {
+          return of(TaskActions.selectTaskSuccess({task: selectTaskAction.task}));
+        } else {
+          throw new Error('no-task-selected');
+        }
+      }),
+      catchError((error) => {
+        return of(TaskActions.createTaskFailure({ error }));
+      })
+    )
+  );
+
+  selectTaskSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TaskActions.selectTaskSuccess),
+      tap((selectTaskSuccessAction) => {
+        console.log('Select Task Success', selectTaskSuccessAction);
+      })
+    ), { dispatch: false }
+  );
+
+  selectTaskFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TaskActions.selectTaskFailure),
+      tap((error) => {
+        console.error('Select Task Error', error);
       })
     ), { dispatch: false }
   );
@@ -60,6 +97,7 @@ export class TaskEffects {
       ofType(TaskActions.clearSelectedTask),
       tap(() => {
         console.log('Clear select Task');
+
       })
     ), { dispatch: false }
   );
@@ -136,5 +174,5 @@ export class TaskEffects {
     ), { dispatch: false }
   );
 
-  constructor(private taskService: TaskService) {}
+  constructor(private router: Router, private taskService: TaskService, private store: Store<TaskState>) {}
 }

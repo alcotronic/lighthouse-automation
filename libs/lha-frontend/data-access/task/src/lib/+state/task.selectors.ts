@@ -27,13 +27,7 @@ export const selectTaskEntities = createSelector(
   (state: TaskState) => selectEntities(state)
 );
 
-export const selectSelectedId = createSelector(
-  selectTaskState,
-  (state: TaskState) => state.selectedId
-);
-
 export const selectEntity = createSelector(
-  selectTaskEntities,
-  selectSelectedId,
-  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
+  selectTaskState,
+  (state: TaskState) => state.selected
 );

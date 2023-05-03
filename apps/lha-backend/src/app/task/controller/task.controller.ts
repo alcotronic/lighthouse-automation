@@ -33,6 +33,7 @@ export class TaskController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
+  @UseInterceptors(new TaskInterceptor())
   @Post('create')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')

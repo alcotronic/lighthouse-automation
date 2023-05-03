@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 
 import * as TaskActions from './task.actions';
 import * as TaskSelectors from './task.selectors';
+import { TaskCreateDto, TaskDto } from '@lighthouse-automation/lha-common';
 
 @Injectable()
 export class TaskFacade {
@@ -12,12 +13,16 @@ export class TaskFacade {
   allTask$ = this.store.pipe(select(TaskSelectors.selectAllTask));
   selectedTask$ = this.store.pipe(select(TaskSelectors.selectEntity));
 
+  createTask(taskToCreate: TaskCreateDto) {
+    this.store.dispatch(TaskActions.createTask({ taskToCreate: taskToCreate }));
+  }
+
   loadAllTasks() {
     this.store.dispatch(TaskActions.loadAllTasks());
   }
 
-  selectTask(taskId: string) {
-    this.store.dispatch(TaskActions.selectTask({ taskId: taskId }));
+  selectTask(taskId?: string, task?: TaskDto) {
+    this.store.dispatch(TaskActions.selectTask({ taskId: taskId, task: task }));
   }
 
   clearSelectedTask() {

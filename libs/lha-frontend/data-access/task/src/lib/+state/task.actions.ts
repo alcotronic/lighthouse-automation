@@ -18,7 +18,17 @@ export const createTaskFailure = createAction(
 
 export const selectTask = createAction(
   '[Task/API] Select Task',
-  props<{ taskId: string }>()
+  props<{ taskId?: string, task?: TaskDto }>()
+);
+
+export const selectTaskSuccess = createAction(
+  '[Task/API] Select Task Success',
+  props<{task?: TaskDto }>()
+);
+
+export const selectTaskFailure = createAction(
+  '[Task/API] Select Task Failure',
+  props<{ error: any }>()
 );
 
 export const clearSelectedTask = createAction(

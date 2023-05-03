@@ -7,9 +7,9 @@ import { TaskDto } from '@lighthouse-automation/lha-common';
 export const TASK_FEATURE_KEY = 'task';
 
 export interface TaskState extends EntityState<TaskDto> {
-  selectedId?: string | number; // which Task record has been selected
-  loaded: boolean; // has the Task list been loaded
-  error?: string | null; // last known error (if any)
+  selected?: TaskDto;
+  loaded: boolean;
+  error?: string | null;
 }
 
 export interface TaskPartialState {
@@ -34,15 +34,18 @@ const reducer = createReducer(
   on(TaskActions.loadAllTasksSuccess, (state, { tasks }) =>
     taskAdapter.setAll(tasks, { ...state, loaded: true })
   ),
-  on(TaskActions.loadAllTasksFailure, (state, { error }) => ({ ...state, error })),
-  on(TaskActions.selectTask, (state, { taskId }) => ({
+  on(TaskActions.loadAllTasksFailure, (state, { error }) => ({
     ...state,
-    selectedId: taskId
+    error,
+  })),
+  on(TaskActions.selectTaskSuccess, (state, { task }) => ({
+    ...state,
+    selected: task ? task : undefined,
   })),
   on(TaskActions.clearSelectedTask, (state) => ({
     ...state,
-    selectedId: undefined,
-  })),
+    selected: undefined,
+  }))
 );
 
 export function taskReducer(state: TaskState | undefined, action: Action) {
