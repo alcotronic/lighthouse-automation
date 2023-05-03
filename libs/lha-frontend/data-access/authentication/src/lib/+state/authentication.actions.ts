@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { LoginDto, LoginResultDto } from '../authentication.models';
+import { LoginDto } from '../authentication.models';
 
 export const postLogin = createAction(
   '[Authentication/API] Post Login',
-  props<{ loginDto: LoginDto }>()
+  props<{ username: string, password: string }>()
 );
 
 export const postLoginSuccess = createAction(

@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RoleService } from './service/role.service';
 import * as fromRole from './+state/role.reducer';
 import { RoleEffects } from './+state/role.effects';
+import { RoleFacade } from './+state/role.facade';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { RoleEffects } from './+state/role.effects';
     ),
     EffectsModule.forFeature([RoleEffects]),
   ],
-  providers: [RoleService],
+  providers: [RoleFacade, RoleService],
 })
 export class LhaFrontendDataAccessRoleModule {}

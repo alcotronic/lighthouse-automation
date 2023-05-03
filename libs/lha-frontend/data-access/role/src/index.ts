@@ -1,3 +1,4 @@
+export * from './lib/+state/role.facade';
 export * from './lib/+state/role.selectors';
 export * from './lib/+state/role.reducer';
 export * from './lib/+state/role.actions';

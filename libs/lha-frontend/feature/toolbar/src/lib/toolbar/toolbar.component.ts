@@ -1,23 +1,7 @@
-import {
-  Component,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Role } from '@lighthouse-automation/lha-common';
-import {
-  AuthenticationService,
-  AuthenticationState,
-  postLogout,
-  selectAuthenticationState,
-} from '@lighthouse-automation/lha-frontend/data-access/authentication';
-import {
-  RoleService,
-  selectAllRoles,
-} from '@lighthouse-automation/lha-frontend/data-access/role';
-import { State, Store } from '@ngrx/store';
+import { AuthenticationFacade } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { RoleFacade } from '@lighthouse-automation/lha-frontend/data-access/role';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -31,16 +15,21 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   unsubscribe$ = new Subject<void>();
 
   constructor(
-    private store: Store<AuthenticationState>,
-    private authenticationService: AuthenticationService,
-    private roleService: RoleService,
-    private router: Router,
-    private state: State<AuthenticationState>
+    private authenticationFacade: AuthenticationFacade,
+    private roleFacade: RoleFacade
   ) {}
 
   ngOnInit() {
-    this.store
-      .select(selectAllRoles)
+    this.authenticationFacade.selectAuthenticationAccessToken$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((accessToken) => {
+        if (accessToken) {
+          this.authenticated = true;
+        } else {
+          this.authenticated = false;
+        }
+      });
+    this.roleFacade.selectAllRoles$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((roles) => {
         if (roles) {
@@ -51,24 +40,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
           });
         }
       });
-    this.store
-      .select<AuthenticationState>(selectAuthenticationState)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((state) => {
-        if (state.accessToken) {
-          this.authenticated = true;
-        } else {
-          this.authenticated = false;
-        }
-      });
-
-    // if (this.authenticated) {
-    //   this.roleService.isAdmin().subscribe((result: any) => {
-    //     if (result && result.isAdmin && result.isAdmin === true) {
-    //       this.isAdmin = true;
-    //     }
-    //   });
-    // }
   }
 
   ngOnDestroy(): void {
@@ -77,6 +48,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.store.dispatch(postLogout());
+    this.authenticationFacade.postLogout();
   }
 }

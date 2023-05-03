@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  AuthenticationState,
-  selectAuthenticationState,
-} from '@lighthouse-automation/lha-frontend/data-access/authentication';
-import { StatusService } from '@lighthouse-automation/lha-frontend/data-access/status';
-import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { AuthenticationFacade } from '@lighthouse-automation/lha-frontend/data-access/authentication';
+import { StatusService } from '@lighthouse-automation/lha-frontend/data-access/status';
 
 @Component({
   selector: 'lha-root',
@@ -22,15 +18,14 @@ export class AppComponent implements OnInit {
   constructor(
     private statusService: StatusService,
     private router: Router,
-    private authenticationStore: Store<AuthenticationState>
+    private authenticationFacade: AuthenticationFacade
   ) {}
 
   ngOnInit() {
-    this.authenticationStore
-      .select<AuthenticationState>(selectAuthenticationState)
+    this.authenticationFacade.selectAuthenticationAccessToken$
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((state) => {
-        if (state.accessToken) {
+      .subscribe((accessToken) => {
+        if (accessToken) {
           this.authenticated = true;
         } else {
           this.authenticated = false;
@@ -48,7 +43,7 @@ export class AppComponent implements OnInit {
         } else if (!this.authenticated && this.status.initiated) {
           console.log('!this.authenticated && this.status.initiated');
           this.router.navigate(['login']);
-        } else  {
+        } else {
           console.log('else setup');
           this.router.navigate(['setup']);
         }
