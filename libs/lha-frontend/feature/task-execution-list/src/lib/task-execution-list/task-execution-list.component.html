@@ -2,7 +2,7 @@
   <mat-action-list dense *ngIf="taskExecutionList && taskExecutionList !== undefined">
     <button *ngFor="let taskExecution of taskExecutionList" mat-list-item (click)="selectTaskExecution(taskExecution)">
       <span matLine><span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}</span>
-      <span matLine><span style="color:cyan;">ID: </span>{{taskExecution._id}}</span>
+      <span matLine><span style="color:cyan;">ID: </span>{{taskExecution.id}}</span>
       <span matLine>
         <span *ngIf="taskExecution.performanceScoreDesktop" style="color:cyan;">Desktop - Performance: </span>
         <span *ngIf="taskExecution.performanceScoreDesktop">{{taskExecution.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>

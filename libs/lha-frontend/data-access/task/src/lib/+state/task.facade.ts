@@ -10,8 +10,8 @@ export class TaskFacade {
   private readonly store = inject(Store);
 
   loaded$ = this.store.pipe(select(TaskSelectors.selectTaskLoaded));
-  allTask$ = this.store.pipe(select(TaskSelectors.selectAllTask));
-  selectedTask$ = this.store.pipe(select(TaskSelectors.selectEntity));
+  allTasks$ = this.store.pipe(select(TaskSelectors.selectAllTasks));
+  selectedTask$ = this.store.pipe(select(TaskSelectors.selectedEntity));
 
   createTask(taskToCreate: TaskCreateDto) {
     this.store.dispatch(TaskActions.createTask({ taskToCreate: taskToCreate }));

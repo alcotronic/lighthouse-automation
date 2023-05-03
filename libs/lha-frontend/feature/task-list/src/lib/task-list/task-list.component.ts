@@ -21,7 +21,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.taskFacade.allTask$
+    this.taskFacade.allTasks$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((tasks: TaskDto[]) => {
         this.taskList = tasks;

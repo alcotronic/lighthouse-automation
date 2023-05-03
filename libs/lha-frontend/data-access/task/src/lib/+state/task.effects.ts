@@ -8,7 +8,7 @@ import { TaskDto } from '@lighthouse-automation/lha-common';
 import { Router } from '@angular/router';
 import { TaskState } from './task.reducer';
 import { Store } from '@ngrx/store';
-import { selectAllTask } from './task.selectors';
+import { selectAllTasks } from './task.selectors';
 
 @Injectable()
 export class TaskEffects {
@@ -64,7 +64,7 @@ export class TaskEffects {
       switchMap((selectTaskAction) => {
         console.log('Select Task', selectTaskAction);
         if (selectTaskAction.taskId && !selectTaskAction.task) {
-          return this.store.select(selectAllTask).pipe(
+          return this.store.select(selectAllTasks).pipe(
             mergeMap((tasks) => {
               const task = tasks.find(
                 (task) => task.id === selectTaskAction.taskId
@@ -99,7 +99,7 @@ export class TaskEffects {
         }
       }),
       catchError((error) => {
-        return of(TaskActions.createTaskFailure({ error }));
+        return of(TaskActions.selectTaskFailure({ error }));
       })
     )
   );

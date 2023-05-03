@@ -17,7 +17,7 @@ export const selectTaskError = createSelector(
   (state: TaskState) => state.error
 );
 
-export const selectAllTask = createSelector(
+export const selectAllTasks = createSelector(
   selectTaskState,
   (state: TaskState) => selectAll(state)
 );
@@ -27,7 +27,7 @@ export const selectTaskEntities = createSelector(
   (state: TaskState) => selectEntities(state)
 );
 
-export const selectEntity = createSelector(
+export const selectedEntity = createSelector(
   selectTaskState,
   (state: TaskState) => state.selected
 );

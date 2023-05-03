@@ -7,19 +7,6 @@ export interface Response<TaskDto>{
   tasks: TaskDto[]
 }
 
-// @Injectable()
-// export class TaskInterceptor implements NestInterceptor<Task, Response<TaskDto>> {
-//   intercept(context: ExecutionContext, next: CallHandler): Observable<Response<TaskDto>> {
-//     return next.handle().pipe(map((tasks: Task[]) => {
-//       const taskDtos: TaskDto[] = [];
-//       tasks.forEach((task) => {
-//         taskDtos.push(task as TaskDto);
-//       })
-//       return { tasks: taskDtos };
-//     }));
-//   }
-// }
-
 function convertToDto(task: Task):TaskDto {
   return {
     id: task.id,
