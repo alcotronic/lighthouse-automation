@@ -56,17 +56,14 @@ export class TaskEffects {
     ), { dispatch: false }
   );
 
-  // selectTask$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(TaskActions.selectTask),
-  //     tap((selectTaskAction) => {
-  //       console.log(selectTaskAction);
-  //     }),
-  //     catchError((error) => {
-  //       return of(TaskActions.loadTaskFailure({ error }));
-  //     })
-  //   )
-  // );
+  clearSelectedTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TaskActions.clearSelectedTask),
+      tap(() => {
+        console.log('Clear select Task');
+      })
+    ), { dispatch: false }
+  );
 
   loadTask$ = createEffect(() =>
     this.actions$.pipe(

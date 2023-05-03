@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskDto, TaskExecutionDto } from '@lighthouse-automation/lha-common';
 import { TaskFacade } from '@lighthouse-automation/lha-frontend/data-access/task';
 import { TaskExecutionService } from '@lighthouse-automation/lha-frontend/data-access/task-execution';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'lha-frontend-feature-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit, OnDestroy {
   task?: TaskDto;
   taskExecutionList?: TaskExecutionDto[];
   showUrls = true;
@@ -23,6 +24,8 @@ export class TaskComponent {
 
   barChartData: ChartDataset[] = [];
 
+  unsubscribe$ = new Subject<void>();
+
   constructor(
     private route: ActivatedRoute,
     private taskExecutionService: TaskExecutionService,
@@ -32,12 +35,15 @@ export class TaskComponent {
   ngOnInit() {
     const taskId = this.route.snapshot.paramMap.get('id');
     if (taskId) {
-      this.taskFacade.selectedTask$.subscribe((task) => {
-        this.task = task;
-      })
+      this.taskFacade.selectedTask$
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((task) => {
+          this.task = task;
+        });
       this.taskFacade.selectTask(taskId);
       this.taskExecutionService
         .getAllTaskExecutionsByTaskId(taskId)
+        .pipe(takeUntil(this.unsubscribe$))
         .subscribe((result) => {
           this.taskExecutionList = result;
           this.barChartLabels = [];
@@ -74,6 +80,12 @@ export class TaskComponent {
           });
         });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+    this.taskFacade.clearSelectedTask();
   }
 
   toggleShowUrls() {

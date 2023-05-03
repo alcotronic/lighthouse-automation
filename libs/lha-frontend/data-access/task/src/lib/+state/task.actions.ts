@@ -22,6 +22,10 @@ export const selectTask = createAction(
   props<{ taskId: string }>()
 );
 
+export const clearSelectedTask = createAction(
+  '[Task/API] Clear elected Task'
+);
+
 export const loadTask = createAction(
   '[Task/API] Load Task',
   props<{ taskId: string }>()

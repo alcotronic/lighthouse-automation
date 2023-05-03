@@ -25,4 +25,8 @@ export class TaskFacade {
   selectTask(taskId: string) {
     this.store.dispatch(TaskActions.selectTask({ taskId: taskId }));
   }
+
+  clearSelectedTask() {
+    this.store.dispatch(TaskActions.clearSelectedTask());
+  }
 }

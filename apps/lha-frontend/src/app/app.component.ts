@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((status: any) => {
         this.status = status;
-        console.log(this.authenticated);
+        //console.log(this.authenticated);
         if (this.authenticated && this.status.initiated) {
           console.log('this.authenticated && this.status.initiated');
           this.router.navigate(['task/list']);

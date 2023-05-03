@@ -38,9 +38,11 @@ const reducer = createReducer(
   on(TaskActions.loadAllTasksFailure, (state, { error }) => ({ ...state, error })),
   on(TaskActions.selectTask, (state, { taskId }) => ({
     ...state,
-    selectedId: taskId,
-    loaded: false,
-    error: null,
+    selectedId: taskId
+  })),
+  on(TaskActions.clearSelectedTask, (state) => ({
+    ...state,
+    selectedId: undefined,
   })),
 );
 

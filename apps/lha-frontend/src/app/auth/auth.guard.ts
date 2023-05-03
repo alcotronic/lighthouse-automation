@@ -75,7 +75,7 @@ export class AuthGuard implements OnDestroy {
     // }
 
     // this.router.navigate(['login']);
-    console.log(this.authenticated);
+    //console.log(this.authenticated);
     if (this.authenticated) {
       return true;
     }
