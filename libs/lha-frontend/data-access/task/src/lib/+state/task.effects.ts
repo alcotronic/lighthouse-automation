@@ -3,7 +3,6 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
 import * as TaskActions from './task.actions';
-import * as TaskFeature from './task.reducer';
 import { TaskService } from '../service/task.service';
 import { TaskDto } from '@lighthouse-automation/lha-common';
 

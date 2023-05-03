@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { TaskEntity } from './task.models';
 import { TaskCreateDto, TaskDto } from '@lighthouse-automation/lha-common';
 
 export const createTask = createAction(

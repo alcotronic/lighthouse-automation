@@ -2,7 +2,6 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as TaskActions from './task.actions';
-import { TaskEntity } from './task.models';
 import { TaskDto } from '@lighthouse-automation/lha-common';
 
 export const TASK_FEATURE_KEY = 'task';

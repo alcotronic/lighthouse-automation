@@ -1,5 +1,4 @@
 export * from './lib/+state/task.facade';
-export * from './lib/+state/task.models';
 export * from './lib/+state/task.selectors';
 export * from './lib/+state/task.reducer';
 export * from './lib/+state/task.actions';
