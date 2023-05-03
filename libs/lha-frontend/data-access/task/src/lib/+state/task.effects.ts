@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { switchMap, catchError, mergeMap, tap, map } from 'rxjs/operators';
+import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
 import * as TaskActions from './task.actions';
 import { TaskService } from '../service/task.service';
 import { TaskDto } from '@lighthouse-automation/lha-common';
@@ -33,25 +33,29 @@ export class TaskEffects {
     )
   );
 
-  createTaskSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.createTaskSuccess),
-      tap((createTaskSuccessAction) => {
-        console.log('Create Task success', createTaskSuccessAction);
-        if (createTaskSuccessAction.task.id) {
-          this.router.navigate(['/task/' + createTaskSuccessAction.task.id]);
-        }
-      })
-    ), { dispatch: false }
+  createTaskSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.createTaskSuccess),
+        tap((createTaskSuccessAction) => {
+          console.log('Create Task success', createTaskSuccessAction);
+          if (createTaskSuccessAction.task.id) {
+            this.router.navigate(['/task/' + createTaskSuccessAction.task.id]);
+          }
+        })
+      ),
+    { dispatch: false }
   );
 
-  createTaskFailure$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.createTaskFailure),
-      tap((error) => {
-        console.error('Create Task Error', error);
-      })
-    ), { dispatch: false }
+  createTaskFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.createTaskFailure),
+        tap((error) => {
+          console.error('Create Task Error', error);
+        })
+      ),
+    { dispatch: false }
   );
 
   selectTask$ = createEffect(() =>
@@ -60,22 +64,38 @@ export class TaskEffects {
       switchMap((selectTaskAction) => {
         console.log('Select Task', selectTaskAction);
         if (selectTaskAction.taskId && !selectTaskAction.task) {
-          return this.store.select(selectAllTask).pipe(mergeMap((tasks) => {
-            const task = tasks.find((task) => task.id === selectTaskAction.taskId);
-            if( task )  {
-              return of(TaskActions.selectTaskSuccess({task: task}))
-            } else if(selectTaskAction.taskId) {
-              return this.taskService.getTask(selectTaskAction.taskId).pipe(mergeMap((task) => {
-                return of(TaskActions.selectTaskSuccess({task: task}));
-              }))
-            } else {
-              return of(TaskActions.selectTaskFailure({error: new Error('no-task-id-for-selection')}));
-            }
-          }))
+          return this.store.select(selectAllTask).pipe(
+            mergeMap((tasks) => {
+              const task = tasks.find(
+                (task) => task.id === selectTaskAction.taskId
+              );
+              if (task) {
+                return of(TaskActions.selectTaskSuccess({ task: task }));
+              } else if (selectTaskAction.taskId) {
+                return this.taskService.getTask(selectTaskAction.taskId).pipe(
+                  mergeMap((task) => {
+                    return of(TaskActions.selectTaskSuccess({ task: task }));
+                  })
+                );
+              } else {
+                return of(
+                  TaskActions.selectTaskFailure({
+                    error: new Error('no-task-id-for-selection'),
+                  })
+                );
+              }
+            })
+          );
         } else if (!selectTaskAction.taskId && selectTaskAction.task) {
-          return of(TaskActions.selectTaskSuccess({task: selectTaskAction.task}));
+          return of(
+            TaskActions.selectTaskSuccess({ task: selectTaskAction.task })
+          );
         } else {
-          return of(TaskActions.selectTaskFailure({error: new Error('no-task-selected')}))
+          return of(
+            TaskActions.selectTaskFailure({
+              error: new Error('no-task-selected'),
+            })
+          );
         }
       }),
       catchError((error) => {
@@ -84,32 +104,37 @@ export class TaskEffects {
     )
   );
 
-  selectTaskSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.selectTaskSuccess),
-      tap((selectTaskSuccessAction) => {
-        console.log('Select Task Success', selectTaskSuccessAction);
-      })
-    ), { dispatch: false }
+  selectTaskSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.selectTaskSuccess),
+        tap((selectTaskSuccessAction) => {
+          console.log('Select Task Success', selectTaskSuccessAction);
+        })
+      ),
+    { dispatch: false }
   );
 
-  selectTaskFailure$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.selectTaskFailure),
-      tap((error) => {
-        console.error('Select Task Error', error);
-      })
-    ), { dispatch: false }
+  selectTaskFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.selectTaskFailure),
+        tap((error) => {
+          console.error('Select Task Error', error);
+        })
+      ),
+    { dispatch: false }
   );
 
-  clearSelectedTask$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.clearSelectedTask),
-      tap(() => {
-        console.log('Clear select Task');
-
-      })
-    ), { dispatch: false }
+  clearSelectedTask$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.clearSelectedTask),
+        tap(() => {
+          console.log('Clear select Task');
+        })
+      ),
+    { dispatch: false }
   );
 
   loadTask$ = createEffect(() =>
@@ -130,22 +155,26 @@ export class TaskEffects {
     )
   );
 
-  loadTaskSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.loadTaskSuccess),
-      tap((loadTaskSuccessAction) => {
-        console.log('Load Task success', loadTaskSuccessAction);
-      })
-    ), { dispatch: false }
+  loadTaskSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.loadTaskSuccess),
+        tap((loadTaskSuccessAction) => {
+          console.log('Load Task success', loadTaskSuccessAction);
+        })
+      ),
+    { dispatch: false }
   );
 
-  loadTaskFailure$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.loadTaskFailure),
-      tap((error) => {
-        console.error('Load Task Error', error);
-      })
-    ), { dispatch: false }
+  loadTaskFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.loadTaskFailure),
+        tap((error) => {
+          console.error('Load Task Error', error);
+        })
+      ),
+    { dispatch: false }
   );
 
   loadAllTasks$ = createEffect(() =>
@@ -166,23 +195,31 @@ export class TaskEffects {
     )
   );
 
-  loadAllTasksSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.loadAllTasksSuccess),
-      tap((loadAllTaskSuccessAction) => {
-        console.log('Load All Task success', loadAllTaskSuccessAction);
-      })
-    ), { dispatch: false }
+  loadAllTasksSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.loadAllTasksSuccess),
+        tap((loadAllTaskSuccessAction) => {
+          console.log('Load All Task success', loadAllTaskSuccessAction);
+        })
+      ),
+    { dispatch: false }
   );
 
-  loadAllTasksFailure$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.loadAllTasksFailure),
-      tap((error) => {
-        console.error('Load All Tasks Error', error);
-      })
-    ), { dispatch: false }
+  loadAllTasksFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(TaskActions.loadAllTasksFailure),
+        tap((error) => {
+          console.error('Load All Tasks Error', error);
+        })
+      ),
+    { dispatch: false }
   );
 
-  constructor(private router: Router, private taskService: TaskService, private store: Store<TaskState>) {}
+  constructor(
+    private router: Router,
+    private taskService: TaskService,
+    private store: Store<TaskState>
+  ) {}
 }
