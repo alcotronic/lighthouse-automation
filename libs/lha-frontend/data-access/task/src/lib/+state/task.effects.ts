@@ -1,13 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
+import { switchMap, catchError, mergeMap, tap, map } from 'rxjs/operators';
 import * as TaskActions from './task.actions';
 import { TaskService } from '../service/task.service';
 import { TaskDto } from '@lighthouse-automation/lha-common';
 import { Router } from '@angular/router';
 import { TaskState } from './task.reducer';
 import { Store } from '@ngrx/store';
+import { selectAllTask } from './task.selectors';
 
 @Injectable()
 export class TaskEffects {
@@ -59,13 +60,22 @@ export class TaskEffects {
       switchMap((selectTaskAction) => {
         console.log('Select Task', selectTaskAction);
         if (selectTaskAction.taskId && !selectTaskAction.task) {
-          return this.taskService.getTask(selectTaskAction.taskId).pipe(mergeMap((task) => {
-            return of(TaskActions.selectTaskSuccess({task: task}));
+          return this.store.select(selectAllTask).pipe(mergeMap((tasks) => {
+            const task = tasks.find((task) => task.id === selectTaskAction.taskId);
+            if( task )  {
+              return of(TaskActions.selectTaskSuccess({task: task}))
+            } else if(selectTaskAction.taskId) {
+              return this.taskService.getTask(selectTaskAction.taskId).pipe(mergeMap((task) => {
+                return of(TaskActions.selectTaskSuccess({task: task}));
+              }))
+            } else {
+              return of(TaskActions.selectTaskFailure({error: new Error('no-task-id-for-selection')}));
+            }
           }))
         } else if (!selectTaskAction.taskId && selectTaskAction.task) {
           return of(TaskActions.selectTaskSuccess({task: selectTaskAction.task}));
         } else {
-          throw new Error('no-task-selected');
+          return of(TaskActions.selectTaskFailure({error: new Error('no-task-selected')}))
         }
       }),
       catchError((error) => {
