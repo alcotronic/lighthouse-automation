@@ -20,7 +20,7 @@ export class TaskExecutionListComponent implements OnInit {
 
   ngOnInit() {
     this.taskExecutionService
-      .getAllTaskExecutionsByTaskId(this.task._id)
+      .getAllTaskExecutionsByTaskId(this.task.id)
       .subscribe((taskExecutionList) => {
         this.taskExecutionList = taskExecutionList;
       });
@@ -29,7 +29,7 @@ export class TaskExecutionListComponent implements OnInit {
   selectTaskExecution(taskExecution: TaskExecutionDto) {
     console.log(taskExecution._id);
     this.router.navigate([
-      '/task/' + this.task._id + '/execution/' + taskExecution._id,
+      '/task/' + this.task.id + '/execution/' + taskExecution._id,
     ]);
   }
 }

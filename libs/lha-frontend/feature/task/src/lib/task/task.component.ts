@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskDto, TaskExecutionDto } from '@lighthouse-automation/lha-common';
-import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
+import { TaskFacade } from '@lighthouse-automation/lha-frontend/data-access/task';
 import { TaskExecutionService } from '@lighthouse-automation/lha-frontend/data-access/task-execution';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 
@@ -25,16 +25,17 @@ export class TaskComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private taskService: TaskService,
-    private taskExecutionService: TaskExecutionService
+    private taskExecutionService: TaskExecutionService,
+    private taskFacade: TaskFacade
   ) {}
 
   ngOnInit() {
     const taskId = this.route.snapshot.paramMap.get('id');
     if (taskId) {
-      this.taskService.getTask(taskId).subscribe((result) => {
-        this.task = result;
-      });
+      this.taskFacade.selectedTask$.subscribe((task) => {
+        this.task = task;
+      })
+      this.taskFacade.selectTask(taskId);
       this.taskExecutionService
         .getAllTaskExecutionsByTaskId(taskId)
         .subscribe((result) => {

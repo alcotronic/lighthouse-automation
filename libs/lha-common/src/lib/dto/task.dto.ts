@@ -2,7 +2,7 @@ import { TaskInterval } from '../enum/task-interval.enum';
 import { TaskType } from '../enum/task-type.enum';
 
 export interface TaskDto {
-  _id: string;
+  id: string;
   name: string;
   taskType: TaskType;
   taskInterval: TaskInterval;

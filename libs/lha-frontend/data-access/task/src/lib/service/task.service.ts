@@ -9,8 +9,8 @@ export class TaskService {
 
   constructor(private readonly http: HttpClient) {}
 
-  createTask(taskCreateDto: TaskCreateDto) {
-    return this.http.post(this.taskUrl + '/create', taskCreateDto);
+  createTask(taskCreateDto: TaskCreateDto): Observable<TaskDto> {
+    return this.http.post<TaskDto>(this.taskUrl + '/create', taskCreateDto);
   }
 
   getTask(taskId: string): Observable<TaskDto> {

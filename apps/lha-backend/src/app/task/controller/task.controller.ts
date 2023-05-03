@@ -8,6 +8,7 @@ import {
   Post,
   Request,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { JwtAuthenticationGuard } from '@lighthouse-automation/lha-backend/authentication-guard';
 import {
@@ -19,6 +20,7 @@ import { Roles } from '@lighthouse-automation/lha-backend/role-decorator';
 import { Task } from '../schema/task';
 import { TaskService } from '../service/task.service';
 import { TaskSchedulerService } from '../service/task-scheduler.service';
+import { TaskInterceptor, TasksInterceptor } from '../interceptor/task.interceptor';
 
 @Controller('task')
 export class TaskController {
@@ -52,6 +54,17 @@ export class TaskController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
+  @UseInterceptors(new TaskInterceptor())
+  @Get('id/:taskId')
+  @Header('Accept', 'application/json')
+  @Header('Content-Type', 'application/json')
+  async getTask(@Param() params, @Request() request: any): Promise<Task> {
+    return this.taskService.findById(request.user.userId, params.taskId);
+  }
+
+  @UseGuards(JwtAuthenticationGuard)
+  @Roles(Role.User)
+  @UseInterceptors(new TasksInterceptor())
   @Get('tasks')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
@@ -59,12 +72,4 @@ export class TaskController {
     return this.taskService.findAll(request.user.userId);
   }
 
-  @UseGuards(JwtAuthenticationGuard)
-  @Roles(Role.User)
-  @Get('id/:taskId')
-  @Header('Accept', 'application/json')
-  @Header('Content-Type', 'application/json')
-  async getTask(@Param() params, @Request() request: any): Promise<Task> {
-    return this.taskService.findById(request.user.userId, params.taskId);
-  }
 }

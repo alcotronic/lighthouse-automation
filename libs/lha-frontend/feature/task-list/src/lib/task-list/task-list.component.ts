@@ -1,24 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
+import { TaskDto } from '@lighthouse-automation/lha-common';
+import {
+  TaskFacade
+} from '@lighthouse-automation/lha-frontend/data-access/task';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'lha-frontend-feature-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   taskList: any;
+  unsubscribe$ = new Subject<void>();
 
-  constructor(private taskService: TaskService, private router: Router) {}
+  constructor(
+    private router: Router,
+    private taskFacade: TaskFacade
+  ) {}
 
   ngOnInit() {
-    this.taskService.getAllTasks().subscribe((result: any) => {
-      this.taskList = result;
-    });
+    this.taskFacade.allTask$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((tasks: TaskDto[]) => {
+        this.taskList = tasks;
+      });
+    this.taskFacade.loadAllTasks();
   }
 
-  reportTypeName(reportType: string): string {
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
+  taskTypeName(reportType: string): string {
     if (reportType === 'MANUAL_REPORT') {
       return 'manual';
     } else {
@@ -26,8 +42,8 @@ export class TaskListComponent implements OnInit {
     }
   }
 
-  selectReportTask(task: any) {
-    console.log(task._id);
-    this.router.navigate(['/task/task/' + task._id]);
+  selectTask(task: TaskDto) {
+    console.log(task.id);
+    this.router.navigate(['/task/' + task.id]);
   }
 }

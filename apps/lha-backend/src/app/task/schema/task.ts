@@ -7,6 +7,7 @@ export type TaskDocument = Task & Document;
 @Schema()
 export class Task {
   id?: string;
+  _id?: string;
   @Prop() userId?: string;
   @Prop() name: string;
   @Prop({ type: String }) taskType: TaskType;
