@@ -35,7 +35,7 @@ export class TaskService {
     return this.taskModel
       .findOne(
         { _id: id, userId: userId },
-        'name reportType reportInterval enabled urlList countDesktop performanceScoreDesktop accessibilityScoreDesktop bestPracticeScoreDesktop seoScoreDesktop pwaScoreDesktop countMobile performanceScoreMobile accessibilityScoreMobile bestPracticeScoreMobile seoScoreMobile pwaScoreMobile'
+        'name taskType taskInterval urlList enabled countDesktop performanceScoreDesktop accessibilityScoreDesktop bestPracticeScoreDesktop seoScoreDesktop pwaScoreDesktop countMobile performanceScoreMobile accessibilityScoreMobile bestPracticeScoreMobile seoScoreMobile pwaScoreMobile'
       )
       .exec();
   }
