@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { TaskExecutionDto } from '@lighthouse-automation/lha-common';
 
+export const initTaskExecutions = createAction(
+  '[TaskExecution Page] Init TaskExecutions'
+);
+
 export const loadTaskExecutionsByTaskId = createAction(
   '[TaskExecution/API] Load TaskExecutions by TaskId',
   props<{ taskId: string }>()

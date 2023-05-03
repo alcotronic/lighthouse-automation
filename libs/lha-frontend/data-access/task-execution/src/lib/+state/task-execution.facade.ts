@@ -18,6 +18,10 @@ export class TaskExecutionFacade {
     select(TaskExecutionSelectors.selectedEntity)
   );
 
+  initTaskExecutions() {
+    this.store.dispatch(TaskExecutionActions.initTaskExecutions());
+  }
+
   loadTaskExecutionsByTaskId(taskId: string) {
     this.store.dispatch(TaskExecutionActions.loadTaskExecutionsByTaskId({ taskId: taskId }));
   }

@@ -27,6 +27,11 @@ export const initialTaskExecutionState: TaskExecutionState =
 
 const reducer = createReducer(
   initialTaskExecutionState,
+  on(TaskExecutionActions.initTaskExecutions, () => ({
+    ...initialTaskExecutionState,
+    loaded: false,
+    error: null,
+  })),
   on(TaskExecutionActions.loadTaskExecutionsByTaskId, (state) => ({
     ...state,
     loaded: false,
