@@ -28,7 +28,7 @@ nx graph frontend:
 ![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-frontend.png)
 
 The frontend is based on angular (https://angular.io).
-At the moment I move parts of it to libs in the nx-workspace and ngrx for +state manamgent.
+At the moment I move parts of it to libs in the nx-workspace and ngrx for state manamgent.
 
 ### Frontend Development server
 
