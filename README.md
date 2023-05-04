@@ -11,7 +11,7 @@ At the moment I am moving the seperated old projects to a single nx-workspace (h
 ## Backend
 
 nx graph backend:
-![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-backend.png)
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/main/nx-graph-backend.png)
 
 The backend is based on nestjs and uses chrome-launcher (https://github.com/GoogleChrome/chrome-launcher), so some kind of installation of chrome or chromium is needed. MongoDB (https://www.mongodb.com/) is used as database and Redis (https://redis.io) for the job queues for now.
 The backend still needs some rework.
@@ -25,7 +25,7 @@ Run `nx serve lha-backend` for a dev server. Navigate to http://localhost:3000/.
 ## Frontend
 
 nx graph frontend:
-![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-frontend.png)
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/main/nx-graph-frontend.png)
 
 The frontend is based on angular (https://angular.io).
 At the moment I move parts of it to libs in the nx-workspace and i add ngrx for state manamgent to switch to from the old pull based design to a push based one, components simplification, request reduction and to achive a better overall project structure.
@@ -37,6 +37,6 @@ Run `nx serve lha-frontend` for a dev server. Navigate to http://localhost:4200/
 ## Understand this workspace
 
 nx graph:
-![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph.png)
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/main/nx-graph.png)
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
