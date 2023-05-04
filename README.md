@@ -15,11 +15,15 @@ The backend still needs some rework.
 
 ### Backend Development server
 
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-backend.png)
+
 For developing I added a docker-compose file with dockers for MongoDB and Redis.
 
 Run `nx serve lha-backend` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
 
 ## Frontend
+
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-frontend.png)
 
 The frontend is based on angular (https://angular.io).
 At the moment I move parts of it to libs in the nx-workspace.
