@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskDto, TaskExecutionDto } from '@lighthouse-automation/lha-common';
-import { TaskService } from '@lighthouse-automation/lha-frontend/data-access/task';
-import { TaskExecutionService } from '@lighthouse-automation/lha-frontend/data-access/task-execution';
+import { TaskFacade } from '@lighthouse-automation/lha-frontend/data-access/task';
+import {
+  TaskExecutionFacade,
+  TaskExecutionService,
+} from '@lighthouse-automation/lha-frontend/data-access/task-execution';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'lha-frontend-feature-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit, OnDestroy {
   task?: TaskDto;
   taskExecutionList?: TaskExecutionDto[];
   showUrls = true;
@@ -23,20 +27,27 @@ export class TaskComponent {
 
   barChartData: ChartDataset[] = [];
 
+  unsubscribe$ = new Subject<void>();
+
   constructor(
     private route: ActivatedRoute,
-    private taskService: TaskService,
-    private taskExecutionService: TaskExecutionService
+    private taskFacade: TaskFacade,
+    private taskExecutionFacade: TaskExecutionFacade
   ) {}
 
   ngOnInit() {
     const taskId = this.route.snapshot.paramMap.get('id');
+    this.taskExecutionFacade.initTaskExecutions();
     if (taskId) {
-      this.taskService.getTask(taskId).subscribe((result) => {
-        this.task = result;
-      });
-      this.taskExecutionService
-        .getAllTaskExecutionsByTaskId(taskId)
+      this.taskFacade.selectedTask$
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((task) => {
+          this.task = task;
+        });
+      this.taskFacade.selectTask(taskId);
+
+      this.taskExecutionFacade.allTaskExecutions$
+        .pipe(takeUntil(this.unsubscribe$))
         .subscribe((result) => {
           this.taskExecutionList = result;
           this.barChartLabels = [];
@@ -72,7 +83,20 @@ export class TaskComponent {
             hoverBackgroundColor: '#008686',
           });
         });
+      this.taskExecutionFacade.loadTaskExecutionsByTaskId(taskId);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+    this.taskFacade.clearSelectedTask();
+    this.task = undefined;
+    this.barChartOptions = {};
+    this.barChartLabels = [];
+    this.barChartType = 'bar';
+    this.barChartLegend = true;
+    this.barChartData = [];
   }
 
   toggleShowUrls() {

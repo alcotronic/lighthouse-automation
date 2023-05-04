@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationService } from './service/authentication.service';
 import * as fromAuthentication from './+state/authentication.reducer';
 import { AuthenticationEffects } from './+state/authentication.effects';
+import { AuthenticationFacade } from './+state/authentication.facade';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { AuthenticationEffects } from './+state/authentication.effects';
     ),
     EffectsModule.forFeature([AuthenticationEffects]),
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationFacade, AuthenticationService],
 })
 export class LhaFrontendDataAccessAuthenticationModule {}

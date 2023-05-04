@@ -1,5 +1,5 @@
 export interface TaskExecutionDto {
-  _id: string;
+  id: string;
   taskId: string;
   timestamp: number;
   timestampOffset: number;

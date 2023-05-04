@@ -35,7 +35,7 @@ export class TaskService {
     return this.taskModel
       .findOne(
         { _id: id, userId: userId },
-        'name reportType reportInterval enabled urlList countDesktop performanceScoreDesktop accessibilityScoreDesktop bestPracticeScoreDesktop seoScoreDesktop pwaScoreDesktop countMobile performanceScoreMobile accessibilityScoreMobile bestPracticeScoreMobile seoScoreMobile pwaScoreMobile'
+        'name taskType taskInterval urlList enabled countDesktop performanceScoreDesktop accessibilityScoreDesktop bestPracticeScoreDesktop seoScoreDesktop pwaScoreDesktop countMobile performanceScoreMobile accessibilityScoreMobile bestPracticeScoreMobile seoScoreMobile pwaScoreMobile'
       )
       .exec();
   }
@@ -61,7 +61,7 @@ export class TaskService {
     return this.taskModel
       .find(
         { userId: userId },
-        'name reportType reportInterval enabled countDesktop performanceScoreDesktop accessibilityScoreDesktop bestPracticeScoreDesktop seoScoreDesktop pwaScoreDesktop countMobile performanceScoreMobile accessibilityScoreMobile bestPracticeScoreMobile seoScoreMobile pwaScoreMobile'
+        'name taskType taskInterval urlList enabled countDesktop performanceScoreDesktop accessibilityScoreDesktop bestPracticeScoreDesktop seoScoreDesktop pwaScoreDesktop countMobile performanceScoreMobile accessibilityScoreMobile bestPracticeScoreMobile seoScoreMobile pwaScoreMobile'
       )
       .exec();
   }
@@ -93,7 +93,7 @@ export class TaskService {
         taskExecution.performanceScoreDesktop &&
         taskExecution.accessibilityScoreDesktop &&
         taskExecution.bestPracticeScoreDesktop &&
-        taskExecution.seoScoreDesktop && 
+        taskExecution.seoScoreDesktop &&
         taskExecution.pwaScoreDesktop
       ) {
         countDesktop = countDesktop + 1;
@@ -104,13 +104,16 @@ export class TaskService {
         bestPracticeScoreDesktop =
           bestPracticeScoreDesktop + taskExecution.bestPracticeScoreDesktop;
         seoScoreDesktop = seoScoreDesktop + taskExecution.seoScoreDesktop;
-        pwaScoreDesktop = pwaScoreDesktop + taskExecution.performanceScoreDesktop;
+        pwaScoreDesktop =
+          pwaScoreDesktop + taskExecution.performanceScoreDesktop;
       }
-      if (taskExecution.performanceScoreMobile &&
+      if (
+        taskExecution.performanceScoreMobile &&
         taskExecution.accessibilityScoreMobile &&
         taskExecution.bestPracticeScoreMobile &&
-        taskExecution.seoScoreMobile && 
-        taskExecution.pwaScoreMobile) {
+        taskExecution.seoScoreMobile &&
+        taskExecution.pwaScoreMobile
+      ) {
         countMobile = countMobile + 1;
         performanceScoreMobile =
           performanceScoreMobile + taskExecution.performanceScoreMobile;

@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 import {
-  AuthenticationState,
-  postLogin,
+  AuthenticationFacade
 } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'lha-frontend-feature-login',
@@ -21,7 +19,7 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private storeAuthentication: Store<AuthenticationState>
+    private authenticationFacade: AuthenticationFacade
   ) {}
 
   async login() {
@@ -30,15 +28,11 @@ export class LoginComponent {
       this.loginForm.controls['usernameControl'].value &&
       this.loginForm.controls['passwordControl'].value
     ) {
-      this.storeAuthentication.dispatch(
-        postLogin({
-          loginDto: {
-            username: this.loginForm.controls['usernameControl'].value,
-            password: CryptoJS.SHA256(
-              this.loginForm.controls['passwordControl'].value
-            ).toString(CryptoJS.enc.Base64),
-          },
-        })
+      this.authenticationFacade.postLogin(
+        this.loginForm.controls['usernameControl'].value,
+        CryptoJS.SHA256(
+          this.loginForm.controls['passwordControl'].value
+        ).toString(CryptoJS.enc.Base64)
       );
     }
   }

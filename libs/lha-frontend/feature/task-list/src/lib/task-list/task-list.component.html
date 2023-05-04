@@ -4,7 +4,7 @@
     <mat-card
       mat-list-item
       *ngFor="let task of taskList"
-      [routerLink]="'/task/' + task._id"
+      (click)="selectTask(task)"
     >
       <mat-card-title class="purple bold">
         {{ task.name }}

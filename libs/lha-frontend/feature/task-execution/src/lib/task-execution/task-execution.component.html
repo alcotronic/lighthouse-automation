@@ -6,7 +6,7 @@
       </mat-card-title>
       <mat-card-header>
         <mat-card-subtitle>
-          <span style="color:cyan;">Id: </span>{{task._id}} |
+          <span style="color:cyan;">Id: </span>{{task.id}} |
           <span style="color:cyan;">Type: </span>{{task.taskType}} |
           <span *ngIf="task.taskInterval"><span style="color:cyan;">Interval: </span>{{task.taskInterval}} | </span>
           <span style="color:cyan;">Enabled: </span>{{task.enabled}}
@@ -17,7 +17,7 @@
       <mat-card-header>
         <mat-card-subtitle class="purple bold">Task Execution</mat-card-subtitle>
         <mat-card-subtitle>
-          <span><span style="color:cyan;">Id: </span>{{taskExecution._id}} | </span>
+          <span><span style="color:cyan;">Id: </span>{{taskExecution.id}} | </span>
           <span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}
         </mat-card-subtitle>
       </mat-card-header>
@@ -48,7 +48,7 @@
       </mat-card-header>
     </mat-card>
 
-    <mat-expansion-panel (opened)="showUrls = true" (closed)="showUrls = false">
+    <mat-expansion-panel [expanded]="showUrls" (opened)="showUrls = true" (closed)="showUrls = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Test Urls</mat-panel-title>
       </mat-expansion-panel-header>
@@ -57,11 +57,11 @@
       </mat-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="showReports = true" (closed)="showReports = false">
+    <mat-expansion-panel [expanded]="showReports" (opened)="showReports = true" (closed)="showReports = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Reports</mat-panel-title>
       </mat-expansion-panel-header>
-      <lha-frontend-feature-report-list [taskExecutionId]="taskExecution._id"></lha-frontend-feature-report-list>
+      <lha-frontend-feature-report-list [taskExecutionId]="taskExecution.id"></lha-frontend-feature-report-list>
     </mat-expansion-panel>
   </div>
 </div>

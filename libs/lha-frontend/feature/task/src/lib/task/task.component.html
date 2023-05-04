@@ -6,7 +6,7 @@
       </mat-card-title>
       <mat-card-header>
         <mat-card-subtitle>
-          <span style="color: cyan">Id: </span>{{ task._id }} |
+          <span style="color: cyan">Id: </span>{{ task.id }} |
           <span style="color: cyan">Type: </span>{{ task.taskType }} |
           <span *ngIf="task.taskInterval"
             ><span style="color: cyan">Interval: </span
@@ -19,7 +19,7 @@
 
     <mat-card>
       <mat-card-header>
-        <div style="display: block; height: 250px">
+        <div *ngIf="task" style="display: block; height: 250px">
           <canvas
             style="height: 250px"
             baseChart
@@ -97,7 +97,7 @@
       </mat-card-header>
     </mat-card>
 
-    <mat-expansion-panel (opened)="showUrls = true" (closed)="showUrls = false">
+    <mat-expansion-panel [expanded]="showUrls" (opened)="showUrls = true" (closed)="showUrls = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Test Urls</mat-panel-title>
       </mat-expansion-panel-header>
@@ -108,7 +108,7 @@
       </mat-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="showRuns = true" (closed)="showRuns = false">
+    <mat-expansion-panel [expanded]="showRuns" (opened)="showRuns = true" (closed)="showRuns = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Task Executions</mat-panel-title>
       </mat-expansion-panel-header>
