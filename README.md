@@ -30,4 +30,6 @@ Run `nx serve lha-frontend` for a dev server. Navigate to http://localhost:4200/
 
 ## Understand this workspace
 
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph.png)
+
 Run `nx graph` to see a diagram of the dependencies of the projects.
