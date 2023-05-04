@@ -48,7 +48,7 @@
       </mat-card-header>
     </mat-card>
 
-    <mat-expansion-panel (opened)="showUrls = true" (closed)="showUrls = false">
+    <mat-expansion-panel [expanded]="showUrls" (opened)="showUrls = true" (closed)="showUrls = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Test Urls</mat-panel-title>
       </mat-expansion-panel-header>
@@ -57,7 +57,7 @@
       </mat-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="showReports = true" (closed)="showReports = false">
+    <mat-expansion-panel [expanded]="showReports" (opened)="showReports = true" (closed)="showReports = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Reports</mat-panel-title>
       </mat-expansion-panel-header>

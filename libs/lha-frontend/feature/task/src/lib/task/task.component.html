@@ -97,7 +97,7 @@
       </mat-card-header>
     </mat-card>
 
-    <mat-expansion-panel (opened)="showUrls = true" (closed)="showUrls = false">
+    <mat-expansion-panel [expanded]="showUrls" (opened)="showUrls = true" (closed)="showUrls = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Test Urls</mat-panel-title>
       </mat-expansion-panel-header>
@@ -108,7 +108,7 @@
       </mat-list>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="showRuns = true" (closed)="showRuns = false">
+    <mat-expansion-panel [expanded]="showRuns" (opened)="showRuns = true" (closed)="showRuns = false">
       <mat-expansion-panel-header>
         <mat-panel-title>Task Executions</mat-panel-title>
       </mat-expansion-panel-header>
