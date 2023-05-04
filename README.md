@@ -10,13 +10,13 @@ At the moment I am moving the seperated old projects to a single nx-workspace (h
 
 ## Backend
 
+nx graph backend:
+![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-backend.png)
+
 The backend is based on nestjs and uses chrome-launcher (https://github.com/GoogleChrome/chrome-launcher), so some kind of installation of chrome or chromium is needed. MongoDB (https://www.mongodb.com/) is used as database and Redis (https://redis.io) for the job queues for now.
 The backend still needs some rework.
 
 ### Backend Development server
-
-nx graph backend:
-![alt text](https://github.com/alcotronic/lighthouse-automation/raw/add-state-to-frontend-data-access-libs-and-features/nx-graph-backend.png)
 
 For developing I added a docker-compose file with dockers for MongoDB and Redis.
 
