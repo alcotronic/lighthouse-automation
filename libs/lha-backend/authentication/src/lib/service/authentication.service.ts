@@ -8,7 +8,7 @@ export class AuthenticationService {
 
     constructor(private userService: UserService, private jwtService: JwtService) {}
 
-    async validateUser(username: string, password: string): Promise<any> {
+    async validateUser(username: string, password: string): Promise<unknown | null> {
       const user = await this.userService.findByUsername(username);
       if (user && user.activated) {
         const match = await this.userService.comparePasswords(password, user.password);
@@ -20,7 +20,7 @@ export class AuthenticationService {
       return null;
     }
 
-    async login(user: any) {
+    async login(user: { _doc: { _id: string; username: string; }; }) {
       const payload = { userId: user._doc._id, username: user._doc.username };
       const accessToken = this.jwtService.sign(payload, { expiresIn: '5m' });
       const renewToken = this.jwtService.sign(payload, { expiresIn: '10m' });
@@ -31,8 +31,8 @@ export class AuthenticationService {
       };
     }
 
-    async logout(user: any) {
-      await this.userService.updateRenewToken(user.userId, undefined);
+    async logout(user: { userId: string; }) {
+      await this.userService.updateRenewToken(user.userId);
       return {
         success: true
       };

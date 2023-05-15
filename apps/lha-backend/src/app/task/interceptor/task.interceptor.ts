@@ -1,5 +1,5 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
-import { Observable, map, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Task } from '../schema/task';
 import { TaskDto } from '@lighthouse-automation/lha-common';
 

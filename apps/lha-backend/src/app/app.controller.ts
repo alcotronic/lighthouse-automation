@@ -9,7 +9,7 @@ export class AppController {
 
   @Public()
   @Get('status')
-  getStatus(): any {
+  getStatus() {
     const status = this.appService.getAppStatus();
     return status;
   }

@@ -9,7 +9,7 @@ import { gzip, ungzip } from 'node-gzip';
 
 import { Report, ReportDocument } from '../schema/report';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
-import { Config, Flags, ScreenEmulationSettings, OutputMode } from 'lighthouse';
+import { Config, Flags, ScreenEmulationSettings } from 'lighthouse';
 import { QueueService } from '../../queue/service/queue.service';
 
 @Processor('reportGenerateLighthouseLhrQueue')

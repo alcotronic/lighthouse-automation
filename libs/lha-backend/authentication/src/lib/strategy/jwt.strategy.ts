@@ -13,17 +13,17 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  error(error: any) {
+  error(error) {
     console.log('JwtStrategy.error');
     console.log(error);
   }
 
-  fail(error: any) {
+  fail(error) {
     console.log('JwtStrategy.fail');
     console.log(error);
   }
 
-  async validate(payload: any) {
+  async validate(payload) {
     console.log('JwtStrategy.validate');
     console.log(payload);
     return { userId: payload.userId, username: payload.username };

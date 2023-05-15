@@ -23,7 +23,7 @@ export class UserController {
   @Get('account')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
-  async account(@Request() req: any) {
+  async account(@Request() req) {
     const user = await this.userService.findById(req.user.userId);
     return { username: user.username, email: user.email };
   }
@@ -66,7 +66,7 @@ export class UserController {
   @Post('change/password')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
-  async changePassword(@Request() req: any, @Body() changePasswordDto: any) {
+  async changePassword(@Request() req, @Body() changePasswordDto: any) {
     const user = await this.userService.findById(req.user.userId);
     if (!user) {
       return { changed: false };

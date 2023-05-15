@@ -39,7 +39,7 @@ export class TaskController {
   @Header('Content-Type', 'application/json')
   async create(
     @Body() taskCreateDto: TaskCreateDto,
-    @Request() request: any
+    @Request() request
   ): Promise<Task> {
     const task = await this.taskService.create(
       request.user.userId,
@@ -59,7 +59,7 @@ export class TaskController {
   @Get('id/:taskId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
-  async getTask(@Param() params, @Request() request: any): Promise<Task> {
+  async getTask(@Param() params, @Request() request): Promise<Task> {
     return this.taskService.findById(request.user.userId, params.taskId);
   }
 
@@ -69,7 +69,7 @@ export class TaskController {
   @Get('tasks')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
-  async getTasks(@Request() request: any): Promise<Task[]> {
+  async getTasks(@Request() request): Promise<Task[]> {
     return this.taskService.findAll(request.user.userId);
   }
 
