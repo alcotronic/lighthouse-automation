@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { StatusDto } from '@lighthouse-automation/lha-common';
 
 @Injectable()
 export class StatusService {
@@ -8,6 +9,6 @@ export class StatusService {
   constructor(private readonly http: HttpClient) {}
 
   getStatus() {
-    return this.http.get(this.statusUrl);
+    return this.http.get<StatusDto>(this.statusUrl);
   }
 }

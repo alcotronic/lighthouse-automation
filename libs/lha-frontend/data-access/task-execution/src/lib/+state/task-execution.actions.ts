@@ -17,7 +17,7 @@ export const loadTaskExecutionsByTaskIdSuccess = createAction(
 
 export const loadTaskExecutionsByTaskIdFailure = createAction(
   '[TaskExecution/API] Load TaskExecutions by TaskId Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const selectTaskExecution = createAction(
@@ -32,7 +32,7 @@ export const selectTaskExecutionSuccess = createAction(
 
 export const selectTaskExecutionFailure = createAction(
   '[TaskExecution/API] Select TaskExecution Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const clearSelectedTaskExecution = createAction(

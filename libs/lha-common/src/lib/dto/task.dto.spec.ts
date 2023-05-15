@@ -1,4 +1,3 @@
-import { Device } from '../enum/device.enum';
 import { TaskInterval } from '../enum/task-interval.enum';
 import { TaskType } from '../enum/task-type.enum';
 import { TaskDto } from './task.dto';

@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthenticationFacade } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { StatusService } from '@lighthouse-automation/lha-frontend/data-access/status';
+import { StatusDto } from '@lighthouse-automation/lha-common';
 
 @Component({
   selector: 'lha-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'lha-frontend';
-  status: any;
+  status?: StatusDto;
   authenticated = false;
   unsubscribe$ = new Subject<void>();
 
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
     this.statusService
       .getStatus()
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((status: any) => {
+      .subscribe((status: StatusDto) => {
         this.status = status;
         //console.log(this.authenticated);
         if (this.authenticated && this.status.initiated) {

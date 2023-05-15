@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { LoginDto } from '../authentication.models';
 
 export const postLogin = createAction(
   '[Authentication/API] Post Login',
@@ -13,7 +12,7 @@ export const postLoginSuccess = createAction(
 
 export const postLoginFailure = createAction(
   '[Authentication/API] Post Login Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const postLogout = createAction(
@@ -27,5 +26,5 @@ export const postLogoutSuccess = createAction(
 
 export const postLogoutFailure = createAction(
   '[Authentication/API] Post Logout Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );

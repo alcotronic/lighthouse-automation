@@ -1,9 +1,11 @@
 <div class="report-task-run-list-container">
   <mat-action-list dense *ngIf="taskExecutionList && taskExecutionList !== undefined">
-    <button *ngFor="let taskExecution of taskExecutionList" mat-list-item (click)="selectTaskExecution(taskExecution)">
-      <span matLine><span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}</span>
-      <span matLine><span style="color:cyan;">ID: </span>{{taskExecution.id}}</span>
-      <span matLine>
+    <mat-list-item *ngFor="let taskExecution of taskExecutionList" (click)="selectTaskExecution(taskExecution)">
+      <span matListItemLine>
+        <span style="color:cyan;">Date: </span>{{taskExecution.timestamp | date:'medium':'+0100':'de'}}
+        <span style="color:cyan;">ID: </span>{{taskExecution.id}}
+      </span>
+      <span matListItemLine>
         <span *ngIf="taskExecution.performanceScoreDesktop" style="color:cyan;">Desktop - Performance: </span>
         <span *ngIf="taskExecution.performanceScoreDesktop">{{taskExecution.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
         <span *ngIf="taskExecution.accessibilityScoreDesktop" style="color:cyan;">Accessibility: </span>
@@ -15,7 +17,7 @@
         <span *ngIf="taskExecution.pwaScoreDesktop" style="color:cyan;">PWA: </span>
         <span *ngIf="taskExecution.pwaScoreDesktop">{{taskExecution.pwaScoreDesktop * 100 | number: '1.0-0'}}</span>
       </span>
-      <span matLine>
+      <span matListItemLine>
         <span *ngIf="taskExecution.performanceScoreMobile" style="color:cyan;">Mobile - Performance: </span>
         <span *ngIf="taskExecution.performanceScoreMobile">{{taskExecution.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
         <span *ngIf="taskExecution.accessibilityScoreMobile" style="color:cyan;">Accessibility: </span>
@@ -27,6 +29,6 @@
         <span *ngIf="taskExecution.pwaScoreMobile" style="color:cyan;">PWA: </span>
         <span *ngIf="taskExecution.pwaScoreMobile">{{taskExecution.pwaScoreMobile * 100 | number: '1.0-0'}}</span>
       </span>
-    </button>
+    </mat-list-item>
   </mat-action-list>
 </div>

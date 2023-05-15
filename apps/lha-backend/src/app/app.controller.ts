@@ -2,6 +2,7 @@ import { Controller, Get } from "@nestjs/common";
 
 import { AppService } from "./app.service";
 import { Public } from "@lighthouse-automation/lha-backend/authentication-decorator";
+import { StatusDto } from "@lighthouse-automation/lha-common";
 
 @Controller()
 export class AppController {
@@ -9,8 +10,7 @@ export class AppController {
 
   @Public()
   @Get('status')
-  getStatus() {
-    const status = this.appService.getAppStatus();
-    return status;
+  async getStatus(): Promise<StatusDto> {
+    return this.appService.getAppStatus();
   }
 }

@@ -5,8 +5,7 @@ import { switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
 import * as AuthenticationActions from './authentication.actions';
 import { AuthenticationService } from '../service/authentication.service';
 import { LoginResultDto, LogoutResultDto } from '../authentication.models';
-import { Store } from '@ngrx/store';
-import { RoleFacade, RoleState, clearRoles, loadRoles } from '@lighthouse-automation/lha-frontend/data-access/role';
+import { RoleFacade } from '@lighthouse-automation/lha-frontend/data-access/role';
 import { Router } from '@angular/router';
 
 @Injectable()

@@ -26,6 +26,22 @@ export const initialTaskState: TaskState = taskAdapter.getInitialState({
 
 const reducer = createReducer(
   initialTaskState,
+  on(TaskActions.createTaskFailure, (state, { error }) => ({
+    ...state,
+    error: error.message,
+  })),
+  on(TaskActions.selectTaskSuccess, (state, { task }) => ({
+    ...state,
+    selected: task ? task : undefined,
+  })),
+  on(TaskActions.selectTaskFailure, (state, { error }) => ({
+    ...state,
+    error: error.message,
+  })),
+  on(TaskActions.clearSelectedTask, (state) => ({
+    ...state,
+    selected: undefined,
+  })),
   on(TaskActions.loadAllTasks, (state) => ({
     ...state,
     loaded: false,
@@ -36,15 +52,7 @@ const reducer = createReducer(
   ),
   on(TaskActions.loadAllTasksFailure, (state, { error }) => ({
     ...state,
-    error,
-  })),
-  on(TaskActions.selectTaskSuccess, (state, { task }) => ({
-    ...state,
-    selected: task ? task : undefined,
-  })),
-  on(TaskActions.clearSelectedTask, (state) => ({
-    ...state,
-    selected: undefined,
+    error: error.message,
   }))
 );
 
