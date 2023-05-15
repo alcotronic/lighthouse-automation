@@ -24,7 +24,7 @@
     </mat-card>
     <mat-card>
       <mat-card-header>
-        <mat-card-subtitle class="purple bold">Desktop averege</mat-card-subtitle>
+        <mat-card-subtitle class="purple bold">Desktop</mat-card-subtitle>
         <mat-card-subtitle>
           <span *ngIf="taskExecution.performanceScoreDesktop"><span style="color:cyan;">Performance: </span>{{taskExecution.performanceScoreDesktop * 100 | number: '1.0-0'}} | </span>
           <span *ngIf="taskExecution.accessibilityScoreDesktop"><span style="color:cyan;">Accessibility: </span>{{taskExecution.accessibilityScoreDesktop * 100 | number: '1.0-0'}} | </span>
@@ -34,10 +34,9 @@
         </mat-card-subtitle>
       </mat-card-header>
     </mat-card>
-
     <mat-card>
       <mat-card-header>
-        <mat-card-subtitle class="purple bold">Mobile averege</mat-card-subtitle>
+        <mat-card-subtitle class="purple bold">Mobile</mat-card-subtitle>
         <mat-card-subtitle>
           <span *ngIf="taskExecution.performanceScoreMobile"><span style="color:cyan;">Performance: </span>{{taskExecution.performanceScoreMobile * 100 | number: '1.0-0'}} | </span>
           <span *ngIf="taskExecution.accessibilityScoreMobile"><span style="color:cyan;">Accessibility: </span>{{taskExecution.accessibilityScoreMobile * 100 | number: '1.0-0'}} | </span>

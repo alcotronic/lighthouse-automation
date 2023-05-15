@@ -4,7 +4,6 @@ import { TaskDto, TaskExecutionDto } from '@lighthouse-automation/lha-common';
 import { TaskFacade } from '@lighthouse-automation/lha-frontend/data-access/task';
 import {
   TaskExecutionFacade,
-  TaskExecutionService,
 } from '@lighthouse-automation/lha-frontend/data-access/task-execution';
 import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 import { Subject, takeUntil } from 'rxjs';

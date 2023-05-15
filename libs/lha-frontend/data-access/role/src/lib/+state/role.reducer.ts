@@ -44,7 +44,7 @@ const reducer = createReducer(
   on(RoleActions.loadRolesFailure, (state, { error }) => ({
     ...state,
     roles: undefined,
-    error,
+    error: error.message,
   }))
 );
 

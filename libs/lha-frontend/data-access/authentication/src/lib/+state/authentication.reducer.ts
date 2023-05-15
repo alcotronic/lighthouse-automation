@@ -1,4 +1,4 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as AuthenticationActions from './authentication.actions';
@@ -49,7 +49,7 @@ const reducer = createReducer(
   ),
   on(AuthenticationActions.postLoginFailure, (state, { error }) => ({
     ...state,
-    error,
+    error: error.message,
   })),
   on(
     AuthenticationActions.postLogoutSuccess,
@@ -57,7 +57,7 @@ const reducer = createReducer(
   ),
   on(AuthenticationActions.postLogoutFailure, (state, { error }) => ({
     ...state,
-    error,
+    error: error.message,
   })),
 );
 

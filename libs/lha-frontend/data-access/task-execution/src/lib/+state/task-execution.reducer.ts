@@ -44,11 +44,15 @@ const reducer = createReducer(
   ),
   on(TaskExecutionActions.loadTaskExecutionsByTaskIdFailure, (state, { error }) => ({
     ...state,
-    error,
+    error: error.message,
   })),
   on(TaskExecutionActions.selectTaskExecutionSuccess, (state, { taskExecution }) => ({
     ...state,
     selected: taskExecution ? taskExecution : undefined,
+  })),
+  on(TaskExecutionActions.selectTaskExecutionFailure, (state, { error }) => ({
+    ...state,
+    error: error.message,
   })),
   on(TaskExecutionActions.clearSelectedTaskExecution, (state) => ({
     ...state,

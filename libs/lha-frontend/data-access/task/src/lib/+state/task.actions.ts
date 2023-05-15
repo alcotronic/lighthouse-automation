@@ -13,7 +13,7 @@ export const createTaskSuccess = createAction(
 
 export const createTaskFailure = createAction(
   '[Task/API] Create Task Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const selectTask = createAction(
@@ -28,7 +28,7 @@ export const selectTaskSuccess = createAction(
 
 export const selectTaskFailure = createAction(
   '[Task/API] Select Task Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const clearSelectedTask = createAction(
@@ -47,7 +47,7 @@ export const loadTaskSuccess = createAction(
 
 export const loadTaskFailure = createAction(
   '[Task/API] Load Task Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );
 
 export const loadAllTasks = createAction(
@@ -61,5 +61,5 @@ export const loadAllTasksSuccess = createAction(
 
 export const loadAllTasksFailure = createAction(
   '[Task/API] Load all Tasks Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );

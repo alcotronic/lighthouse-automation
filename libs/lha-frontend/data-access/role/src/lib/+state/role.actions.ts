@@ -12,5 +12,5 @@ export const loadRolesSuccess = createAction(
 
 export const loadRolesFailure = createAction(
   '[Role/API] Load Role Failure',
-  props<{ error: any }>()
+  props<{ error: Error }>()
 );

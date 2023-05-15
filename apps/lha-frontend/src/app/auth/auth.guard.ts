@@ -1,14 +1,13 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { RoleService } from '@lighthouse-automation/lha-frontend/data-access/role';
 import {
   AuthenticationService,
   AuthenticationState,
   postLogout,
   selectAuthenticationState,
 } from '@lighthouse-automation/lha-frontend/data-access/authentication';
-import { Observable, Subject, map, take, takeUntil, tap } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 @Injectable({
@@ -20,7 +19,6 @@ export class AuthGuard implements OnDestroy {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private roleService: RoleService,
     private router: Router,
     private store: Store<AuthenticationState>
   ) {
