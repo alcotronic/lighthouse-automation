@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { Processor } from '@nestjs/bull';
 import { Device, TaskInterval } from '@lighthouse-automation/lha-common';
 import { TaskExecutionService } from '../../task-execution/service/task-execution.service';
 import { ReportService } from '../../report/service/report.service';

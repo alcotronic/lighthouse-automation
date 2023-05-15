@@ -1,13 +1,14 @@
-import { Processor, Process, InjectQueue } from '@nestjs/bull';
+import { Processor, Process } from '@nestjs/bull';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Job, Queue } from 'bull';
+import { Job } from 'bull';
 import { Model } from 'mongoose';
 import { Device } from '@lighthouse-automation/lha-common';
 import { TaskExecution, TaskExecutionDocument } from '../schema/task-execution';
 import { Report } from '../../report/schema/report';
 import { Task } from '../../task/schema/task';
 import { QueueService } from '../../queue/service/queue.service';
+import { TaskExecutionScores } from '../schema/task-execution-scores';
 
 @Processor('taskExecutionUpdateScoresQueue')
 @Injectable()
@@ -90,6 +91,31 @@ export class TaskExecutionService {
       .exec();
   }
 
+  async aggregateAverageScoresByTaskId(taskId: string): Promise<TaskExecutionScores | null> {
+    this.logger.debug('aggregateDesktopScoresByTaskId for taskId: '+taskId);
+    const aggregationResult = await this.taskExecutionModel.aggregate<TaskExecutionScores>([
+      {$match: { taskId: taskId }},
+      {$group: {
+        _id: null,
+        performanceScoreDesktopAverage: {$avg: "$performanceScoreDesktop"},
+        accessibilityScoreDesktopAverage: {$avg: "$accessibilityScoreDesktop"},
+        bestPracticeScoreDesktopAverage: {$avg: "$bestPracticeScoreDesktop"},
+        seoScoreDesktopAverage: {$avg: "$seoScoreDesktop"},
+        pwaScoreDesktopAverage: {$avg: "$pwaScoreDesktop"},
+        performanceScoreMobileAverage: {$avg: "$performanceScoreMobile"},
+        accessibilityScoreMobileAverage: {$avg: "$accessibilityScoreMobile"},
+        bestPracticeScoreMobileAverage: {$avg: "$bestPracticeScoreMobile"},
+        seoScoreMobileAverage: {$avg: "$seoScoreMobile"},
+        pwaScoreMobileAverage: {$avg: "$pwaScoreMobile"}
+      }},
+      {$addFields: {
+        taskId: taskId
+      }}
+    ]).exec();
+    this.logger.debug(aggregationResult);
+    return aggregationResult.length > 0 ? aggregationResult[0] : null;
+  }
+  
   @Process()
   async taskExecutionUpdateScores(job: Job<Report>) {
     this.logger.debug('taskExecutionUpdateScores job recieved');

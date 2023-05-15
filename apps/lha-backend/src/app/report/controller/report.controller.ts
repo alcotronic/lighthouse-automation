@@ -5,7 +5,6 @@ import { JwtAuthenticationGuard } from '@lighthouse-automation/lha-backend/authe
 import { Role } from '@lighthouse-automation/lha-common';
 import { Roles } from '@lighthouse-automation/lha-backend/role-decorator';
 import { ReportService } from '../service/report.service';
-import { Public } from '@lighthouse-automation/lha-backend/authentication-decorator';
 
 @Controller('report')
 export class ReportController {
@@ -31,9 +30,7 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  //@Public()
   @Get('html/:reportId')
-  //@Header('Accept', 'text/html')
   @Header('Content-Type', 'text/html')
   async postConvertToHtml(@Param() params) {
     const report = await this.reportService.findById(params.reportId);
@@ -42,7 +39,6 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  //@Public()
   @Get('json/:reportId')
   @Header('Accept', 'application/json')
   @Header('Content-Type', 'application/json')
@@ -53,7 +49,6 @@ export class ReportController {
 
   @UseGuards(JwtAuthenticationGuard)
   @Roles(Role.User)
-  //@Public()
   @Get('csv/:reportId')
   @Header('Accept', 'application/csv')
   @Header('Content-Type', 'application/csv')

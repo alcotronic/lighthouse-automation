@@ -70,105 +70,60 @@ export class TaskService {
   async taskUpdateAverageScores(job: Job<TaskExecution>) {
     this.logger.debug('taskUpdateAverageScores job recieved');
 
-    const taskExecutions = await this.taskExecutionService.findByTaskId(
-      job.data.taskId
-    );
+    // let countDesktop = 0;
+    // let countMobile = 0;
 
-    let countDesktop = 0;
-    let performanceScoreDesktop = 0;
-    let accessibilityScoreDesktop = 0;
-    let bestPracticeScoreDesktop = 0;
-    let seoScoreDesktop = 0;
-    let pwaScoreDesktop = 0;
-
-    let countMobile = 0;
-    let performanceScoreMobile = 0;
-    let accessibilityScoreMobile = 0;
-    let bestPracticeScoreMobile = 0;
-    let seoScoreMobile = 0;
-    let pwaScoreMobile = 0;
-
-    taskExecutions.forEach((taskExecution: TaskExecution) => {
-      if (
-        taskExecution.performanceScoreDesktop &&
-        taskExecution.accessibilityScoreDesktop &&
-        taskExecution.bestPracticeScoreDesktop &&
-        taskExecution.seoScoreDesktop &&
-        taskExecution.pwaScoreDesktop
-      ) {
-        countDesktop = countDesktop + 1;
-        performanceScoreDesktop =
-          performanceScoreDesktop + taskExecution.performanceScoreDesktop;
-        accessibilityScoreDesktop =
-          accessibilityScoreDesktop + taskExecution.accessibilityScoreDesktop;
-        bestPracticeScoreDesktop =
-          bestPracticeScoreDesktop + taskExecution.bestPracticeScoreDesktop;
-        seoScoreDesktop = seoScoreDesktop + taskExecution.seoScoreDesktop;
-        pwaScoreDesktop =
-          pwaScoreDesktop + taskExecution.performanceScoreDesktop;
-      }
-      if (
-        taskExecution.performanceScoreMobile &&
-        taskExecution.accessibilityScoreMobile &&
-        taskExecution.bestPracticeScoreMobile &&
-        taskExecution.seoScoreMobile &&
-        taskExecution.pwaScoreMobile
-      ) {
-        countMobile = countMobile + 1;
-        performanceScoreMobile =
-          performanceScoreMobile + taskExecution.performanceScoreMobile;
-        accessibilityScoreMobile =
-          accessibilityScoreMobile + taskExecution.accessibilityScoreMobile;
-        bestPracticeScoreMobile =
-          bestPracticeScoreMobile + taskExecution.bestPracticeScoreMobile;
-        seoScoreMobile = seoScoreMobile + taskExecution.seoScoreMobile;
-        pwaScoreMobile = pwaScoreMobile + taskExecution.pwaScoreMobile;
-      }
-    });
-
-    performanceScoreDesktop = +(performanceScoreDesktop / countDesktop).toFixed(
-      2
-    );
-    accessibilityScoreDesktop = +(
-      accessibilityScoreDesktop / countDesktop
-    ).toFixed(2);
-    bestPracticeScoreDesktop = +(
-      bestPracticeScoreDesktop / countDesktop
-    ).toFixed(2);
-    seoScoreDesktop = +(seoScoreDesktop / countDesktop).toFixed(2);
-    pwaScoreDesktop = +(pwaScoreDesktop / countDesktop).toFixed(2);
-
-    performanceScoreMobile = +(performanceScoreMobile / countMobile).toFixed(2);
-    accessibilityScoreMobile = +(
-      accessibilityScoreMobile / countMobile
-    ).toFixed(2);
-    bestPracticeScoreMobile = +(bestPracticeScoreMobile / countMobile).toFixed(
-      2
-    );
-    seoScoreMobile = +(seoScoreMobile / countMobile).toFixed(2);
-    pwaScoreMobile = +(pwaScoreMobile / countMobile).toFixed(2);
+    const aggregationResult =
+      await this.taskExecutionService.aggregateAverageScoresByTaskId(
+        job.data.taskId
+      );
 
     await this.taskModel
       .updateOne(
         { _id: job.data.taskId },
         {
           $set: {
-            countDesktop: countDesktop,
-            performanceScoreDesktop: performanceScoreDesktop,
-            accessibilityScoreDesktop: accessibilityScoreDesktop,
-            bestPracticeScoreDesktop: bestPracticeScoreDesktop,
-            seoScoreDesktop: seoScoreDesktop,
-            pwaScoreDesktop: pwaScoreDesktop,
-            countMobile: countMobile,
-            performanceScoreMobile: performanceScoreMobile,
-            accessibilityScoreMobile: accessibilityScoreMobile,
-            bestPracticeScoreMobile: bestPracticeScoreMobile,
-            seoScoreMobile: seoScoreMobile,
-            pwaScoreMobile: pwaScoreMobile,
+            performanceScoreDesktop:
+              aggregationResult.performanceScoreDesktopAverage
+                ? aggregationResult.performanceScoreDesktopAverage.toFixed(2)
+                : null,
+            accessibilityScoreDesktop:
+              aggregationResult.accessibilityScoreDesktopAverage
+                ? aggregationResult.accessibilityScoreDesktopAverage.toFixed(2)
+                : null,
+            bestPracticeScoreDesktop:
+              aggregationResult.bestPracticeScoreDesktopAverage
+                ? aggregationResult.bestPracticeScoreDesktopAverage.toFixed(2)
+                : null,
+            seoScoreDesktop: aggregationResult.seoScoreDesktopAverage
+              ? aggregationResult.seoScoreDesktopAverage.toFixed(2)
+              : null,
+            pwaScoreDesktop: aggregationResult.pwaScoreDesktopAverage
+              ? aggregationResult.pwaScoreDesktopAverage.toFixed(2)
+              : null,
+            performanceScoreMobile:
+              aggregationResult.performanceScoreMobileAverage
+                ? aggregationResult.performanceScoreMobileAverage.toFixed(2)
+                : null,
+            accessibilityScoreMobile:
+              aggregationResult.accessibilityScoreMobileAverage
+                ? aggregationResult.accessibilityScoreMobileAverage.toFixed(2)
+                : null,
+            bestPracticeScoreMobile:
+              aggregationResult.bestPracticeScoreMobileAverage
+                ? aggregationResult.bestPracticeScoreMobileAverage.toFixed(2)
+                : null,
+            seoScoreMobile: aggregationResult.seoScoreMobileAverage
+              ? aggregationResult.seoScoreMobileAverage.toFixed(2)
+              : null,
+            pwaScoreMobile: aggregationResult.pwaScoreMobileAverage
+              ? aggregationResult.pwaScoreMobileAverage.toFixed(2)
+              : null,
           },
         }
       )
       .exec();
+
     this.logger.debug('taskUpdateAverageScores job finished');
   }
 }
