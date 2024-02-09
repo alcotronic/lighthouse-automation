@@ -10,11 +10,11 @@ import { AppService } from "./app.service";
 import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backend/authentication';
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
-import { TaskModule } from './task/task.module';
-import { ReportModule } from './report/report.module';
-import { TaskExecutionModule } from './task-execution/task-execution.module';
-import { QueueModule } from './queue/queue.module';
-import { RoleModule } from './role/role.module';
+import { LhaBackendRoleModule } from '@lighthouse-automation/lha-backend/role';
+import { LhaBackendQueueModule } from '@lighthouse-automation/lha-backend/queue';
+import { LhaBackendReportModule } from '@lighthouse-automation/lha-backend/report';
+import { LhaBackendTaskModule } from '@lighthouse-automation/lha-backend/task';
+import { LhaBackendTaskExecutionModule } from '@lighthouse-automation/lha-backend/task-execution';
 
 @Module({
   imports: [
@@ -55,11 +55,11 @@ import { RoleModule } from './role/role.module';
     LhaBackendAuthenticationModule,
     LhaBackendSetupModule,
     LhaBackendUserModule,
-    QueueModule,
-    ReportModule,
-    RoleModule,
-    TaskModule,
-    TaskExecutionModule
+    LhaBackendRoleModule,
+    LhaBackendQueueModule,
+    LhaBackendReportModule,
+    LhaBackendTaskModule,
+    LhaBackendTaskExecutionModule
   ],
   controllers: [AppController],
   providers: [AppService],

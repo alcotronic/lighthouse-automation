@@ -8,17 +8,17 @@ import { UserCreateDto, UserDocument } from '../schema/user';
 export class UserService {
   private readonly logger = new Logger(UserService.name);
 
-  constructor(@InjectModel('user') private userModel: Model<UserDocument>) {}
+  constructor(@InjectModel('User') private userModel: Model<UserDocument>) {}
 
   async create(userCreateDto: UserCreateDto) {
-    const user = new this.userModel({
+    const user = await this.userModel.create({
       username: userCreateDto.username,
       email: userCreateDto.email,
       password: await this.hashPassword(userCreateDto.password),
       roles: userCreateDto.roles,
       activated: userCreateDto.activated,
     });
-    return user.save();
+    return user;
   }
 
   async activate(id: string) {

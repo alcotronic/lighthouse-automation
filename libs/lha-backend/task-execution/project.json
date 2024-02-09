@@ -1,0 +1,41 @@
+{
+  "name": "lha-backend-task-execution",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/lha-backend/task-execution/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/lha-backend/task-execution",
+        "tsConfig": "libs/lha-backend/task-execution/tsconfig.lib.json",
+        "packageJson": "libs/lha-backend/task-execution/package.json",
+        "main": "libs/lha-backend/task-execution/src/index.ts",
+        "assets": ["libs/lha-backend/task-execution/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/lha-backend/task-execution/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/lha-backend/task-execution/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

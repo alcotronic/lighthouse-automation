@@ -24,6 +24,15 @@
       "@lighthouse-automation/lha-backend/authentication-guard": [
         "libs/lha-backend/authentication-guard/src/index.ts"
       ],
+      "@lighthouse-automation/lha-backend/queue": [
+        "libs/lha-backend/queue/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/report": [
+        "libs/lha-backend/report/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/role": [
+        "libs/lha-backend/role/src/index.ts"
+      ],
       "@lighthouse-automation/lha-backend/role-decorator": [
         "libs/lha-backend/role-decorator/src/index.ts"
       ],
@@ -32,6 +41,12 @@
       ],
       "@lighthouse-automation/lha-backend/setup": [
         "libs/lha-backend/setup/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/task": [
+        "libs/lha-backend/task/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/task-execution": [
+        "libs/lha-backend/task-execution/src/index.ts"
       ],
       "@lighthouse-automation/lha-backend/user": [
         "libs/lha-backend/user/src/index.ts"
