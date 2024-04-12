@@ -24,6 +24,12 @@
       "@lighthouse-automation/lha-backend/authentication-guard": [
         "libs/lha-backend/authentication-guard/src/index.ts"
       ],
+      "@lighthouse-automation/lha-backend/database-mongodb": [
+        "libs/lha-backend/database-mongodb/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/database-redis": [
+        "libs/lha-backend/database-redis/src/index.ts"
+      ],
       "@lighthouse-automation/lha-backend/queue": [
         "libs/lha-backend/queue/src/index.ts"
       ],
