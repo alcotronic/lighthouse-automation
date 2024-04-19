@@ -18,7 +18,7 @@ import { LhaFrontendFeatureTaskExecutionListModule } from '@lighthouse-automatio
     NgChartsModule,
     LhaFrontendFeatureTaskExecutionListModule,
   ],
-  declarations: [TaskComponent, TaskComponent],
+  declarations: [TaskComponent],
   exports: [TaskComponent],
 })
 export class LhaFrontendFeatureTaskModule {}

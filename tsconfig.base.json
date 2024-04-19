@@ -58,6 +58,9 @@
         "libs/lha-backend/user/src/index.ts"
       ],
       "@lighthouse-automation/lha-common": ["libs/lha-common/src/index.ts"],
+      "@lighthouse-automation/lha-frontend/data-access/account": [
+        "libs/lha-frontend/data-access/account/src/index.ts"
+      ],
       "@lighthouse-automation/lha-frontend/data-access/authentication": [
         "libs/lha-frontend/data-access/authentication/src/index.ts"
       ],
@@ -78,6 +81,12 @@
       ],
       "@lighthouse-automation/lha-frontend/data-access/task-execution": [
         "libs/lha-frontend/data-access/task-execution/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/account-routing": [
+        "libs/lha-frontend/feature/account-routing/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/account-settings": [
+        "libs/lha-frontend/feature/account-settings/src/index.ts"
       ],
       "@lighthouse-automation/lha-frontend/feature/login": [
         "libs/lha-frontend/feature/login/src/index.ts"
@@ -105,6 +114,9 @@
       ],
       "@lighthouse-automation/lha-frontend/feature/task-list": [
         "libs/lha-frontend/feature/task-list/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/task-routing": [
+        "libs/lha-frontend/feature/task-routing/src/index.ts"
       ],
       "@lighthouse-automation/lha-frontend/feature/toolbar": [
         "libs/lha-frontend/feature/toolbar/src/index.ts"
