@@ -1,0 +1,3712 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.2.2",
+  "deps": {
+    "@angular/animations": "~17.3.11",
+    "@angular/cdk": "^17.3.10",
+    "@angular/common": "~17.3.11",
+    "@angular/compiler": "~17.3.11",
+    "@angular/core": "~17.3.11",
+    "@angular/forms": "~17.3.11",
+    "@angular/material": "^17.3.10",
+    "@angular/platform-browser": "~17.3.11",
+    "@angular/platform-browser-dynamic": "~17.3.11",
+    "@angular/router": "~17.3.11",
+    "@angular/service-worker": "^17.3.11",
+    "@auth0/angular-jwt": "~5.2.0",
+    "@nestjs/bull": "~10.1.1",
+    "@nestjs/common": "~10.3.9",
+    "@nestjs/config": "~3.2.2",
+    "@nestjs/core": "~10.3.9",
+    "@nestjs/jwt": "~10.2.0",
+    "@nestjs/mongoose": "~10.0.6",
+    "@nestjs/passport": "~10.0.3",
+    "@nestjs/platform-express": "~10.3.9",
+    "@nestjs/schedule": "~4.0.2",
+    "@ngrx/component-store": "~17.2.0",
+    "@ngrx/effects": "~17.2.0",
+    "@ngrx/entity": "~17.2.0",
+    "@ngrx/router-store": "~17.2.0",
+    "@ngrx/store": "~17.2.0",
+    "argon2": "^0.40.3",
+    "axios": "~1.7.2",
+    "bull": "~4.12.9",
+    "chart.js": "^4.4.3",
+    "chrome-launcher": "^1.1.1",
+    "crypto-js": "~4.2.0",
+    "lighthouse": "~10.4.0",
+    "mongoose": "~8.4.1",
+    "ng2-charts": "~6.0.1",
+    "node-gzip": "~1.1.2",
+    "passport": "~0.7.0",
+    "passport-jwt": "~4.0.1",
+    "passport-local": "~1.0.0",
+    "redis": "~4.6.14",
+    "reflect-metadata": "~0.2.2",
+    "rxjs": "~7.8.1",
+    "tslib": "~2.6.3",
+    "zone.js": "~0.14.0",
+    "@angular-devkit/build-angular": "~17.3.8",
+    "@angular-devkit/core": "~17.3.8",
+    "@angular-devkit/schematics": "~17.3.8",
+    "@angular-eslint/eslint-plugin": "~17.5.2",
+    "@angular-eslint/eslint-plugin-template": "~17.5.2",
+    "@angular-eslint/template-parser": "~17.5.2",
+    "@angular/cli": "~18.0.3",
+    "@angular/compiler-cli": "~17.3.2",
+    "@angular/language-service": "~17.3.11",
+    "@nestjs/schematics": "~10.1.1",
+    "@nestjs/testing": "~10.3.9",
+    "@ngrx/schematics": "~17.2.0",
+    "@ngrx/store-devtools": "~17.2.0",
+    "@nx/angular": "19.2.2",
+    "@nx/cypress": "19.2.2",
+    "@nx/jest": "19.2.2",
+    "@nx/js": "19.2.2",
+    "@nx/linter": "19.2.2",
+    "@nx/nest": "19.2.2",
+    "@nx/node": "19.2.2",
+    "@nx/web": "19.2.2",
+    "@nx/webpack": "19.2.2",
+    "@nx/workspace": "19.2.2",
+    "@schematics/angular": "~17.3.8",
+    "@types/compression": "^1.7.2",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^29.5.12",
+    "@types/node": "~20.14.2",
+    "@typescript-eslint/eslint-plugin": "^7.12.0",
+    "@typescript-eslint/parser": "^7.12.0",
+    "eslint": "~8.57.0",
+    "eslint-config-prettier": "~8.10.0",
+    "eslint-plugin-cypress": "~3.3.0",
+    "jasmine-marbles": "~0.9.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-environment-node": "^29.7.0",
+    "jest-preset-angular": "~14.1.0",
+    "ng-packagr": "~17.3.0",
+    "nx": "19.2.2",
+    "postcss": "^8.4.5",
+    "postcss-import": "~14.1.0",
+    "postcss-preset-env": "~7.5.0",
+    "postcss-url": "~10.1.3",
+    "prettier": "^3.3.1",
+    "sonarqube-scanner": "^4.0.1",
+    "ts-jest": "^29.1.4",
+    "ts-node": "10.9.1",
+    "typescript": "~5.4.5"
+  },
+  "pathMappings": {
+    "@lighthouse-automation/lha-backend/authentication": [
+      "libs/lha-backend/authentication/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/authentication-decorator": [
+      "libs/lha-backend/authentication-decorator/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/authentication-guard": [
+      "libs/lha-backend/authentication-guard/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/queue": [
+      "libs/lha-backend/queue/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/report": [
+      "libs/lha-backend/report/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/role": [
+      "libs/lha-backend/role/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/role-decorator": [
+      "libs/lha-backend/role-decorator/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/role-guard": [
+      "libs/lha-backend/role-guard/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/setup": [
+      "libs/lha-backend/setup/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/task": [
+      "libs/lha-backend/task/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/task-execution": [
+      "libs/lha-backend/task-execution/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-backend/user": [
+      "libs/lha-backend/user/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-common": [
+      "libs/lha-common/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/authentication": [
+      "libs/lha-frontend/data-access/authentication/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/report": [
+      "libs/lha-frontend/data-access/report/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/role": [
+      "libs/lha-frontend/data-access/role/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/setup": [
+      "libs/lha-frontend/data-access/setup/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/status": [
+      "libs/lha-frontend/data-access/status/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/task": [
+      "libs/lha-frontend/data-access/task/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/data-access/task-execution": [
+      "libs/lha-frontend/data-access/task-execution/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/login": [
+      "libs/lha-frontend/feature/login/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/report": [
+      "libs/lha-frontend/feature/report/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/report-list": [
+      "libs/lha-frontend/feature/report-list/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/setup": [
+      "libs/lha-frontend/feature/setup/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/task": [
+      "libs/lha-frontend/feature/task/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/task-create": [
+      "libs/lha-frontend/feature/task-create/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/task-execution": [
+      "libs/lha-frontend/feature/task-execution/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/task-execution-list": [
+      "libs/lha-frontend/feature/task-execution-list/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/task-list": [
+      "libs/lha-frontend/feature/task-list/src/index.ts"
+    ],
+    "@lighthouse-automation/lha-frontend/feature/toolbar": [
+      "libs/lha-frontend/feature/toolbar/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "7689900703147105886"
+      },
+      {
+        "file": "dependencies.json",
+        "hash": "1592637998931848246"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": "package.json",
+        "hash": "12579238738954581174"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "10462144751405245587"
+      },
+      {
+        "file": "lighthouse-automation.drawio",
+        "hash": "14193127508556237234"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "14728777609589255296"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "1659929058009100827"
+      },
+      {
+        "file": "apps/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "7802157708855097177"
+      },
+      {
+        "file": "libs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "README.md",
+        "hash": "11557465909991822939"
+      },
+      {
+        "file": "nx.json",
+        "hash": "12035688093874962611"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "6601938978209669085"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "7848693104264504795"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "5586081340879290494"
+      },
+      {
+        "file": "nx-graph.png",
+        "hash": "17538802113359267167"
+      },
+      {
+        "file": "nx-graph-frontend.png",
+        "hash": "17185750128060016021"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "14185186971414172550"
+      },
+      {
+        "file": "nx-graph-backend.png",
+        "hash": "3275371084483479771"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      }
+    ],
+    "projectFileMap": {
+      "lha-backend-authentication-guard": [
+        {
+          "file": "libs/lha-backend/authentication-guard/.eslintrc.json",
+          "hash": "3429289412041659654"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/README.md",
+          "hash": "16771588454784699098"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/jest.config.ts",
+          "hash": "13007822248580038636"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/ng-package.json",
+          "hash": "6830026116040053445"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/package.json",
+          "hash": "13420005012237236883",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/project.json",
+          "hash": "13144614819309049015"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/src/index.ts",
+          "hash": "14738698170857472408"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/src/lib/guard/jwt-authentication.guard.spec.ts",
+          "hash": "9671845978716616669",
+          "deps": [
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/src/lib/guard/jwt-authentication.guard.ts",
+          "hash": "14434650475905624832",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:@nestjs/passport",
+            "lha-backend-authentication-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/src/lib/guard/local-authentication.guard.spec.ts",
+          "hash": "15398809708880710157",
+          "deps": [
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/src/lib/guard/local-authentication.guard.ts",
+          "hash": "3115912875383924879",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:@nestjs/passport",
+            "lha-backend-authentication-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/tsconfig.json",
+          "hash": "8526453262384300416"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/tsconfig.lib.json",
+          "hash": "6020606002228403423"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-backend/authentication-guard/tsconfig.spec.json",
+          "hash": "7159729809249402441"
+        }
+      ],
+      "lha-backend-report": [
+        {
+          "file": "libs/lha-backend/report/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/report/README.md",
+          "hash": "7414565654158836225"
+        },
+        {
+          "file": "libs/lha-backend/report/jest.config.ts",
+          "hash": "13983934792194403628"
+        },
+        {
+          "file": "libs/lha-backend/report/package.json",
+          "hash": "16564777829094615380"
+        },
+        {
+          "file": "libs/lha-backend/report/project.json",
+          "hash": "6436737066760905426"
+        },
+        {
+          "file": "libs/lha-backend/report/src/index.ts",
+          "hash": "8093122532722666639"
+        },
+        {
+          "file": "libs/lha-backend/report/src/lib/controller/report.controller.ts",
+          "hash": "16753873301524201356",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-guard",
+            "lha-common",
+            "lha-backend-role-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/report/src/lib/lha-backend-report.module.ts",
+          "hash": "13599537003080601894",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bull",
+            "npm:@nestjs/mongoose",
+            "lha-backend-queue",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/report/src/lib/schema/report-queue.dto.ts",
+          "hash": "4133260435125278663"
+        },
+        {
+          "file": "libs/lha-backend/report/src/lib/schema/report.ts",
+          "hash": "4710242953099893362",
+          "deps": [
+            "npm:@nestjs/mongoose",
+            "npm:mongoose",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/report/src/lib/service/report.service.ts",
+          "hash": "14039690537097254607",
+          "deps": [
+            "npm:@nestjs/bull",
+            "npm:@nestjs/common",
+            "npm:@nestjs/mongoose",
+            "npm:bull",
+            "npm:mongoose",
+            "npm:node-gzip",
+            "npm:lighthouse",
+            "lha-backend-queue",
+            "lha-common",
+            [
+              "npm:chrome-launcher",
+              "dynamic"
+            ],
+            [
+              "npm:lighthouse",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "libs/lha-backend/report/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/report/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/report/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-backend-task": [
+        {
+          "file": "libs/lha-backend/task/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/task/README.md",
+          "hash": "7864433254409983677"
+        },
+        {
+          "file": "libs/lha-backend/task/jest.config.ts",
+          "hash": "9283022593553279877"
+        },
+        {
+          "file": "libs/lha-backend/task/package.json",
+          "hash": "3411298895138777961"
+        },
+        {
+          "file": "libs/lha-backend/task/project.json",
+          "hash": "10862870814286036731"
+        },
+        {
+          "file": "libs/lha-backend/task/src/index.ts",
+          "hash": "15462511752089116572"
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/controller/task.controller.ts",
+          "hash": "2098359755116542714",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-guard",
+            "lha-common",
+            "lha-backend-role-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/interceptor/task.interceptor.spec.ts",
+          "hash": "15904070688881887603"
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/interceptor/task.interceptor.ts",
+          "hash": "16370403927387635399",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:rxjs",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/lha-backend-task.module.ts",
+          "hash": "6596623077177340807",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bull",
+            "npm:@nestjs/mongoose",
+            "lha-backend-queue",
+            "lha-backend-report",
+            "lha-backend-task-execution",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/schema/task.ts",
+          "hash": "9773175726973626587",
+          "deps": [
+            "npm:@nestjs/mongoose",
+            "npm:mongoose",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/service/task-scheduler.service.ts",
+          "hash": "13138402750752516190",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/schedule",
+            "lha-backend-queue",
+            "lha-backend-task-execution",
+            "lha-backend-report",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task/src/lib/service/task.service.ts",
+          "hash": "2311483984341268936",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/mongoose",
+            "npm:@nestjs/bull",
+            "npm:mongoose",
+            "npm:bull",
+            "lha-common",
+            "lha-backend-task-execution"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/task/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/task/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-backend-role-guard": [
+        {
+          "file": "libs/lha-backend/role-guard/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/README.md",
+          "hash": "17938394551310818893"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/jest.config.ts",
+          "hash": "8102405225105253018"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/package.json",
+          "hash": "6167793849194853109"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/project.json",
+          "hash": "1033869108645781209"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/src/index.ts",
+          "hash": "3247580858937010693"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/src/lib/guard/roles.guard.ts",
+          "hash": "14181212456052899374",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "lha-backend-user",
+            "lha-common",
+            "lha-backend-role-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/role-guard/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/role-guard/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-backend": [
+        {
+          "file": "apps/lha-backend/.development.env",
+          "hash": "8691217126387979962"
+        },
+        {
+          "file": "apps/lha-backend/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "apps/lha-backend/jest.config.ts",
+          "hash": "10526727042619309807"
+        },
+        {
+          "file": "apps/lha-backend/project.json",
+          "hash": "15339243308125081044"
+        },
+        {
+          "file": "apps/lha-backend/src/app/app.controller.spec.ts",
+          "hash": "15890383662527515358",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/lha-backend/src/app/app.controller.ts",
+          "hash": "5028866849318320322",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-decorator",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "apps/lha-backend/src/app/app.module.ts",
+          "hash": "4065643483341216610",
+          "deps": [
+            "npm:@nestjs/bull",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/mongoose",
+            "npm:@nestjs/jwt",
+            "npm:@nestjs/schedule",
+            "lha-backend-authentication",
+            "lha-backend-user",
+            "lha-backend-setup",
+            "lha-backend-role",
+            "lha-backend-queue",
+            "lha-backend-report",
+            "lha-backend-task",
+            "lha-backend-task-execution"
+          ]
+        },
+        {
+          "file": "apps/lha-backend/src/app/app.service.spec.ts",
+          "hash": "17771085548004369267",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/lha-backend/src/app/app.service.ts",
+          "hash": "9618193413556757154",
+          "deps": [
+            "lha-backend-user",
+            "lha-common",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/lha-backend/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lha-backend/src/main.ts",
+          "hash": "6283911717887529749",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:compression"
+          ]
+        },
+        {
+          "file": "apps/lha-backend/src/types/report-generator.d.cts",
+          "hash": "703214344480824858"
+        },
+        {
+          "file": "apps/lha-backend/tsconfig.app.json",
+          "hash": "18146536384686769023"
+        },
+        {
+          "file": "apps/lha-backend/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "apps/lha-backend/tsconfig.spec.json",
+          "hash": "11550347367511341917"
+        },
+        {
+          "file": "apps/lha-backend/webpack.config.js",
+          "hash": "13914077851661128834",
+          "deps": [
+            "npm:@nrwl/webpack"
+          ]
+        }
+      ],
+      "lha-backend-queue": [
+        {
+          "file": "libs/lha-backend/queue/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/queue/README.md",
+          "hash": "2880963821816424981"
+        },
+        {
+          "file": "libs/lha-backend/queue/jest.config.ts",
+          "hash": "3342061808183802735"
+        },
+        {
+          "file": "libs/lha-backend/queue/package.json",
+          "hash": "875332512495736541"
+        },
+        {
+          "file": "libs/lha-backend/queue/project.json",
+          "hash": "4018604365213609861"
+        },
+        {
+          "file": "libs/lha-backend/queue/src/index.ts",
+          "hash": "1906538283056278926"
+        },
+        {
+          "file": "libs/lha-backend/queue/src/lib/lha-backend-queue.module.ts",
+          "hash": "17718439956883343719",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bull"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/queue/src/lib/service/queue.service.ts",
+          "hash": "4877357012551470716",
+          "deps": [
+            "npm:@nestjs/bull",
+            "npm:@nestjs/common",
+            "npm:bull",
+            "lha-backend-report",
+            "lha-backend-task-execution"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/queue/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/queue/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/queue/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-frontend-feature-task": [
+        {
+          "file": "libs/lha-frontend/feature/task/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/README.md",
+          "hash": "3709323560970989255"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/jest.config.ts",
+          "hash": "12480717659228952514"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/ng-package.json",
+          "hash": "16204150326893606500"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/package.json",
+          "hash": "16764283992007627057",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/project.json",
+          "hash": "12869376554846107861"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/index.ts",
+          "hash": "5686818866738893270"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/lib/lha-frontend-feature-task.module.ts",
+          "hash": "15092624870293692051",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "npm:ng2-charts",
+            "lha-frontend-feature-task-execution-list"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/lib/task/task.component.html",
+          "hash": "7989361789696815339"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/lib/task/task.component.scss",
+          "hash": "6568486365237407361"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/lib/task/task.component.spec.ts",
+          "hash": "6717954976712606276",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/lib/task/task.component.ts",
+          "hash": "17503777749778081967",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-common",
+            "lha-frontend-data-access-task",
+            "lha-frontend-data-access-task-execution",
+            "npm:chart.js",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend": [
+        {
+          "file": "apps/lha-frontend/.eslintrc.json",
+          "hash": "2065582663734266737"
+        },
+        {
+          "file": "apps/lha-frontend/jest.config.ts",
+          "hash": "8962028795290355656"
+        },
+        {
+          "file": "apps/lha-frontend/project.json",
+          "hash": "10765333981375523430"
+        },
+        {
+          "file": "apps/lha-frontend/proxy.conf.json",
+          "hash": "11281046345527164812"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-routing.module.ts",
+          "hash": "13345112444874012831",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-settings/account-settings.component.html",
+          "hash": "14542908799624562821"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-settings/account-settings.component.scss",
+          "hash": "8436568617387151094"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-settings/account-settings.component.spec.ts",
+          "hash": "17865111038620800671",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-settings/account-settings.component.ts",
+          "hash": "4204533694563537839",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:crypto-js"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-toolbar/account-toolbar.component.html",
+          "hash": "7787468574234524064"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-toolbar/account-toolbar.component.scss",
+          "hash": "17208095287681378925"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-toolbar/account-toolbar.component.ts",
+          "hash": "12101719396521967614",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-data-access-role"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account-toolbar/account-toolbar.module.ts",
+          "hash": "14143252504931931581",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router",
+            "lha-frontend-data-access-role"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account.component.html",
+          "hash": "17786156363353058366"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account.component.ts",
+          "hash": "17374111614363368934",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account.module.ts",
+          "hash": "18313984578239215050",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account.service.spec.ts",
+          "hash": "1344248729333947667",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/account/account.service.ts",
+          "hash": "10613066194270404539",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin-routing.module.ts",
+          "hash": "3198825361847729459",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin-toolbar/admin-toolbar.component.html",
+          "hash": "16458819559484716636"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin-toolbar/admin-toolbar.component.scss",
+          "hash": "17208095287681378925"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin-toolbar/admin-toolbar.component.spec.ts",
+          "hash": "17694659627401557239",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin-toolbar/admin-toolbar.component.ts",
+          "hash": "242821780953932252",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-frontend-data-access-authentication"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin.component.html",
+          "hash": "11992042687126291342"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin.component.ts",
+          "hash": "13078530250883332635",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/admin.module.ts",
+          "hash": "58200344124316077",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/dashboard/dashboard.component.html",
+          "hash": "18187615241484924179"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/dashboard/dashboard.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/dashboard/dashboard.component.ts",
+          "hash": "8395914548135510797",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/dashboard/dashboard.module.ts",
+          "hash": "14439954177646196011",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/dashboard/dashboard.service.spec.ts",
+          "hash": "10775657250365417946",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/dashboard/dashboard.service.ts",
+          "hash": "3228093586956269180",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user-create/user-create.component.html",
+          "hash": "12534850495014294101"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user-create/user-create.component.scss",
+          "hash": "5047355031009276301"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user-create/user-create.component.ts",
+          "hash": "10959884670152451098",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:crypto-js"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user-list/user-list.component.html",
+          "hash": "12966773062910123547"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user-list/user-list.component.scss",
+          "hash": "17035159731338305320"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user-list/user-list.component.ts",
+          "hash": "1020939542990080850",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user/role.enum.ts",
+          "hash": "13237072824107411820"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/admin/user/user.service.ts",
+          "hash": "7181441396942034472",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/app-routing.module.ts",
+          "hash": "6397422975668737111",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-frontend-feature-login",
+            "lha-frontend-feature-setup"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/app.component.html",
+          "hash": "17751646406629306965"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lha-frontend/src/app/app.component.spec.ts",
+          "hash": "3079505694799225134",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/app.component.ts",
+          "hash": "374074263403616084",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:rxjs",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-data-access-status",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/app.module.ts",
+          "hash": "16749970157182797141",
+          "deps": [
+            "npm:@angular/platform-browser",
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@auth0/angular-jwt",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-data-access-status",
+            "lha-frontend-data-access-role",
+            "lha-frontend-feature-login",
+            "lha-frontend-feature-setup",
+            "lha-frontend-feature-toolbar",
+            "lha-frontend-data-access-task",
+            "lha-frontend-data-access-task-execution",
+            "lha-frontend-data-access-report",
+            "npm:@ngrx/store",
+            "npm:@ngrx/store-devtools",
+            "npm:@ngrx/effects"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/auth/auth.guard.ts",
+          "hash": "594806187449070683",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:@auth0/angular-jwt",
+            "lha-frontend-data-access-authentication",
+            "npm:rxjs",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/auth/auth.module.ts",
+          "hash": "10392100603286846002",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-data-access-role"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/material-import/material-import.module.ts",
+          "hash": "7519770434702401951",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/task/task-routing.module.ts",
+          "hash": "5485320942190569166",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-frontend-feature-task",
+            "lha-frontend-feature-task-create",
+            "lha-frontend-feature-task-list",
+            "lha-frontend-feature-task-execution"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/app/task/task.module.ts",
+          "hash": "17104500232392133743",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lha-frontend/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/lha-frontend/src/index.html",
+          "hash": "14703466529994657371"
+        },
+        {
+          "file": "apps/lha-frontend/src/main.ts",
+          "hash": "3259059517603285449",
+          "deps": [
+            "npm:@angular/platform-browser-dynamic"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/styles.scss",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "apps/lha-frontend/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend/src/theme.scss",
+          "hash": "2362132665310341192"
+        },
+        {
+          "file": "apps/lha-frontend/tsconfig.app.json",
+          "hash": "8365644956319658761"
+        },
+        {
+          "file": "apps/lha-frontend/tsconfig.editor.json",
+          "hash": "17511610827034788226"
+        },
+        {
+          "file": "apps/lha-frontend/tsconfig.json",
+          "hash": "12094030803572703611"
+        },
+        {
+          "file": "apps/lha-frontend/tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
+      ],
+      "lha-frontend-feature-toolbar": [
+        {
+          "file": "libs/lha-frontend/feature/toolbar/.eslintrc.json",
+          "hash": "2496106064698719163"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/README.md",
+          "hash": "8788931747660638825"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/jest.config.ts",
+          "hash": "16944483078872688227"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/ng-package.json",
+          "hash": "2315376153745106179"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/package.json",
+          "hash": "6008349813822877283",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/project.json",
+          "hash": "12091928232784735395"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/src/index.ts",
+          "hash": "7286993723091733699"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/src/lib/lha-frontend-feature-toolbar.module.ts",
+          "hash": "5060311964695490150",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router",
+            "npm:@angular/material",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-data-access-role"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/src/lib/toolbar/toolbar.component.html",
+          "hash": "17260764122488469538"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/src/lib/toolbar/toolbar.component.scss",
+          "hash": "17208095287681378925"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/src/lib/toolbar/toolbar.component.ts",
+          "hash": "7846934834591760048",
+          "deps": [
+            "npm:@angular/core",
+            "lha-common",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-data-access-role",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/toolbar/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-backend-authentication-decorator": [
+        {
+          "file": "libs/lha-backend/authentication-decorator/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/README.md",
+          "hash": "14219721838178382815"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/jest.config.ts",
+          "hash": "11159228404624349709"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/package.json",
+          "hash": "2753558220683873565"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/project.json",
+          "hash": "11008343044194146155"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/src/index.ts",
+          "hash": "380551239535158272"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/src/lib/decorator/public.decorator.ts",
+          "hash": "9728809504073147637",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/authentication-decorator/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-frontend-feature-task-list": [
+        {
+          "file": "libs/lha-frontend/feature/task-list/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/README.md",
+          "hash": "12142740210282865758"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/jest.config.ts",
+          "hash": "9483428455812299507"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/ng-package.json",
+          "hash": "1312664497474110038"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/package.json",
+          "hash": "11868356981346817585",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/project.json",
+          "hash": "7593556917522441751"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/index.ts",
+          "hash": "15775631650493274656"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/lib/lha-frontend-feature-task-list.module.ts",
+          "hash": "1438018625807625144",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/lib/task-list/task-list.component.html",
+          "hash": "9950286286764856870"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/lib/task-list/task-list.component.scss",
+          "hash": "4744589820128842638"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/lib/task-list/task-list.component.spec.ts",
+          "hash": "16959595176273105521",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/lib/task-list/task-list.component.ts",
+          "hash": "14250616679622053358",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-common",
+            "lha-frontend-data-access-task",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-list/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-data-access-status": [
+        {
+          "file": "libs/lha-frontend/data-access/status/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/README.md",
+          "hash": "8266156070597017993"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/jest.config.ts",
+          "hash": "1127659254464305092"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/ng-package.json",
+          "hash": "17631026299145134385"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/package.json",
+          "hash": "1155310145600970897",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/project.json",
+          "hash": "14746345649263284268"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/src/index.ts",
+          "hash": "13182320357678343042"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/src/lib/lha-frontend-data-access-status.module.ts",
+          "hash": "6304010023706573321",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/src/lib/service/status.service.spec.ts",
+          "hash": "10389414736996236617",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/src/lib/service/status.service.ts",
+          "hash": "9588333896332760039",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/status/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-feature-report-list": [
+        {
+          "file": "libs/lha-frontend/feature/report-list/.eslintrc.json",
+          "hash": "3955114804113054644"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/README.md",
+          "hash": "15081779609271462758"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/jest.config.ts",
+          "hash": "8021039588232331933"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/ng-package.json",
+          "hash": "16128363612936999423"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/package.json",
+          "hash": "4788197593764334059",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/project.json",
+          "hash": "18679665276603097"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/src/index.ts",
+          "hash": "12049758811748826952"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/src/lib/lha-frontend-feature-report-list.module.ts",
+          "hash": "14224829405213164423",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "lha-frontend-feature-report"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/src/lib/report-list/report-list.component.html",
+          "hash": "9665626102881122898"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/src/lib/report-list/report-list.component.scss",
+          "hash": "14496520919529009167"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/src/lib/report-list/report-list.component.ts",
+          "hash": "2236170544249794906",
+          "deps": [
+            "npm:@angular/core",
+            "lha-common",
+            "lha-frontend-data-access-report"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report-list/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-backend-task-execution": [
+        {
+          "file": "libs/lha-backend/task-execution/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/README.md",
+          "hash": "9991778718503926790"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/jest.config.ts",
+          "hash": "62048886787924031"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/package.json",
+          "hash": "7563473737150710718"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/project.json",
+          "hash": "18130224073225486908"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/index.ts",
+          "hash": "17582946409891792655"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/controller/task-execution.controller.ts",
+          "hash": "15111991844494598781",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-guard",
+            "lha-common",
+            "lha-backend-role-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/interceptor/task-execution.interceptor.spec.ts",
+          "hash": "9675721092861847858"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/interceptor/task-execution.interceptor.ts",
+          "hash": "15749740640635484598",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:rxjs",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/lha-backend-task-execution.module.ts",
+          "hash": "12840532809495208025",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bull",
+            "npm:@nestjs/mongoose",
+            "lha-backend-report",
+            "lha-backend-queue",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/schema/task-execution-scores.ts",
+          "hash": "6388110377639395848"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/schema/task-execution.ts",
+          "hash": "14580033115138340719",
+          "deps": [
+            "npm:@nestjs/mongoose",
+            "npm:mongoose"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task-execution/src/lib/service/task-execution.service.ts",
+          "hash": "11595928139524821038",
+          "deps": [
+            "npm:@nestjs/bull",
+            "npm:@nestjs/common",
+            "npm:@nestjs/mongoose",
+            "npm:bull",
+            "npm:mongoose",
+            "lha-backend-report",
+            "lha-backend-task",
+            "lha-backend-queue",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/task-execution/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/task-execution/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-backend-setup": [
+        {
+          "file": "libs/lha-backend/setup/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/setup/README.md",
+          "hash": "15467215486050125940"
+        },
+        {
+          "file": "libs/lha-backend/setup/jest.config.ts",
+          "hash": "12818289714289930277"
+        },
+        {
+          "file": "libs/lha-backend/setup/package.json",
+          "hash": "3368502319667892438"
+        },
+        {
+          "file": "libs/lha-backend/setup/project.json",
+          "hash": "713013525816126153"
+        },
+        {
+          "file": "libs/lha-backend/setup/src/index.ts",
+          "hash": "13373340908366794951"
+        },
+        {
+          "file": "libs/lha-backend/setup/src/lib/controller/setup.controller.spec.ts",
+          "hash": "4686859147923849555",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/setup/src/lib/controller/setup.controller.ts",
+          "hash": "11949374170946007495",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-decorator",
+            "lha-common",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/setup/src/lib/lha-backend-setup.module.ts",
+          "hash": "178777001069403020",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/setup/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/setup/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/setup/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-frontend-e2e": [
+        {
+          "file": "apps/lha-frontend-e2e/.eslintrc.json",
+          "hash": "14060216369337943343"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/cypress.config.ts",
+          "hash": "212614215478757206",
+          "deps": [
+            "npm:@nrwl/cypress"
+          ]
+        },
+        {
+          "file": "apps/lha-frontend-e2e/project.json",
+          "hash": "14779527413513374728"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/src/e2e/app.cy.ts",
+          "hash": "11992927484077419025"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/src/fixtures/example.json",
+          "hash": "11614668686582597233"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/src/support/commands.ts",
+          "hash": "7314691991044890572"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/src/support/e2e.ts",
+          "hash": "3666078656922506009"
+        },
+        {
+          "file": "apps/lha-frontend-e2e/tsconfig.json",
+          "hash": "15439127571515986436"
+        }
+      ],
+      "lha-frontend-data-access-authentication": [
+        {
+          "file": "libs/lha-frontend/data-access/authentication/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/README.md",
+          "hash": "13803394452477509406"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/jest.config.ts",
+          "hash": "7097736605194914174"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/ng-package.json",
+          "hash": "314875503145115236"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/package.json",
+          "hash": "15620664697561315340",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/project.json",
+          "hash": "1957086900873940867"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/index.ts",
+          "hash": "12276864781042834178"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.actions.ts",
+          "hash": "12043096510206690600",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.effects.spec.ts",
+          "hash": "12726588954949529667",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:jasmine-marbles",
+            "npm:rxjs",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.effects.ts",
+          "hash": "6538406955434061478",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:rxjs",
+            "lha-frontend-data-access-role",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.facade.spec.ts",
+          "hash": "11468568216987499421",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:@nrwl/angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.facade.ts",
+          "hash": "16998414187198496895",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.reducer.spec.ts",
+          "hash": "1707636319995103271",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.reducer.ts",
+          "hash": "9440034178488294416",
+          "deps": [
+            "npm:@ngrx/entity",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.selectors.spec.ts",
+          "hash": "14862186586944917123"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/+state/authentication.selectors.ts",
+          "hash": "5075205969541195761",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/authentication.models.ts",
+          "hash": "16154362867050939636"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/lha-frontend-data-access-authentication.module.ts",
+          "hash": "10611721209219014839",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@ngrx/store",
+            "npm:@ngrx/effects"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/service/authentication.service.spec.ts",
+          "hash": "5962361908532524601",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/lib/service/authentication.service.ts",
+          "hash": "927539387395244332",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@auth0/angular-jwt",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/authentication/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-feature-report": [
+        {
+          "file": "libs/lha-frontend/feature/report/.eslintrc.json",
+          "hash": "3955114804113054644"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/README.md",
+          "hash": "2125358812852724898"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/jest.config.ts",
+          "hash": "5212576948735999223"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/ng-package.json",
+          "hash": "1496817290714376859"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/package.json",
+          "hash": "10995609826744403038",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/project.json",
+          "hash": "7441828577859026485"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/src/index.ts",
+          "hash": "12628222931848116929"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/src/lib/lha-frontend-feature-report.module.ts",
+          "hash": "11242069309688074365",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/src/lib/report/report.component.html",
+          "hash": "13187033731897882224"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/src/lib/report/report.component.scss",
+          "hash": "17786219197969163353"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/src/lib/report/report.component.ts",
+          "hash": "11765667508977644674",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "lha-common",
+            "lha-frontend-data-access-report"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/report/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-data-access-role": [
+        {
+          "file": "libs/lha-frontend/data-access/role/.eslintrc.json",
+          "hash": "10121964699034793676"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/README.md",
+          "hash": "15545428721399785154"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/jest.config.ts",
+          "hash": "1098939047016316556"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/ng-package.json",
+          "hash": "14552884135300783591"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/package.json",
+          "hash": "13386165093800315473",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/project.json",
+          "hash": "4156311702813798114"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/index.ts",
+          "hash": "1221878261652836706"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.actions.ts",
+          "hash": "1138530635216817097",
+          "deps": [
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.effects.spec.ts",
+          "hash": "12622011979578466978",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:jasmine-marbles",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.effects.ts",
+          "hash": "10272992447390045822",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:rxjs",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.facade.spec.ts",
+          "hash": "71096183207605423",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:@nrwl/angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.facade.ts",
+          "hash": "9934432237323786231",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.reducer.spec.ts",
+          "hash": "8626660577372030293",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.reducer.ts",
+          "hash": "16467845741792701900",
+          "deps": [
+            "npm:@ngrx/entity",
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.selectors.spec.ts",
+          "hash": "17576613441361576375"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/+state/role.selectors.ts",
+          "hash": "8842496207198495256",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/lha-frontend-data-access-role.module.ts",
+          "hash": "12104435905473622726",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@ngrx/store",
+            "npm:@ngrx/effects"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/service/role.service.spec.ts",
+          "hash": "10994860293027470001",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/lib/service/role.service.ts",
+          "hash": "12723478464575925255",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "lha-common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/role/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-feature-task-create": [
+        {
+          "file": "libs/lha-frontend/feature/task-create/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/README.md",
+          "hash": "3727551647310051051"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/jest.config.ts",
+          "hash": "6307943078495768469"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/ng-package.json",
+          "hash": "14249537140245877672"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/package.json",
+          "hash": "4362526171764541403",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/project.json",
+          "hash": "1852758044097939017"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/index.ts",
+          "hash": "13325796206113464420"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/lib/lha-frontend-feature-task-create.module.ts",
+          "hash": "4933162064423511121",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "lha-frontend-data-access-task"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/lib/task-create/task-create.component.html",
+          "hash": "5217178142926992638"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/lib/task-create/task-create.component.scss",
+          "hash": "8060028865818557856"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/lib/task-create/task-create.component.spec.ts",
+          "hash": "10228199844981047680",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/lib/task-create/task-create.component.ts",
+          "hash": "12090788360647703454",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "lha-frontend-data-access-task",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-create/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-data-access-report": [
+        {
+          "file": "libs/lha-frontend/data-access/report/.eslintrc.json",
+          "hash": "10121964699034793676"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/README.md",
+          "hash": "14889925609612420672"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/jest.config.ts",
+          "hash": "18365448418336822618"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/ng-package.json",
+          "hash": "12458615449785665547"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/package.json",
+          "hash": "4285768718004113889",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/project.json",
+          "hash": "17073693807557569845"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/src/index.ts",
+          "hash": "3257533262303370562"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/src/lib/lha-frontend-data-access-report.module.ts",
+          "hash": "3476976919386998404",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/src/lib/service/report.service.spec.ts",
+          "hash": "1003997221491002257",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/src/lib/service/report.service.ts",
+          "hash": "14719381868760737649",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "lha-common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/report/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-feature-setup": [
+        {
+          "file": "libs/lha-frontend/feature/setup/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/README.md",
+          "hash": "3550494416483474465"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/jest.config.ts",
+          "hash": "11351874920793837810"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/ng-package.json",
+          "hash": "17904826273941197154"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/package.json",
+          "hash": "15960068456297007192",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/project.json",
+          "hash": "15872796254871569749"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/src/index.ts",
+          "hash": "6637464633466610113"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/src/lib/lha-frontend-feature-setup.module.ts",
+          "hash": "10412350067211930830",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "lha-frontend-data-access-setup"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/src/lib/setup/setup.component.html",
+          "hash": "10494209426240157951"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/src/lib/setup/setup.component.scss",
+          "hash": "11331000805969127387"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/src/lib/setup/setup.component.ts",
+          "hash": "1839379571127935351",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:crypto-js",
+            "lha-frontend-data-access-setup"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/setup/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-feature-task-execution": [
+        {
+          "file": "libs/lha-frontend/feature/task-execution/.eslintrc.json",
+          "hash": "3955114804113054644"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/README.md",
+          "hash": "11992526015891902841"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/jest.config.ts",
+          "hash": "7867201807350050364"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/ng-package.json",
+          "hash": "9557908663357479957"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/package.json",
+          "hash": "2118519328106238631",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/project.json",
+          "hash": "10433682734067433229"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/src/index.ts",
+          "hash": "8559368432277876635"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/src/lib/lha-frontend-feature-task-execution.module.ts",
+          "hash": "5323709033935313638",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "lha-frontend-feature-report-list"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/src/lib/task-execution/task-execution.component.html",
+          "hash": "12839234454657108823"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/src/lib/task-execution/task-execution.component.scss",
+          "hash": "775530433872502991"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/src/lib/task-execution/task-execution.component.ts",
+          "hash": "13906782078289031462",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-common",
+            "lha-frontend-data-access-task",
+            "lha-frontend-data-access-task-execution",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-backend-authentication": [
+        {
+          "file": "libs/lha-backend/authentication/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/authentication/README.md",
+          "hash": "1763621902859067922"
+        },
+        {
+          "file": "libs/lha-backend/authentication/jest.config.ts",
+          "hash": "13645509331850758107"
+        },
+        {
+          "file": "libs/lha-backend/authentication/package.json",
+          "hash": "9778129854836080176"
+        },
+        {
+          "file": "libs/lha-backend/authentication/project.json",
+          "hash": "12854281238868365917"
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/index.ts",
+          "hash": "3940114530768251543"
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/controller/authentication.controller.spec.ts",
+          "hash": "17287418888832174212",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/controller/authentication.controller.ts",
+          "hash": "1370955299665185674",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-decorator",
+            "npm:@nestjs/passport",
+            "lha-backend-authentication-guard",
+            "lha-common",
+            "lha-backend-role-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/lha-backend-authentication.module.ts",
+          "hash": "5267750681011138891",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/passport",
+            "npm:@nestjs/jwt",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/service/authentication.service.spec.ts",
+          "hash": "17324562580654408369",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/service/authentication.service.ts",
+          "hash": "7813018459128576733",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/jwt",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/strategy/jwt.strategy.ts",
+          "hash": "11766813160604984335",
+          "deps": [
+            "npm:passport-jwt",
+            "npm:@nestjs/passport",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/src/lib/strategy/local.strategy.ts",
+          "hash": "5116798086747609927",
+          "deps": [
+            "npm:passport-local",
+            "npm:@nestjs/passport",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/authentication/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/authentication/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/authentication/tsconfig.spec.json",
+          "hash": "7446854267090912018"
+        }
+      ],
+      "lha-frontend-feature-login": [
+        {
+          "file": "libs/lha-frontend/feature/login/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/README.md",
+          "hash": "8432787928101097111"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/jest.config.ts",
+          "hash": "11838821405259225653"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/ng-package.json",
+          "hash": "4359887806973491215"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/package.json",
+          "hash": "3918378629756391118",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/project.json",
+          "hash": "13278112971811216004"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/src/index.ts",
+          "hash": "3293366111939711529"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/src/lib/lha-frontend-feature-login.module.ts",
+          "hash": "9012928056915624915",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "lha-frontend-data-access-authentication",
+            "lha-frontend-feature-toolbar"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/src/lib/login/login.component.html",
+          "hash": "14876692735457830059"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/src/lib/login/login.component.scss",
+          "hash": "4629011276167642960"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/src/lib/login/login.component.ts",
+          "hash": "14002989104985959551",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:crypto-js",
+            "lha-frontend-data-access-authentication"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/login/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-common": [
+        {
+          "file": "libs/lha-common/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "libs/lha-common/README.md",
+          "hash": "10573076234810475447"
+        },
+        {
+          "file": "libs/lha-common/jest.config.ts",
+          "hash": "12868075084602131187"
+        },
+        {
+          "file": "libs/lha-common/package.json",
+          "hash": "11291218665779807006"
+        },
+        {
+          "file": "libs/lha-common/project.json",
+          "hash": "5595687843210552272"
+        },
+        {
+          "file": "libs/lha-common/src/index.ts",
+          "hash": "12952120339603334317"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/report.dto.spec.ts",
+          "hash": "14711662146772041087"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/report.dto.ts",
+          "hash": "4631998682690620474"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/status.dto.spec.ts",
+          "hash": "7593399298865301410"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/status.dto.ts",
+          "hash": "16969161228694277415"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/task-create.dto.spec.ts",
+          "hash": "56411004723889620"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/task-create.dto.ts",
+          "hash": "690046471084297704"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/task-execution.dto.spec.ts",
+          "hash": "1361854990074518058"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/task-execution.dto.ts",
+          "hash": "7374432011766988334"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/task.dto.spec.ts",
+          "hash": "8415671941260695093"
+        },
+        {
+          "file": "libs/lha-common/src/lib/dto/task.dto.ts",
+          "hash": "187913963138544072"
+        },
+        {
+          "file": "libs/lha-common/src/lib/enum/device.enum.ts",
+          "hash": "11260224535788305890"
+        },
+        {
+          "file": "libs/lha-common/src/lib/enum/role.enum.ts",
+          "hash": "13237072824107411820"
+        },
+        {
+          "file": "libs/lha-common/src/lib/enum/task-interval.enum.ts",
+          "hash": "86844630747517755"
+        },
+        {
+          "file": "libs/lha-common/src/lib/enum/task-type.enum.ts",
+          "hash": "6259294447149408398"
+        },
+        {
+          "file": "libs/lha-common/tsconfig.json",
+          "hash": "5840880287502376438"
+        },
+        {
+          "file": "libs/lha-common/tsconfig.lib.json",
+          "hash": "3632393694954060084"
+        },
+        {
+          "file": "libs/lha-common/tsconfig.spec.json",
+          "hash": "11550347367511341917"
+        }
+      ],
+      "lha-backend-role": [
+        {
+          "file": "libs/lha-backend/role/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/role/README.md",
+          "hash": "9699068425787326485"
+        },
+        {
+          "file": "libs/lha-backend/role/jest.config.ts",
+          "hash": "9615965792948244005"
+        },
+        {
+          "file": "libs/lha-backend/role/package.json",
+          "hash": "17083592808356552846"
+        },
+        {
+          "file": "libs/lha-backend/role/project.json",
+          "hash": "3852338633795082487"
+        },
+        {
+          "file": "libs/lha-backend/role/src/index.ts",
+          "hash": "14486564400506852439"
+        },
+        {
+          "file": "libs/lha-backend/role/src/lib/controller/role.controller.ts",
+          "hash": "2923224572570102880",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-guard",
+            "lha-backend-role-decorator",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/role/src/lib/lha-backend-role.module.ts",
+          "hash": "14539299426650933962",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bull",
+            "lha-backend-user"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/role/src/lib/service/role.service.ts",
+          "hash": "5125154445035804168",
+          "deps": [
+            "lha-backend-user",
+            "lha-common",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/role/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/role/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/role/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-frontend-data-access-task-execution": [
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/.eslintrc.json",
+          "hash": "10121964699034793676"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/README.md",
+          "hash": "3384987029350596198"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/jest.config.ts",
+          "hash": "11387808074081525234"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/ng-package.json",
+          "hash": "18373698867315893637"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/package.json",
+          "hash": "9845760263260193779",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/project.json",
+          "hash": "17110714499680642005"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/index.ts",
+          "hash": "1109885496953900109"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.actions.ts",
+          "hash": "3426863599868102379",
+          "deps": [
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.effects.spec.ts",
+          "hash": "8632926025659006372",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:jasmine-marbles",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.effects.ts",
+          "hash": "15895344193745525201",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:rxjs",
+            "lha-common",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.facade.spec.ts",
+          "hash": "381960753820223495",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:@nrwl/angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.facade.ts",
+          "hash": "4398909139619199577",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.models.ts",
+          "hash": "14020483222798964725"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.reducer.spec.ts",
+          "hash": "18189672874091880951",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.reducer.ts",
+          "hash": "16666673742643178462",
+          "deps": [
+            "npm:@ngrx/entity",
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.selectors.spec.ts",
+          "hash": "17669783952792515027"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/+state/task-execution.selectors.ts",
+          "hash": "4623686104605395193",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/lha-frontend-data-access-task-execution.module.ts",
+          "hash": "14068665089240841160",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@ngrx/store",
+            "npm:@ngrx/effects"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/service/task-ececution.service.spec.ts",
+          "hash": "2282403958039745154",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/lib/service/task-ececution.service.ts",
+          "hash": "5659796767200896154",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "lha-common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task-execution/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-data-access-setup": [
+        {
+          "file": "libs/lha-frontend/data-access/setup/.eslintrc.json",
+          "hash": "6456924134992933691"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/README.md",
+          "hash": "5347553168569485781"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/jest.config.ts",
+          "hash": "9207290134866678181"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/ng-package.json",
+          "hash": "64720293571016126"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/package.json",
+          "hash": "14265662680291734367",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/project.json",
+          "hash": "15996030431425121999"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/src/index.ts",
+          "hash": "12333462544686397161"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/src/lib/lha-frontend-data-access-setup.module.ts",
+          "hash": "11894443133371524267",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/src/lib/service/setup.service.spec.ts",
+          "hash": "6380720372820651384",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/src/lib/service/setup.service.ts",
+          "hash": "10559077462399434541",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/setup/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-backend-e2e": [
+        {
+          "file": "apps/lha-backend-e2e/.eslintrc.json",
+          "hash": "8709851544463005581"
+        },
+        {
+          "file": "apps/lha-backend-e2e/jest.config.ts",
+          "hash": "15187792689202304517"
+        },
+        {
+          "file": "apps/lha-backend-e2e/project.json",
+          "hash": "13395217360229653412"
+        },
+        {
+          "file": "apps/lha-backend-e2e/src/lha-backend/lha-backend.spec.ts",
+          "hash": "17121534750963527930",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/lha-backend-e2e/src/support/global-setup.ts",
+          "hash": "5461462915456143059"
+        },
+        {
+          "file": "apps/lha-backend-e2e/src/support/global-teardown.ts",
+          "hash": "5275447082211835490"
+        },
+        {
+          "file": "apps/lha-backend-e2e/src/support/test-setup.ts",
+          "hash": "112423185455705483",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/lha-backend-e2e/tsconfig.json",
+          "hash": "15443990093475294480"
+        },
+        {
+          "file": "apps/lha-backend-e2e/tsconfig.spec.json",
+          "hash": "14954872453723519891"
+        }
+      ],
+      "lha-frontend-feature-task-execution-list": [
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/.eslintrc.json",
+          "hash": "3955114804113054644"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/README.md",
+          "hash": "6654403571257193241"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/jest.config.ts",
+          "hash": "5828897863749233442"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/ng-package.json",
+          "hash": "943223357132922518"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/package.json",
+          "hash": "15658660752369005450",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/project.json",
+          "hash": "13704843070458756753"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/src/index.ts",
+          "hash": "8819266800676547061"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/src/lib/lha-frontend-feature-task-execution-list.module.ts",
+          "hash": "9991876937091381128",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "lha-frontend-data-access-task-execution"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/src/lib/task-execution-list/task-execution-list.component.html",
+          "hash": "14007027037131819579"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/src/lib/task-execution-list/task-execution-list.component.scss",
+          "hash": "2109321101133512803"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/src/lib/task-execution-list/task-execution-list.component.ts",
+          "hash": "4111158134139503789",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "lha-common",
+            "lha-frontend-data-access-task-execution",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/tsconfig.lib.json",
+          "hash": "8746075233993636049"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/feature/task-execution-list/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-frontend-data-access-task": [
+        {
+          "file": "libs/lha-frontend/data-access/task/.eslintrc.json",
+          "hash": "10121964699034793676"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/README.md",
+          "hash": "6176805685756572075"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/jest.config.ts",
+          "hash": "2874958472115529787"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/ng-package.json",
+          "hash": "17684867378868730088"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/package.json",
+          "hash": "2198448489453867591",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/project.json",
+          "hash": "17740947358543837708"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/index.ts",
+          "hash": "2234220794501646053"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.actions.ts",
+          "hash": "2004315083641890718",
+          "deps": [
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.effects.spec.ts",
+          "hash": "5116899974352757092",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:jasmine-marbles",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.effects.ts",
+          "hash": "8293188084814843305",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:rxjs",
+            "lha-common",
+            "npm:@angular/router",
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.facade.spec.ts",
+          "hash": "2585103341218098978",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/effects",
+            "npm:@ngrx/store",
+            "npm:@nrwl/angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.facade.ts",
+          "hash": "4880790275476739219",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.reducer.spec.ts",
+          "hash": "12119081345229055480",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.reducer.ts",
+          "hash": "175807521092085884",
+          "deps": [
+            "npm:@ngrx/entity",
+            "npm:@ngrx/store",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.selectors.spec.ts",
+          "hash": "14305487962983088423"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/+state/task.selectors.ts",
+          "hash": "15987902784597661962",
+          "deps": [
+            "npm:@ngrx/store"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/lha-frontend-data-access-task.module.ts",
+          "hash": "7229912519122327967",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@ngrx/store",
+            "npm:@ngrx/effects"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/service/task.service.spec.ts",
+          "hash": "6794574557251621150",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/lib/service/task.service.ts",
+          "hash": "12434988309778415932",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "lha-common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/src/test-setup.ts",
+          "hash": "17711435995618823417",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/tsconfig.json",
+          "hash": "16248533471678702062"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/tsconfig.lib.json",
+          "hash": "13680548331641995789"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/tsconfig.lib.prod.json",
+          "hash": "10809217796916261822"
+        },
+        {
+          "file": "libs/lha-frontend/data-access/task/tsconfig.spec.json",
+          "hash": "9840611283105717156"
+        }
+      ],
+      "lha-backend-role-decorator": [
+        {
+          "file": "libs/lha-backend/role-decorator/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/README.md",
+          "hash": "2656478744952535556"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/jest.config.ts",
+          "hash": "2667386683993569308"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/package.json",
+          "hash": "17365911609473070912"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/project.json",
+          "hash": "6663745862824687370"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/src/index.ts",
+          "hash": "7093394799493938293"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/src/lib/decorator/roles.decorator.ts",
+          "hash": "4503355584439644586",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/role-decorator/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ],
+      "lha-backend-user": [
+        {
+          "file": "libs/lha-backend/user/.eslintrc.json",
+          "hash": "9703569748258640057"
+        },
+        {
+          "file": "libs/lha-backend/user/README.md",
+          "hash": "6031002209202821098"
+        },
+        {
+          "file": "libs/lha-backend/user/jest.config.ts",
+          "hash": "8070092656646652844"
+        },
+        {
+          "file": "libs/lha-backend/user/package.json",
+          "hash": "7931032629325735240"
+        },
+        {
+          "file": "libs/lha-backend/user/project.json",
+          "hash": "14956403392688151391"
+        },
+        {
+          "file": "libs/lha-backend/user/src/index.ts",
+          "hash": "12898220255401864072"
+        },
+        {
+          "file": "libs/lha-backend/user/src/lib/controller/user.controller.spec.ts",
+          "hash": "3478621742712503682",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@nestjs/mongoose"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/user/src/lib/controller/user.controller.ts",
+          "hash": "375307958039868917",
+          "deps": [
+            "npm:@nestjs/common",
+            "lha-backend-authentication-guard",
+            "lha-common",
+            "lha-backend-role-decorator"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/user/src/lib/lha-backend-user.module.ts",
+          "hash": "3184226432736991920",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/mongoose"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/user/src/lib/schema/user.ts",
+          "hash": "4220081917402281665",
+          "deps": [
+            "npm:@nestjs/mongoose",
+            "npm:mongoose",
+            "lha-common"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/user/src/lib/service/user.service.spec.ts",
+          "hash": "6975332665706204093",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@nestjs/mongoose",
+            "npm:mongoose"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/user/src/lib/service/user.service.ts",
+          "hash": "9579376494653000011",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/mongoose",
+            "npm:mongoose",
+            "npm:argon2"
+          ]
+        },
+        {
+          "file": "libs/lha-backend/user/tsconfig.json",
+          "hash": "6693614989438379715"
+        },
+        {
+          "file": "libs/lha-backend/user/tsconfig.lib.json",
+          "hash": "2581665177901050637"
+        },
+        {
+          "file": "libs/lha-backend/user/tsconfig.spec.json",
+          "hash": "9110660443763673899"
+        }
+      ]
+    }
+  }
+}

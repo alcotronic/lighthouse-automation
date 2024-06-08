@@ -3,9 +3,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Job } from 'bull';
 import { Model } from 'mongoose';
-import { launch } from 'chrome-launcher';
+
 import { gzip, ungzip } from 'node-gzip';
-import lighthouse from 'lighthouse/core/index.cjs';
 import { Config, Flags, ScreenEmulationSettings } from 'lighthouse';
 
 import { QueueService } from '@lighthouse-automation/lha-backend/queue';
@@ -189,8 +188,9 @@ export class ReportService {
     this.logger.debug('generateLighthouseLhr job recieved');
     const report = job.data;
     this.addStartTime(report);
-
-    const chrome = await launch({ chromeFlags: ['--headless'] });
+    //import * as ChromeLauncher from 'chrome-launcher';
+    const ChromeLauncher = await import('chrome-launcher');
+    const chrome = await ChromeLauncher.launch({ chromeFlags: ['--headless'] });
     //const chrome = await launch();
     const flags: Flags = {
       port: chrome.port,
@@ -210,6 +210,8 @@ export class ReportService {
         output: ['html', 'json', 'csv']
       }
     };
+
+    const {default: lighthouse} = await import('lighthouse');
     const runnerResult = await lighthouse(report.url, flags, config);
 
     await chrome.kill();

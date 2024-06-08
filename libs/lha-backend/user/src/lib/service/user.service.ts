@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import * as bcrypt from 'bcrypt';
+import { Model, ObjectId } from 'mongoose';
+import * as argon2 from "argon2";
 import { UserCreateDto, UserDocument } from '../schema/user';
 
 @Injectable()
@@ -77,7 +77,7 @@ export class UserService {
     return user;
   }
 
-  async updatePassword(id: string, password: string) {
+  async updatePassword(id: ObjectId, password: string) {
     const user = await this.userModel
       .updateOne(
         { _id: id },
@@ -106,17 +106,17 @@ export class UserService {
   }
 
   async hashPassword(password: string) {
-    const hash = await bcrypt.hash(password, 10);
+    const hash = await argon2.hash(password);
     return hash;
   }
 
   async hashRenewToken(renewToken: string) {
-    const hash = await bcrypt.hash(renewToken, 10);
+    const hash = await argon2.hash(renewToken);
     return hash;
   }
 
   async comparePasswords(passwordLogin, passwordUser) {
-    const match = await bcrypt.compare(passwordLogin, passwordUser);
+    const match = await argon2.verify(passwordLogin, passwordUser);
     return match;
   }
 
