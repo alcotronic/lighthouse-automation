@@ -17038,12 +17038,42 @@
     "lha-frontend-feature-task-execution-list": [
       {
         "source": "lha-frontend-feature-task-execution-list",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution-list",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution-list",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution-list",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution-list",
         "target": "lha-frontend-data-access-task-execution",
         "type": "static"
       },
       {
         "source": "lha-frontend-feature-task-execution-list",
+        "target": "npm:@angular/router",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution-list",
         "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution-list",
+        "target": "npm:rxjs",
         "type": "static"
       },
       {
@@ -17055,12 +17085,22 @@
     "lha-frontend-data-access-authentication": [
       {
         "source": "lha-frontend-data-access-authentication",
-        "target": "npm:@ngrx/store",
+        "target": "npm:@angular/common",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-authentication",
         "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-authentication",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-authentication",
+        "target": "npm:@ngrx/store",
         "type": "static"
       },
       {
@@ -17080,12 +17120,12 @@
       },
       {
         "source": "lha-frontend-data-access-authentication",
-        "target": "npm:@angular/common",
+        "target": "lha-frontend-data-access-role",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-authentication",
-        "target": "lha-frontend-data-access-role",
+        "target": "npm:@angular/router",
         "type": "static"
       },
       {
@@ -17112,7 +17152,7 @@
     "lha-frontend-data-access-task-execution": [
       {
         "source": "lha-frontend-data-access-task-execution",
-        "target": "lha-common",
+        "target": "npm:@angular/common",
         "type": "static"
       },
       {
@@ -17122,12 +17162,22 @@
       },
       {
         "source": "lha-frontend-data-access-task-execution",
-        "target": "npm:@ngrx/effects",
+        "target": "npm:tslib",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-task-execution",
         "target": "npm:@ngrx/store",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-task-execution",
+        "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-task-execution",
+        "target": "npm:@ngrx/effects",
         "type": "static"
       },
       {
@@ -17147,7 +17197,7 @@
       },
       {
         "source": "lha-frontend-data-access-task-execution",
-        "target": "npm:@angular/common",
+        "target": "npm:@ngrx/entity",
         "type": "static"
       },
       {
@@ -17166,7 +17216,32 @@
     "lha-frontend-feature-task-execution": [
       {
         "source": "lha-frontend-feature-task-execution",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution",
         "target": "lha-frontend-feature-report-list",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution",
+        "target": "npm:@angular/router",
         "type": "static"
       },
       {
@@ -17186,6 +17261,11 @@
       },
       {
         "source": "lha-frontend-feature-task-execution",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-execution",
         "target": "npm:jest-preset-angular",
         "type": "static"
       }
@@ -17193,7 +17273,32 @@
     "lha-backend-authentication-guard": [
       {
         "source": "lha-backend-authentication-guard",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication-guard",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication-guard",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication-guard",
         "target": "npm:@nestjs/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication-guard",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication-guard",
+        "target": "npm:@nestjs/passport",
         "type": "static"
       },
       {
@@ -17208,6 +17313,21 @@
       }
     ],
     "lha-frontend-feature-report-list": [
+      {
+        "source": "lha-frontend-feature-report-list",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-report-list",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-report-list",
+        "target": "npm:tslib",
+        "type": "static"
+      },
       {
         "source": "lha-frontend-feature-report-list",
         "target": "lha-frontend-feature-report",
@@ -17232,12 +17352,37 @@
     "lha-frontend-feature-task-create": [
       {
         "source": "lha-frontend-feature-task-create",
-        "target": "lha-frontend-data-access-task",
+        "target": "npm:@angular/common",
         "type": "static"
       },
       {
         "source": "lha-frontend-feature-task-create",
         "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-create",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-create",
+        "target": "npm:@angular/forms",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-create",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-create",
+        "target": "lha-frontend-data-access-task",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-create",
+        "target": "npm:@angular/router",
         "type": "static"
       },
       {
@@ -17254,17 +17399,27 @@
     "lha-frontend-data-access-report": [
       {
         "source": "lha-frontend-data-access-report",
-        "target": "npm:@angular/core",
-        "type": "static"
-      },
-      {
-        "source": "lha-frontend-data-access-report",
         "target": "npm:@angular/common",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-report",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-report",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-report",
         "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-report",
+        "target": "npm:rxjs",
         "type": "static"
       },
       {
@@ -17276,12 +17431,17 @@
     "lha-frontend-data-access-status": [
       {
         "source": "lha-frontend-data-access-status",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-status",
         "target": "npm:@angular/core",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-status",
-        "target": "npm:@angular/common",
+        "target": "npm:tslib",
         "type": "static"
       },
       {
@@ -17298,12 +17458,17 @@
     "lha-frontend-data-access-setup": [
       {
         "source": "lha-frontend-data-access-setup",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-setup",
         "target": "npm:@angular/core",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-setup",
-        "target": "npm:@angular/common",
+        "target": "npm:tslib",
         "type": "static"
       },
       {
@@ -17315,12 +17480,17 @@
     "lha-frontend-feature-task-list": [
       {
         "source": "lha-frontend-feature-task-list",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-list",
         "target": "npm:@angular/core",
         "type": "static"
       },
       {
         "source": "lha-frontend-feature-task-list",
-        "target": "npm:@angular/common",
+        "target": "npm:tslib",
         "type": "static"
       },
       {
@@ -17345,6 +17515,11 @@
       },
       {
         "source": "lha-frontend-feature-task-list",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task-list",
         "target": "npm:jest-preset-angular",
         "type": "static"
       }
@@ -17352,7 +17527,7 @@
     "lha-frontend-data-access-role": [
       {
         "source": "lha-frontend-data-access-role",
-        "target": "lha-common",
+        "target": "npm:@angular/common",
         "type": "static"
       },
       {
@@ -17362,12 +17537,22 @@
       },
       {
         "source": "lha-frontend-data-access-role",
-        "target": "npm:@ngrx/effects",
+        "target": "npm:tslib",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-role",
         "target": "npm:@ngrx/store",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-role",
+        "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-role",
+        "target": "npm:@ngrx/effects",
         "type": "static"
       },
       {
@@ -17387,7 +17572,7 @@
       },
       {
         "source": "lha-frontend-data-access-role",
-        "target": "npm:@angular/common",
+        "target": "npm:@ngrx/entity",
         "type": "static"
       },
       {
@@ -17399,7 +17584,7 @@
     "lha-frontend-data-access-task": [
       {
         "source": "lha-frontend-data-access-task",
-        "target": "lha-common",
+        "target": "npm:@angular/common",
         "type": "static"
       },
       {
@@ -17409,12 +17594,22 @@
       },
       {
         "source": "lha-frontend-data-access-task",
-        "target": "npm:@ngrx/effects",
+        "target": "npm:tslib",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-task",
         "target": "npm:@ngrx/store",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-task",
+        "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-task",
+        "target": "npm:@ngrx/effects",
         "type": "static"
       },
       {
@@ -17429,12 +17624,17 @@
       },
       {
         "source": "lha-frontend-data-access-task",
+        "target": "npm:@angular/router",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-data-access-task",
         "target": "npm:@nrwl/angular",
         "type": "static"
       },
       {
         "source": "lha-frontend-data-access-task",
-        "target": "npm:@angular/common",
+        "target": "npm:@ngrx/entity",
         "type": "static"
       },
       {
@@ -17444,6 +17644,31 @@
       }
     ],
     "lha-frontend-feature-toolbar": [
+      {
+        "source": "lha-frontend-feature-toolbar",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-toolbar",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-toolbar",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-toolbar",
+        "target": "npm:@angular/router",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-toolbar",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
       {
         "source": "lha-frontend-feature-toolbar",
         "target": "lha-frontend-data-access-authentication",
@@ -17461,6 +17686,11 @@
       },
       {
         "source": "lha-frontend-feature-toolbar",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-toolbar",
         "target": "npm:jest-preset-angular",
         "type": "static"
       }
@@ -17468,17 +17698,27 @@
     "lha-frontend-feature-report": [
       {
         "source": "lha-frontend-feature-report",
-        "target": "npm:@angular/core",
-        "type": "static"
-      },
-      {
-        "source": "lha-frontend-feature-report",
         "target": "npm:@angular/common",
         "type": "static"
       },
       {
         "source": "lha-frontend-feature-report",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-report",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-report",
         "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-report",
+        "target": "npm:@angular/platform-browser",
         "type": "static"
       },
       {
@@ -17505,7 +17745,17 @@
       },
       {
         "source": "lha-backend-authentication",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication",
         "target": "lha-backend-authentication-decorator",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication",
+        "target": "npm:@nestjs/passport",
         "type": "static"
       },
       {
@@ -17521,6 +17771,16 @@
       {
         "source": "lha-backend-authentication",
         "target": "lha-backend-role-decorator",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication",
+        "target": "npm:@nestjs/config",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-authentication",
+        "target": "npm:@nestjs/jwt",
         "type": "static"
       },
       {
@@ -17535,21 +17795,6 @@
       },
       {
         "source": "lha-backend-authentication",
-        "target": "npm:@nestjs/passport",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-authentication",
-        "target": "npm:@nestjs/common",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-authentication",
-        "target": "npm:@nestjs/config",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-authentication",
         "target": "npm:passport-local",
         "type": "static"
       }
@@ -17557,11 +17802,21 @@
     "lha-backend-role-decorator": [
       {
         "source": "lha-backend-role-decorator",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-role-decorator",
         "target": "lha-common",
         "type": "static"
       }
     ],
     "lha-backend-task-execution": [
+      {
+        "source": "lha-backend-task-execution",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
       {
         "source": "lha-backend-task-execution",
         "target": "lha-backend-authentication-guard",
@@ -17575,6 +17830,21 @@
       {
         "source": "lha-backend-task-execution",
         "target": "lha-backend-role-decorator",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task-execution",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task-execution",
+        "target": "npm:@nestjs/bull",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task-execution",
+        "target": "npm:@nestjs/mongoose",
         "type": "static"
       },
       {
@@ -17594,12 +17864,12 @@
       },
       {
         "source": "lha-backend-task-execution",
-        "target": "npm:@nestjs/mongoose",
+        "target": "npm:mongoose",
         "type": "static"
       },
       {
         "source": "lha-backend-task-execution",
-        "target": "npm:mongoose",
+        "target": "npm:bull",
         "type": "static"
       },
       {
@@ -17609,6 +17879,31 @@
       }
     ],
     "lha-frontend-feature-login": [
+      {
+        "source": "lha-frontend-feature-login",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-login",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-login",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-login",
+        "target": "npm:@angular/forms",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-login",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
       {
         "source": "lha-frontend-feature-login",
         "target": "lha-frontend-data-access-authentication",
@@ -17621,6 +17916,11 @@
       },
       {
         "source": "lha-frontend-feature-login",
+        "target": "npm:crypto-js",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-login",
         "target": "npm:jest-preset-angular",
         "type": "static"
       }
@@ -17628,7 +17928,42 @@
     "lha-frontend-feature-setup": [
       {
         "source": "lha-frontend-feature-setup",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
+        "target": "npm:@angular/forms",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
         "target": "lha-frontend-data-access-setup",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
+        "target": "npm:@angular/router",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-setup",
+        "target": "npm:crypto-js",
         "type": "static"
       },
       {
@@ -17640,12 +17975,37 @@
     "lha-frontend-feature-task": [
       {
         "source": "lha-frontend-feature-task",
-        "target": "lha-frontend-feature-task-execution-list",
+        "target": "npm:@angular/common",
         "type": "static"
       },
       {
         "source": "lha-frontend-feature-task",
         "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
+        "target": "npm:tslib",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
+        "target": "npm:ng2-charts",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
+        "target": "lha-frontend-feature-task-execution-list",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
+        "target": "npm:@angular/router",
         "type": "static"
       },
       {
@@ -17665,11 +18025,31 @@
       },
       {
         "source": "lha-frontend-feature-task",
+        "target": "npm:chart.js",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend-feature-task",
         "target": "npm:jest-preset-angular",
         "type": "static"
       }
     ],
     "lha-backend-role-guard": [
+      {
+        "source": "lha-backend-role-guard",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-role-guard",
+        "target": "npm:@nestjs/core",
+        "type": "static"
+      },
       {
         "source": "lha-backend-role-guard",
         "target": "lha-backend-user",
@@ -17689,6 +18069,11 @@
     "lha-backend-report": [
       {
         "source": "lha-backend-report",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-report",
         "target": "lha-backend-authentication-guard",
         "type": "static"
       },
@@ -17704,6 +18089,16 @@
       },
       {
         "source": "lha-backend-report",
+        "target": "npm:@nestjs/bull",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-report",
+        "target": "npm:@nestjs/mongoose",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-report",
         "target": "lha-backend-queue",
         "type": "static"
       },
@@ -17714,17 +18109,7 @@
       },
       {
         "source": "lha-backend-report",
-        "target": "npm:@nestjs/bull",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-report",
-        "target": "npm:@nestjs/common",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-report",
-        "target": "npm:@nestjs/mongoose",
+        "target": "npm:mongoose",
         "type": "static"
       },
       {
@@ -17734,22 +18119,7 @@
       },
       {
         "source": "lha-backend-report",
-        "target": "npm:mongoose",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-report",
         "target": "npm:node-gzip",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-report",
-        "target": "npm:puppeteer-core",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-report",
-        "target": "npm:lighthouse",
         "type": "static"
       }
     ],
@@ -17762,6 +18132,11 @@
       {
         "source": "lha-backend-queue",
         "target": "npm:@nestjs/bull",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-queue",
+        "target": "npm:bull",
         "type": "static"
       },
       {
@@ -17783,6 +18158,11 @@
       },
       {
         "source": "lha-backend-setup",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-setup",
         "target": "lha-backend-authentication-decorator",
         "type": "static"
       },
@@ -17800,6 +18180,11 @@
     "lha-backend-role": [
       {
         "source": "lha-backend-role",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-role",
         "target": "lha-backend-authentication-guard",
         "type": "static"
       },
@@ -17811,6 +18196,11 @@
       {
         "source": "lha-backend-role",
         "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-role",
+        "target": "npm:@nestjs/bull",
         "type": "static"
       },
       {
@@ -17822,6 +18212,11 @@
     "lha-backend-task": [
       {
         "source": "lha-backend-task",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
         "target": "lha-backend-authentication-guard",
         "type": "static"
       },
@@ -17833,6 +18228,21 @@
       {
         "source": "lha-backend-task",
         "target": "lha-backend-role-decorator",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
+        "target": "npm:@nestjs/bull",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
+        "target": "npm:@nestjs/mongoose",
         "type": "static"
       },
       {
@@ -17854,6 +18264,21 @@
         "source": "lha-backend-task",
         "target": "lha-backend-user",
         "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
+        "target": "npm:mongoose",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
+        "target": "npm:@nestjs/schedule",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-task",
+        "target": "npm:bull",
+        "type": "static"
       }
     ],
     "lha-backend-user": [
@@ -17869,6 +18294,11 @@
       },
       {
         "source": "lha-backend-user",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend-user",
         "target": "lha-backend-authentication-guard",
         "type": "static"
       },
@@ -17880,11 +18310,6 @@
       {
         "source": "lha-backend-user",
         "target": "lha-backend-role-decorator",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend-user",
-        "target": "npm:@nestjs/common",
         "type": "static"
       },
       {
@@ -17970,12 +18395,22 @@
       },
       {
         "source": "lha-frontend",
+        "target": "npm:rxjs",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend",
         "target": "lha-frontend-data-access-status",
         "type": "static"
       },
       {
         "source": "lha-frontend",
         "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend",
+        "target": "npm:@auth0/angular-jwt",
         "type": "static"
       },
       {
@@ -17996,6 +18431,21 @@
       {
         "source": "lha-frontend",
         "target": "lha-frontend-data-access-report",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend",
+        "target": "npm:@ngrx/store",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend",
+        "target": "npm:@ngrx/store-devtools",
+        "type": "static"
+      },
+      {
+        "source": "lha-frontend",
+        "target": "npm:@ngrx/effects",
         "type": "static"
       },
       {
@@ -18042,12 +18492,42 @@
       },
       {
         "source": "lha-backend",
+        "target": "npm:@nestjs/common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend",
         "target": "lha-backend-authentication-decorator",
         "type": "static"
       },
       {
         "source": "lha-backend",
         "target": "lha-common",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend",
+        "target": "npm:@nestjs/bull",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend",
+        "target": "npm:@nestjs/config",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend",
+        "target": "npm:@nestjs/mongoose",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend",
+        "target": "npm:@nestjs/jwt",
+        "type": "static"
+      },
+      {
+        "source": "lha-backend",
+        "target": "npm:@nestjs/schedule",
         "type": "static"
       },
       {
@@ -18088,11 +18568,6 @@
       {
         "source": "lha-backend",
         "target": "lha-backend-task-execution",
-        "type": "static"
-      },
-      {
-        "source": "lha-backend",
-        "target": "npm:@nestjs/common",
         "type": "static"
       },
       {
