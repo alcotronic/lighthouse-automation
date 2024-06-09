@@ -186,12 +186,16 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
+        "file": "lighthouse-automation.drawio",
+        "hash": "14193127508556237234"
       },
       {
         "file": "package.json",
         "hash": "797056624880046268"
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
       },
       {
         "file": "apps/.gitkeep",
@@ -214,56 +218,52 @@
         "hash": "10462144751405245587"
       },
       {
-        "file": "docker-compose.yml",
-        "hash": "7689900703147105886"
+        "file": "nx-graph-backend.png",
+        "hash": "3275371084483479771"
       },
       {
-        "file": "tools/generators/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".editorconfig",
-        "hash": "5443105041930014821"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "4888005248808103289"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "7848693104264504795"
-      },
-      {
-        "file": "lighthouse-automation.drawio",
-        "hash": "14193127508556237234"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "6601938978209669085"
+        "file": ".eslintrc.json",
+        "hash": "1659929058009100827"
       },
       {
         "file": "jest.config.ts",
         "hash": "5586081340879290494"
       },
       {
+        "file": ".vscode/settings.json",
+        "hash": "10462144751405245587"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4888005248808103289"
+      },
+      {
         "file": "nx-graph-frontend.png",
         "hash": "17185750128060016021"
-      },
-      {
-        "file": "nx-graph.png",
-        "hash": "17538802113359267167"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "14185186971414172550"
       },
       {
         "file": "README.md",
         "hash": "11557465909991822939"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": ".nx/workspace-data/d/server-process.json",
+        "hash": "7988714614226751297"
+      },
+      {
+        "file": "libs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "dependencies.json",
+        "hash": "1592637998931848246"
+      },
+      {
+        "file": "apps/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "nx-graph.png",
+        "hash": "17538802113359267167"
       },
       {
         "file": ".nx/workspace-data/d/server-process.json",
@@ -286,8 +286,40 @@
         "hash": "3244421341483603138"
       },
       {
-        "file": "nx-graph-backend.png",
-        "hash": "3275371084483479771"
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "1673058625319533752"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "7689900703147105886"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "7848693104264504795"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "6601938978209669085"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "14185186971414172550"
+      },
+      {
+        "file": "nx.json",
+        "hash": "12035688093874962611"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
       }
     ],
     "projectFileMap": {
