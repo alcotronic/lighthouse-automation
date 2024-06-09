@@ -41,3 +41,8 @@ Thumbs.db
 .angular
 
 .scannerwork
+
+# puppeteer
+/chrome
+/firefox
+

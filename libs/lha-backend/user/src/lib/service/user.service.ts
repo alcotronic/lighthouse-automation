@@ -116,7 +116,7 @@ export class UserService {
   }
 
   async comparePasswords(passwordLogin, passwordUser) {
-    const match = await argon2.verify(passwordLogin, passwordUser);
+    const match = await argon2.verify(passwordUser, passwordLogin);
     return match;
   }
 

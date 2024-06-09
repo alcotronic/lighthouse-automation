@@ -5,13 +5,14 @@ import { Job } from 'bull';
 import { Model } from 'mongoose';
 
 import { gzip, ungzip } from 'node-gzip';
-import { Config, Flags, ScreenEmulationSettings } from 'lighthouse';
+import puppeteer from 'puppeteer-core';
+import { Config, RunnerResult, ScreenEmulationSettings } from 'lighthouse';
+import * as lighthouse from 'lighthouse/core/index.cjs';
 
 import { QueueService } from '@lighthouse-automation/lha-backend/queue';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
 
 import { Report, ReportDocument } from '../schema/report';
-
 @Processor('reportGenerateLighthouseLhrQueue')
 @Injectable()
 export class ReportService {
@@ -19,7 +20,7 @@ export class ReportService {
 
   constructor(
     @InjectModel('report') private reportModel: Model<ReportDocument>,
-    private queueService: QueueService
+    private queueService: QueueService,
   ) {}
 
   async create(reportDto: ReportDto): Promise<Report> {
@@ -69,8 +70,9 @@ export class ReportService {
             timeStart: timeStart.getTime(),
             timeOffsetStart: timeStart.getTimezoneOffset(),
           },
-        }
-      ).exec();
+        },
+      )
+      .exec();
   }
 
   async addFinishTime(report: Report) {
@@ -84,8 +86,9 @@ export class ReportService {
             timeOffsetFinish: timeFinish.getTimezoneOffset(),
             finished: true,
           },
-        }
-      ).exec();
+        },
+      )
+      .exec();
   }
 
   async addScores(
@@ -94,7 +97,7 @@ export class ReportService {
     accessibilityScore: number,
     bestPracticeScore: number,
     seoScore: number,
-    pwaScore: number
+    pwaScore: number,
   ) {
     await this.reportModel
       .updateOne(
@@ -107,8 +110,9 @@ export class ReportService {
             seoScore: seoScore,
             pwaScore: pwaScore,
           },
-        }
-      ).exec();
+        },
+      )
+      .exec();
   }
 
   async addLighthouseLhrGzip(report: Report, lighthouseLhrGzip: Buffer) {
@@ -119,7 +123,7 @@ export class ReportService {
           $set: {
             lighthouseLhrGzip: lighthouseLhrGzip,
           },
-        }
+        },
       )
       .exec();
   }
@@ -132,7 +136,7 @@ export class ReportService {
           $set: {
             lighthouseHtmlGzip: lighthouseHtmlGzip,
           },
-        }
+        },
       )
       .exec();
   }
@@ -145,7 +149,7 @@ export class ReportService {
           $set: {
             lighthouseJsonGzip: lighthouseJsonGzip,
           },
-        }
+        },
       )
       .exec();
   }
@@ -158,7 +162,7 @@ export class ReportService {
           $set: {
             lighthouseCsvGzip: lighthouseCsvGzip,
           },
-        }
+        },
       )
       .exec();
   }
@@ -188,46 +192,53 @@ export class ReportService {
     this.logger.debug('generateLighthouseLhr job recieved');
     const report = job.data;
     this.addStartTime(report);
-    //import * as ChromeLauncher from 'chrome-launcher';
-    const ChromeLauncher = await import('chrome-launcher');
-    const chrome = await ChromeLauncher.launch({ chromeFlags: ['--headless'] });
-    //const chrome = await launch();
-    const flags: Flags = {
-      port: chrome.port,
-    };
+
+    const browser = await puppeteer.launch({
+      product: 'chrome',
+      headless: false,
+    });
+
+    const page = await browser.newPage();
+
+    await page.goto(report.url, { waitUntil: 'networkidle2' });
+
     const screenEmulationConfig: ScreenEmulationSettings = {
       width: report.formFactor === Device.DESKTOP ? 1920 : 360,
       height: report.formFactor === Device.DESKTOP ? 1080 : 800,
       deviceScaleFactor: 0,
       mobile: report.formFactor === Device.DESKTOP ? false : true,
-      disabled: false
+      disabled: false,
     };
+
     const config: Config = {
       extends: 'lighthouse:default',
       settings: {
         formFactor: report.formFactor === Device.DESKTOP ? 'desktop' : 'mobile',
         screenEmulation: screenEmulationConfig,
-        output: ['html', 'json', 'csv']
-      }
+        output: ['html', 'json', 'csv'],
+      },
     };
 
-    const {default: lighthouse} = await import('lighthouse');
-    const runnerResult = await lighthouse(report.url, flags, config);
+    const runnerResult: RunnerResult = await lighthouse.snapshot(page, {
+      config: config,
+    });
 
-    await chrome.kill();
+    await browser.close();
 
-    const lighthouseLhrGzip = await gzip(JSON.stringify(runnerResult.lhr), { level: 9 });
+    const lighthouseLhrGzip = await gzip(JSON.stringify(runnerResult.lhr), {
+      level: 9,
+    });
     const lighthouseHtmlGzip = await gzip(runnerResult.report[0], { level: 9 });
     const lighthouseJsonGzip = await gzip(runnerResult.report[2], { level: 9 });
     const lighthouseCsvGzip = await gzip(runnerResult.report[1], { level: 9 });
 
     await this.addScores(
       report,
-      runnerResult.lhr.categories.performance.score,
-      runnerResult.lhr.categories.accessibility.score,
+      runnerResult.lhr.categories['performance'].score,
+      runnerResult.lhr.categories['accessibility'].score,
       runnerResult.lhr.categories['best-practices'].score,
-      runnerResult.lhr.categories.seo.score,
-      runnerResult.lhr.categories.pwa.score
+      runnerResult.lhr.categories['seo'].score,
+      runnerResult.lhr.categories['pwa'].score,
     );
     await this.addLighthouseLhrGzip(report, lighthouseLhrGzip);
     await this.addLighthouseHtmlGzip(report, lighthouseHtmlGzip);

@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { NgChartsModule } from 'ng2-charts';
+import { BaseChartDirective } from 'ng2-charts';
 import { LhaFrontendFeatureTaskExecutionListModule } from '@lighthouse-automation/lha-frontend/feature/task-execution-list';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { LhaFrontendFeatureTaskExecutionListModule } from '@lighthouse-automatio
     MatExpansionModule,
     MatIconModule,
     MatListModule,
-    NgChartsModule,
+    BaseChartDirective,
     LhaFrontendFeatureTaskExecutionListModule,
   ],
   declarations: [TaskComponent, TaskComponent],
