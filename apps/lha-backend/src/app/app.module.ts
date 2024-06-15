@@ -1,12 +1,11 @@
-import { BullModule } from '@nestjs/bull';
 import { Module } from "@nestjs/common";
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
-import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { LhaBackendDatabaseMongodbModule } from '@lighthouse-automation/lha-backend/database-mongodb';
+import { LhaBackendDatabaseRedisModule } from '@lighthouse-automation/lha-backend/database-redis';
 import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backend/authentication';
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
@@ -21,37 +20,9 @@ import { LhaBackendTaskExecutionModule } from '@lighthouse-automation/lha-backen
     ConfigModule.forRoot({
       envFilePath: 'apps/lha-backend/.development.env',
     }),
-    BullModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        redis: {
-          host: configService.get('REDIS_HOST'),
-          port: +configService.get('REDIS_PORT'),
-        },
-      }),
-      inject: [ConfigService],
-    }),
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
-        dbName: configService.get<string>('MONGODB_DBNAME'),
-        user: configService.get<string>('MONGODB_DB_USER'),
-        pass: configService.get<string>('MONGODB_DB_PASSWORD'),
-      }),
-      inject: [ConfigService],
-    }),
-    // JwtModule.registerAsync({
-    //   imports: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     secret: configService.get<string>('JWT_SECRET'),
-    //     signOptions: {
-    //       expiresIn: configService.get<string>('JWT_SIGN_OPTIONS_EXPIRES_IN'),
-    //     },
-    //   }),
-    //   inject: [ConfigService],
-    // }),
     ScheduleModule.forRoot(),
+    LhaBackendDatabaseMongodbModule,
+    LhaBackendDatabaseRedisModule,
     LhaBackendAuthenticationModule,
     LhaBackendSetupModule,
     LhaBackendUserModule,

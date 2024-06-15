@@ -4,6 +4,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AuthenticationFacade } from '@lighthouse-automation/lha-frontend/data-access/authentication';
 import { StatusService } from '@lighthouse-automation/lha-frontend/data-access/status';
 import { StatusDto } from '@lighthouse-automation/lha-common';
+import { RoleFacade } from '@lighthouse-automation/lha-frontend/data-access/role';
 
 @Component({
   selector: 'lha-root',
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private statusService: StatusService,
     private router: Router,
-    private authenticationFacade: AuthenticationFacade
+    private authenticationFacade: AuthenticationFacade,
+    private roleFacade: RoleFacade
   ) {}
 
   ngOnInit() {
@@ -40,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
         //console.log(this.authenticated);
         if (this.authenticated && this.status.initiated) {
           console.log('this.authenticated && this.status.initiated');
+          this.roleFacade.loadRoles();
           this.router.navigate(['task/list']);
         } else if (!this.authenticated && this.status.initiated) {
           console.log('!this.authenticated && this.status.initiated');
