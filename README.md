@@ -32,7 +32,7 @@ At the moment I move parts of it to libs in the nx-workspace and i add ngrx for 
 
 ### Frontend Development server
 
-Run `nx serve lha-frontend` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `nx run lha-frontend:servce` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Understand this workspace
 
