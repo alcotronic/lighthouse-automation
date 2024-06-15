@@ -42,4 +42,10 @@ Thumbs.db
 
 .scannerwork
 
-.nx/
+# puppeteer
+/chrome
+/firefox
+
+.nx
+.nx/*
+
