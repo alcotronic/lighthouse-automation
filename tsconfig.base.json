@@ -88,6 +88,24 @@
       "@lighthouse-automation/lha-frontend/feature/account-settings": [
         "libs/lha-frontend/feature/account-settings/src/index.ts"
       ],
+      "@lighthouse-automation/lha-frontend/feature/admin/dashboard": [
+        "libs/lha-frontend/feature/admin/dashboard/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/admin/routing": [
+        "libs/lha-frontend/feature/admin/routing/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/admin/toolbar": [
+        "libs/lha-frontend/feature/admin/toolbar/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/admin/user-create": [
+        "libs/lha-frontend/feature/admin/user-create/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/admin/user-details": [
+        "libs/lha-frontend/feature/admin/user-details/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-frontend/feature/admin/user-list": [
+        "libs/lha-frontend/feature/admin/user-list/src/index.ts"
+      ],
       "@lighthouse-automation/lha-frontend/feature/login": [
         "libs/lha-frontend/feature/login/src/index.ts"
       ],
