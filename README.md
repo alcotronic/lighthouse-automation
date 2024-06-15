@@ -20,7 +20,7 @@ The backend still needs some rework.
 
 For developing I added a docker-compose file with dockers for MongoDB and Redis.
 
-Run `nx serve lha-backend` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
+Run `PUPPETEER_EXECUTABLE_PATH=path/to/chrome nx run lha-backend:serve --watch=true` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
 
 ## Frontend
 
