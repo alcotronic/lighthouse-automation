@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { Process, Processor } from '@nestjs/bull';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -194,7 +195,7 @@ export class ReportService {
     this.addStartTime(report);
 
     const browser = await puppeteer.launch({
-      product: 'chrome',
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
       headless: false,
     });
 
@@ -206,7 +207,7 @@ export class ReportService {
       width: report.formFactor === Device.DESKTOP ? 1920 : 360,
       height: report.formFactor === Device.DESKTOP ? 1080 : 800,
       deviceScaleFactor: 0,
-      mobile: report.formFactor === Device.DESKTOP ? false : true,
+      mobile: report.formFactor !== Device.DESKTOP,
       disabled: false,
     };
 

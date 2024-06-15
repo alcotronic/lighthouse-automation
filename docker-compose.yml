@@ -18,6 +18,7 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: test
       ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_MONGODB_PORT: "27017"
+      ME_CONFIG_BASICAUTH: false
   redis:
     image: redis
     command: redis-server --appendonly yes
