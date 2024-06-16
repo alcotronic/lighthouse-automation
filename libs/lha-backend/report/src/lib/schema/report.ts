@@ -25,6 +25,7 @@ export class Report {
   @Prop() bestPracticeScore: number;
   @Prop() seoScore: number;
   @Prop() pwaScore: number;
+  @Prop() lighthouseLhr: string;
   @Prop() lighthouseLhrGzip: Buffer;
   @Prop() lighthouseHtmlGzip: Buffer;
   @Prop() lighthouseCsvGzip: Buffer;
