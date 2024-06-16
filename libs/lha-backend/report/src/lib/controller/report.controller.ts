@@ -37,23 +37,23 @@ export class ReportController {
     return this.reportService.unzipHtml(report);
   }
 
-  @UseGuards(JwtAuthenticationGuard)
-  @Roles(Role.User)
-  @Get('json/:reportId')
-  @Header('Accept', 'application/json')
-  @Header('Content-Type', 'application/json')
-  async postConvertToJson(@Param() params) {
-    const report = await this.reportService.findById(params.reportId);
-    return this.reportService.unzipJson(report);
-  }
+  // @UseGuards(JwtAuthenticationGuard)
+  // @Roles(Role.User)
+  // @Get('json/:reportId')
+  // @Header('Accept', 'application/json')
+  // @Header('Content-Type', 'application/json')
+  // async postConvertToJson(@Param() params) {
+  //   const report = await this.reportService.findById(params.reportId);
+  //   return this.reportService.unzipJson(report);
+  // }
 
-  @UseGuards(JwtAuthenticationGuard)
-  @Roles(Role.User)
-  @Get('csv/:reportId')
-  @Header('Accept', 'application/csv')
-  @Header('Content-Type', 'application/csv')
-  async postConvertToCsv(@Param() params) {
-    const report = await this.reportService.findById(params.reportId);
-    return this.reportService.unzipCsv(report);
-  }
+  // @UseGuards(JwtAuthenticationGuard)
+  // @Roles(Role.User)
+  // @Get('csv/:reportId')
+  // @Header('Accept', 'application/csv')
+  // @Header('Content-Type', 'application/csv')
+  // async postConvertToCsv(@Param() params) {
+  //   const report = await this.reportService.findById(params.reportId);
+  //   return this.reportService.unzipCsv(report);
+  // }
 }

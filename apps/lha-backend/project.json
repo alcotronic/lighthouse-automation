@@ -15,7 +15,6 @@
         "main": "apps/lha-backend/src/main.ts",
         "tsConfig": "apps/lha-backend/tsconfig.app.json",
         "assets": ["apps/lha-backend/src/assets"],
-        "isolatedConfig": true,
         "webpackConfig": "apps/lha-backend/webpack.config.js"
       },
       "configurations": {

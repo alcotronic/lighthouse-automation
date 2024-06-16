@@ -1,19 +1,32 @@
-import * as fs from 'fs';
 import { Process, Processor } from '@nestjs/bull';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Job } from 'bull';
 import { Model } from 'mongoose';
-
 import { gzip, ungzip } from 'node-gzip';
 import puppeteer from 'puppeteer-core';
-import { Config, RunnerResult, ScreenEmulationSettings } from 'lighthouse';
-import * as lighthouse from 'lighthouse/core/index.cjs';
+import {
+  Config,
+  Flags,
+  RunnerResult,
+  ScreenEmulationSettings,
+} from 'lighthouse';
+import lighthouse from 'lighthouse/core/index.cjs';
 
 import { QueueService } from '@lighthouse-automation/lha-backend/queue';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
 
 import { Report, ReportDocument } from '../schema/report';
+import Audit from 'lighthouse/types/audit';
+
+type Scores = {
+  performanceScore: number;
+  accessibilityScore: number;
+  bestPracticesScore: number;
+  seoScore: number;
+  pwaScore: number;
+};
+
 @Processor('reportGenerateLighthouseLhrQueue')
 @Injectable()
 export class ReportService {
@@ -64,7 +77,7 @@ export class ReportService {
     const timeStart = new Date();
 
     await this.reportModel
-      .updateOne(
+      .findByIdAndUpdate(
         { _id: report._id },
         {
           $set: {
@@ -79,7 +92,7 @@ export class ReportService {
   async addFinishTime(report: Report) {
     const timeFinish = new Date();
     await this.reportModel
-      .updateOne(
+      .findByIdAndUpdate(
         { _id: report._id },
         {
           $set: {
@@ -92,33 +105,28 @@ export class ReportService {
       .exec();
   }
 
-  async addScores(
-    report: Report,
-    performanceScore: number,
-    accessibilityScore: number,
-    bestPracticeScore: number,
-    seoScore: number,
-    pwaScore: number,
-  ) {
-    await this.reportModel
-      .updateOne(
+  async addScores(report: Report, scores: Scores) {
+    this.logger.debug(`addScoreces report._id: ${report._id}`);
+    const result = await this.reportModel
+      .findByIdAndUpdate(
         { _id: report._id },
         {
           $set: {
-            performanceScore: performanceScore,
-            accessibilityScore: accessibilityScore,
-            bestPracticeScore: bestPracticeScore,
-            seoScore: seoScore,
-            pwaScore: pwaScore,
+            performanceScore: scores.performanceScore,
+            accessibilityScore: scores.accessibilityScore,
+            bestPracticeScore: scores.bestPracticesScore,
+            seoScore: scores.seoScore,
+            pwaScore: scores.pwaScore,
           },
         },
       )
       .exec();
+    return result;
   }
 
   async addLighthouseLhrGzip(report: Report, lighthouseLhrGzip: Buffer) {
     await this.reportModel
-      .updateOne(
+      .findByIdAndUpdate(
         { _id: report._id },
         {
           $set: {
@@ -131,7 +139,7 @@ export class ReportService {
 
   async addLighthouseHtmlGzip(report: Report, lighthouseHtmlGzip: Buffer) {
     await this.reportModel
-      .updateOne(
+      .findByIdAndUpdate(
         { _id: report._id },
         {
           $set: {
@@ -142,45 +150,9 @@ export class ReportService {
       .exec();
   }
 
-  async addLighthouseJsonGzip(report: Report, lighthouseJsonGzip: Buffer) {
-    await this.reportModel
-      .updateOne(
-        { _id: report._id },
-        {
-          $set: {
-            lighthouseJsonGzip: lighthouseJsonGzip,
-          },
-        },
-      )
-      .exec();
-  }
-
-  async addLighthouseCsvGzip(report: Report, lighthouseCsvGzip: Buffer) {
-    await this.reportModel
-      .updateOne(
-        { _id: report._id },
-        {
-          $set: {
-            lighthouseCsvGzip: lighthouseCsvGzip,
-          },
-        },
-      )
-      .exec();
-  }
-
-  async unzipJson(report: Report) {
-    const jsonBuffer = await ungzip(report.lighthouseJsonGzip);
-    return jsonBuffer.toString();
-  }
-
   async unzipHtml(report: Report) {
     const htmlBuffer = await ungzip(report.lighthouseHtmlGzip);
     return htmlBuffer.toString();
-  }
-
-  async unzipCsv(report: Report) {
-    const csvBuffer = await ungzip(report.lighthouseCsvGzip);
-    return csvBuffer.toString();
   }
 
   async unzipLhr(report: Report) {
@@ -188,20 +160,36 @@ export class ReportService {
     return JSON.parse(lhrBuffer.toString());
   }
 
-  @Process()
+  extractScores(runnerResult: RunnerResult): Scores {
+    const scores: Scores = {
+      performanceScore: 0,
+      accessibilityScore: 0,
+      bestPracticesScore: 0,
+      seoScore: 0,
+      pwaScore: 0,
+    };
+
+    try {
+      scores.performanceScore =
+        runnerResult.lhr.categories['performance']?.score ?? 0;
+      scores.accessibilityScore =
+        runnerResult.lhr.categories['accessibility']?.score ?? 0;
+      scores.bestPracticesScore =
+        runnerResult.lhr.categories['best-practices']?.score ?? 0;
+      scores.seoScore = runnerResult.lhr.categories['seo']?.score ?? 0;
+      scores.pwaScore = runnerResult.lhr.categories['pwa']?.score ?? 0;
+    } catch (error) {
+      this.logger.debug(`extractScores Error: ${error}`);
+    }
+
+    return scores;
+  }
+
+  @Process({ concurrency: 1 })
   async reportGenerateLighthouseLhr(job: Job<Report>) {
     this.logger.debug('generateLighthouseLhr job recieved');
+
     const report = job.data;
-    this.addStartTime(report);
-
-    const browser = await puppeteer.launch({
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
-      headless: false,
-    });
-
-    const page = await browser.newPage();
-
-    await page.goto(report.url, { waitUntil: 'networkidle2' });
 
     const screenEmulationConfig: ScreenEmulationSettings = {
       width: report.formFactor === Device.DESKTOP ? 1920 : 360,
@@ -216,41 +204,46 @@ export class ReportService {
       settings: {
         formFactor: report.formFactor === Device.DESKTOP ? 'desktop' : 'mobile',
         screenEmulation: screenEmulationConfig,
-        output: ['html', 'json', 'csv'],
+        output: ['html'],
       },
     };
 
-    const runnerResult: RunnerResult = await lighthouse.snapshot(page, {
-      config: config,
+    this.addStartTime(report);
+
+    const browser = await puppeteer.launch({
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+      headless: false,
     });
+    const page = await browser.newPage();
+    const runnerResult: RunnerResult = await lighthouse(
+      report.url,
+      undefined,
+      config,
+      page,
+    );
 
     await browser.close();
-
-    const lighthouseLhrGzip = await gzip(JSON.stringify(runnerResult.lhr), {
-      level: 9,
-    });
-    const lighthouseHtmlGzip = await gzip(runnerResult.report[0], { level: 9 });
-    const lighthouseJsonGzip = await gzip(runnerResult.report[2], { level: 9 });
-    const lighthouseCsvGzip = await gzip(runnerResult.report[1], { level: 9 });
-
-    await this.addScores(
+    
+    await this.addScores(report, this.extractScores(runnerResult));
+    await this.addLighthouseLhrGzip(
       report,
-      runnerResult.lhr.categories['performance'].score,
-      runnerResult.lhr.categories['accessibility'].score,
-      runnerResult.lhr.categories['best-practices'].score,
-      runnerResult.lhr.categories['seo'].score,
-      runnerResult.lhr.categories['pwa'].score,
+      await gzip(JSON.stringify(runnerResult.lhr), {
+        level: 9,
+      }),
     );
-    await this.addLighthouseLhrGzip(report, lighthouseLhrGzip);
-    await this.addLighthouseHtmlGzip(report, lighthouseHtmlGzip);
-    await this.addLighthouseCsvGzip(report, lighthouseJsonGzip);
-    await this.addLighthouseJsonGzip(report, lighthouseCsvGzip);
+    await this.addLighthouseHtmlGzip(
+      report,
+      await gzip(runnerResult.report[0], {
+        level: 9,
+      }),
+    );
+
     await this.addFinishTime(report);
 
     const updatedReport = await this.reportModel.findById(report._id).exec();
 
     this.queueService.addJobToTaskExecutionUpdateScoresQueue(updatedReport);
 
-    this.logger.debug('reportGenerateLighthouseLhr job finished');
+    this.logger.debug('generateLighthouseLhr job finished');
   }
 }
