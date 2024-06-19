@@ -30,8 +30,14 @@
       "@lighthouse-automation/lha-backend/database-redis": [
         "libs/lha-backend/database-redis/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/queue": [
-        "libs/lha-backend/queue/src/index.ts"
+      "@lighthouse-automation/lha-backend/queue/average-score-update-queue": [
+        "libs/lha-backend/queue/average-score-update-queue/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/queue/execution-score-update-queue": [
+        "libs/lha-backend/queue/execution-score-update-queue/src/index.ts"
+      ],
+      "@lighthouse-automation/lha-backend/queue/report-generate-queue": [
+        "libs/lha-backend/queue/report-generate-queue/src/index.ts"
       ],
       "@lighthouse-automation/lha-backend/report": [
         "libs/lha-backend/report/src/index.ts"

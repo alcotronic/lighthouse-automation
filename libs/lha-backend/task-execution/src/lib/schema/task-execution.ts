@@ -4,7 +4,7 @@ import { Document } from "mongoose";
 export type TaskExecutionDocument = TaskExecution & Document;
 @Schema()
 export class TaskExecution {
-  id?: string;
+  _id?: string;
   @Prop() taskId: string;
   @Prop() timestamp: number;
   @Prop() timestampOffset: number;

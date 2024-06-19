@@ -7,7 +7,6 @@ export type ReportDocument = Report & Document;
 
 @Schema()
 export class Report {
-  id?: string;
   _id?: string;
   @Prop() taskId: string;
   @Prop() taskExecutionId: string;

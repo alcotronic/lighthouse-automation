@@ -7,17 +7,16 @@ import { gzip, ungzip } from 'node-gzip';
 import puppeteer from 'puppeteer-core';
 import {
   Config,
-  Flags,
   RunnerResult,
   ScreenEmulationSettings,
 } from 'lighthouse';
 import lighthouse from 'lighthouse/core/index.cjs';
 
-import { QueueService } from '@lighthouse-automation/lha-backend/queue';
 import { Device, ReportDto } from '@lighthouse-automation/lha-common';
 
 import { Report, ReportDocument } from '../schema/report';
-import Audit from 'lighthouse/types/audit';
+import { ReportGenerateMessage } from '@lighthouse-automation/lha-backend/queue/report-generate-queue';
+import { ExecutionScoreUpdateQueueService } from '@lighthouse-automation/lha-backend/queue/execution-score-update-queue';
 
 type Scores = {
   performanceScore: number;
@@ -27,14 +26,14 @@ type Scores = {
   pwaScore: number;
 };
 
-@Processor('reportGenerateLighthouseLhrQueue')
+@Processor('reportGenerateQueue')
 @Injectable()
 export class ReportService {
   private readonly logger = new Logger(ReportService.name);
 
   constructor(
     @InjectModel('report') private reportModel: Model<ReportDocument>,
-    private queueService: QueueService,
+    private executionScoreUpdateQueueService: ExecutionScoreUpdateQueueService,
   ) {}
 
   async create(reportDto: ReportDto): Promise<Report> {
@@ -186,10 +185,10 @@ export class ReportService {
   }
 
   @Process({ concurrency: 1 })
-  async reportGenerateLighthouseLhr(job: Job<Report>) {
+  async reportGenerateLighthouseLhr(job: Job<ReportGenerateMessage>) {
     this.logger.debug('generateLighthouseLhr job recieved');
 
-    const report = job.data;
+    const report = await this.findById(job.data.reportId);
 
     const screenEmulationConfig: ScreenEmulationSettings = {
       width: report.formFactor === Device.DESKTOP ? 1920 : 360,
@@ -224,7 +223,9 @@ export class ReportService {
 
     await browser.close();
     
-    await this.addScores(report, this.extractScores(runnerResult));
+    const scores = this.extractScores(runnerResult);
+
+    await this.addScores(report, scores);
     await this.addLighthouseLhrGzip(
       report,
       await gzip(JSON.stringify(runnerResult.lhr), {
@@ -242,7 +243,11 @@ export class ReportService {
 
     const updatedReport = await this.reportModel.findById(report._id).exec();
 
-    this.queueService.addJobToTaskExecutionUpdateScoresQueue(updatedReport);
+    this.executionScoreUpdateQueueService.addJobToExecutionScoreUpdateQueue({
+      reportId: report._id,
+      taskId: report.taskId,
+      taskExecutionId: report.taskExecutionId
+    });
 
     this.logger.debug('generateLighthouseLhr job finished');
   }

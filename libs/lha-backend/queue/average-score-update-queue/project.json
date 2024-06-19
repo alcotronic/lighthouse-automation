@@ -1,5 +1,5 @@
 {
-  "name": "lha-backend-queue",
+  "name": "lha-backend-average-score-updater-queue",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/lha-backend/queue/src",
   "projectType": "library",

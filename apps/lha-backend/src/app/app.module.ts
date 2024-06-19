@@ -10,7 +10,9 @@ import { LhaBackendAuthenticationModule } from '@lighthouse-automation/lha-backe
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 import { LhaBackendSetupModule } from '@lighthouse-automation/lha-backend/setup';
 import { LhaBackendRoleModule } from '@lighthouse-automation/lha-backend/role';
-import { LhaBackendQueueModule } from '@lighthouse-automation/lha-backend/queue';
+import { LhaBackendAverageScoreUpdaterQueueModule } from '@lighthouse-automation/lha-backend/queue/average-score-update-queue';
+import { LhaBackendAverageScoreUpdaterQueueModule } from '@lighthouse-automation/lha-backend/queue/execution-score-update-queue';
+import { LhaBackendAverageScoreUpdaterQueueModule } from '@lighthouse-automation/lha-backend/queue/report-generate-queue';
 import { LhaBackendReportModule } from '@lighthouse-automation/lha-backend/report';
 import { LhaBackendTaskModule } from '@lighthouse-automation/lha-backend/task';
 import { LhaBackendTaskExecutionModule } from '@lighthouse-automation/lha-backend/task-execution';
@@ -27,7 +29,7 @@ import { LhaBackendTaskExecutionModule } from '@lighthouse-automation/lha-backen
     LhaBackendSetupModule,
     LhaBackendUserModule,
     LhaBackendRoleModule,
-    LhaBackendQueueModule,
+    LhaBackendAverageScoreUpdaterQueueModule,
     LhaBackendReportModule,
     LhaBackendTaskModule,
     LhaBackendTaskExecutionModule

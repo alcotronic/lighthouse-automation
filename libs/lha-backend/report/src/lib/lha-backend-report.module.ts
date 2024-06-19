@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bull';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { LhaBackendQueueModule } from '@lighthouse-automation/lha-backend/queue';
+import { LhaBackendReportGenerateQueueModule } from '@lighthouse-automation/lha-backend/queue/report-generate-queue';
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 
 import { ReportController } from './controller/report.controller';
@@ -14,7 +14,7 @@ import { ReportService } from './service/report.service';
     BullModule,
     MongooseModule.forFeature([{ name: 'report', schema: ReportSchema }]),
     LhaBackendUserModule,
-    LhaBackendQueueModule
+    LhaBackendReportGenerateQueueModule
   ],
   controllers: [ReportController],
   providers: [ReportService],
