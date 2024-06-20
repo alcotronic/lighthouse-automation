@@ -42,6 +42,9 @@
       "@lighthouse-automation/lha-backend/report": [
         "libs/lha-backend/report/src/index.ts"
       ],
+      "@lighthouse-automation/lha-backend/report-generator": [
+        "libs/lha-backend/report-generator/src/index.ts"
+      ],
       "@lighthouse-automation/lha-backend/role": [
         "libs/lha-backend/role/src/index.ts"
       ],
