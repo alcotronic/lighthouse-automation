@@ -1,7 +1,7 @@
 {
-  "name": "lha-backend-task-execution-score-updater",
+  "name": "lha-backend-task-execution-creater",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/backend/task-execution-score-updater/src",
+  "sourceRoot": "apps/backend/task-execution-creater/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,11 +11,11 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/backend/task-execution-score-updater",
-        "main": "apps/backend/task-execution-score-updater/src/main.ts",
-        "tsConfig": "apps/backend/task-execution-score-updater/tsconfig.app.json",
-        "assets": ["apps/backend/task-execution-score-updater/src/assets"],
-        "webpackConfig": "apps/backend/task-execution-score-updater/webpack.config.js"
+        "outputPath": "dist/apps/backend/task-execution-creater",
+        "main": "apps/backend/task-execution-creater/src/main.ts",
+        "tsConfig": "apps/backend/task-execution-creater/tsconfig.app.json",
+        "assets": ["apps/backend/task-execution-creater/src/assets"],
+        "webpackConfig": "apps/backend/task-execution-creater/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -26,14 +26,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "lha-task-execution-score-updater/:build"
+        "buildTarget": "lha-task-execution-creater/:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "lha-task-execution-score-updater:build:development"
+          "buildTarget": "lha-task-execution-creater:build:development"
         },
         "production": {
-          "buildTarget": "lha-task-execution-score-updater/:build:production"
+          "buildTarget": "lha-task-execution-creater/:build:production"
         }
       }
     },
@@ -41,14 +41,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/backend/task-execution-score-updater/**/*.ts"]
+        "lintFilePatterns": ["apps/backend/task-execution-creater/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/backend/task-execution-score-updater/jest.config.ts",
+        "jestConfig": "apps/backend/task-execution-creater/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

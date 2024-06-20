@@ -3,7 +3,7 @@ const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/backend/task-execution-score-updater'),
+    path: join(__dirname, '../../dist/apps/backend/task-execution-creater'),
   },
   plugins: [
     new NxAppWebpackPlugin({
