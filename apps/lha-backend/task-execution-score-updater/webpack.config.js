@@ -3,7 +3,7 @@ const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/lha-backend'),
+    path: join(__dirname, '../../dist/apps/lha-backend/task-execution-score-updater'),
   },
   plugins: [
     new NxAppWebpackPlugin({

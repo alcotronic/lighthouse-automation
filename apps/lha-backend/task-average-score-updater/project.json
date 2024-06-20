@@ -1,7 +1,7 @@
 {
-  "name": "lha-backend",
+  "name": "lha-task-average-score-updater",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/lha-backend/src",
+  "sourceRoot": "apps/lha-backend/task-average-score-updater/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,11 +11,11 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/lha-backend",
-        "main": "apps/lha-backend/src/main.ts",
-        "tsConfig": "apps/lha-backend/tsconfig.app.json",
-        "assets": ["apps/lha-backend/src/assets"],
-        "webpackConfig": "apps/lha-backend/webpack.config.js"
+        "outputPath": "dist/apps/lha-backend/task-average-score-updater",
+        "main": "apps/lha-backend/task-average-score-updater/src/main.ts",
+        "tsConfig": "apps/lha-backend/task-average-score-updater/tsconfig.app.json",
+        "assets": ["apps/lha-backend/task-average-score-updater/src/assets"],
+        "webpackConfig": "apps/lha-backend/task-average-score-updater/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -26,14 +26,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "lha-backend:build"
+        "buildTarget": "lha-task-average-score-updater/:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "lha-backend:build:development"
+          "buildTarget": "lha-task-average-score-updater:build:development"
         },
         "production": {
-          "buildTarget": "lha-backend:build:production"
+          "buildTarget": "lha-task-average-score-updater/:build:production"
         }
       }
     },
@@ -41,14 +41,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/lha-backend/**/*.ts"]
+        "lintFilePatterns": ["apps/lha-backend/task-average-score-updater/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/lha-backend/jest.config.ts",
+        "jestConfig": "apps/lha-backend/task-average-score-updater/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { LhaBackendQueueModule } from '@lighthouse-automation/lha-backend/queue';
 import { LhaBackendReportModule } from '@lighthouse-automation/lha-backend/report';
+import { LhaBackendTaskExecutionModule } from '@lighthouse-automation/lha-backend/task-execution';
 import { LhaBackendUserModule } from '@lighthouse-automation/lha-backend/user';
 
 import { TaskController } from './controller/task.controller';
@@ -18,6 +19,7 @@ import { TaskService } from './service/task.service';
     LhaBackendUserModule,
     LhaBackendReportModule,
     LhaBackendQueueModule,
+    LhaBackendTaskExecutionModule
   ],
   controllers: [TaskController],
   providers: [TaskService, TaskSchedulerService],
