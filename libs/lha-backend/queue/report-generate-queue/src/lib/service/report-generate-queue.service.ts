@@ -10,15 +10,15 @@ export class ReportGenerateQueueService {
 
   constructor(
     @InjectQueue('reportGenerateQueue')
-    private reportGenerateQueue: Queue,
+    private queue: Queue,
   ) {}
 
   async addJobToReportGenerateQueue(
-    reportGenerateMessage: ReportGenerateMessage,
+    message: ReportGenerateMessage,
   ) {
     this.logger.debug(
-      `addJobToReportGenerateQueue reportId: ${reportGenerateMessage.reportId}`,
+      `addJobToReportGenerateQueue reportId: ${message.reportId}`,
     );
-    await this.reportGenerateQueue.add(reportGenerateMessage.reportId);
+    await this.queue.add(message.reportId);
   }
 }

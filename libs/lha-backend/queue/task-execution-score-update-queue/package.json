@@ -1,0 +1,5 @@
+{
+  "name": "@lighthouse-automation/lha-backend/queue/task-execution-score-update-queue",
+  "version": "0.0.1",
+  "type": "commonjs"
+}

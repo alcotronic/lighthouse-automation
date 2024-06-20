@@ -1,0 +1,2 @@
+export { LhaBackendTaskAverageScoreUpdateQueueModule } from './lib/lha-backend-task-average-score-update-queue.module';
+export { TaskAverageScoreUpdateQueueService } from './lib/service/task-average-score-update-queue.service';
