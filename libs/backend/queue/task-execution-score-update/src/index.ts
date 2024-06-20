@@ -1,0 +1,2 @@
+export { LhaBackendTaskExecutionScoreUpdateQueueModule } from './lib/lha-backend-task-execution-score-update-queue.module';
+export { TaskExecutionScoreUpdateQueueService } from './lib/service/task-execution-score-update-queue.service';

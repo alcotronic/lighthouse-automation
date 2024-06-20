@@ -1,0 +1,63 @@
+{
+  "name": "lha-backend-task-execution-score-aggegator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend/task-execution-score-aggegator/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/backend/task-execution-score-aggegator",
+        "main": "apps/backend/task-execution-score-aggegator/src/main.ts",
+        "tsConfig": "apps/backend/task-execution-score-aggegator/tsconfig.app.json",
+        "assets": ["apps/backend/task-execution-score-aggegator/src/assets"],
+        "webpackConfig": "apps/backend/task-execution-score-aggegator/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "lha-task-execution-score-aggegator/:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "lha-task-execution-score-aggegator:build:development"
+        },
+        "production": {
+          "buildTarget": "lha-task-execution-score-aggegator/:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/backend/task-execution-score-aggegator/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/backend/task-execution-score-aggegator/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

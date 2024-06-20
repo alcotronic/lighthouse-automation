@@ -1,0 +1,50 @@
+{
+  "name": "lha-backend-authentication-guard",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/backend/authentication-guard/src",
+  "prefix": "lighthouse-automation",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/backend/authentication-guard/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/backend/authentication-guard/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/backend/authentication-guard/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/backend/authentication-guard/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/backend/authentication-guard/**/*.ts",
+          "libs/backend/authentication-guard/**/*.html"
+        ]
+      }
+    }
+  }
+}

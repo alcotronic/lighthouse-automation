@@ -1,0 +1,63 @@
+{
+  "name": "lha-backend-task-average-score-updater",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend/task-average-score-updater/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/backend/task-average-score-updater",
+        "main": "apps/backend/task-average-score-updater/src/main.ts",
+        "tsConfig": "apps/backend/task-average-score-updater/tsconfig.app.json",
+        "assets": ["apps/backend/task-average-score-updater/src/assets"],
+        "webpackConfig": "apps/backend/task-average-score-updater/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "lha-task-average-score-updater/:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "lha-task-average-score-updater:build:development"
+        },
+        "production": {
+          "buildTarget": "lha-task-average-score-updater/:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/backend/task-average-score-updater/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/backend/task-average-score-updater/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

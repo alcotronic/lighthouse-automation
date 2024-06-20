@@ -2,5 +2,20 @@
     "sonarlint.connectedMode.project": {
         "connectionId": "http-localhost-9000",
         "projectKey": "lighthouse-automation"
-    }
+    },
+    "material-icon-theme.folders.customClones": [
+        {
+            "name": "microservice",
+            "base": "folder-serverless",
+            "color": "red-500",
+            "lightColor": "red-700",
+            "folderNames": [
+                "report-generator",
+                "task-average-score-updater",
+                "task-execution-creater",
+                "task-execution-score-aggegator",
+                "task-execution-score-updater",
+            ]
+        },
+    ]
 }

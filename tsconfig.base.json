@@ -15,138 +15,150 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@lighthouse-automation/lha-backend/authentication": [
-        "libs/lha-backend/authentication/src/index.ts"
+      "@lighthouse-automation/backend/authentication": [
+        "libs/backend/authentication/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/authentication-decorator": [
-        "libs/lha-backend/authentication-decorator/src/index.ts"
+      "@lighthouse-automation/backend/authentication-decorator": [
+        "libs/backend/authentication-decorator/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/authentication-guard": [
-        "libs/lha-backend/authentication-guard/src/index.ts"
+      "@lighthouse-automation/backend/authentication-guard": [
+        "libs/backend/authentication-guard/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/database-mongodb": [
-        "libs/lha-backend/database-mongodb/src/index.ts"
+      "@lighthouse-automation/backend/database-mongodb": [
+        "libs/backend/database-mongodb/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/database-redis": [
-        "libs/lha-backend/database-redis/src/index.ts"
+      "@lighthouse-automation/backend/database-redis": [
+        "libs/backend/database-redis/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/queue/average-score-update-queue": [
-        "libs/lha-backend/queue/average-score-update-queue/src/index.ts"
+      "@lighthouse-automation/backend/queue/report-generate": [
+        "libs/backend/queue/report-generate/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/queue/execution-score-update-queue": [
-        "libs/lha-backend/queue/execution-score-update-queue/src/index.ts"
+      "@lighthouse-automation/backend/queue/task-average-score-update": [
+        "libs/backend/queue/task-average-score-update/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/queue/report-generate-queue": [
-        "libs/lha-backend/queue/report-generate-queue/src/index.ts"
+      "@lighthouse-automation/backend/queue/task-execution-score-update": [
+        "libs/backend/queue/task-execution-score-update/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/report": [
-        "libs/lha-backend/report/src/index.ts"
+      "@lighthouse-automation/backend/report": [
+        "libs/backend/report/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/report-generator": [
-        "libs/lha-backend/report-generator/src/index.ts"
+      "@lighthouse-automation/backend/report-generator": [
+        "libs/backend/report-generator/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/role": [
-        "libs/lha-backend/role/src/index.ts"
+      "@lighthouse-automation/backend/role": [
+        "libs/backend/role/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/role-decorator": [
-        "libs/lha-backend/role-decorator/src/index.ts"
+      "@lighthouse-automation/backend/role-decorator": [
+        "libs/backend/role-decorator/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/role-guard": [
-        "libs/lha-backend/role-guard/src/index.ts"
+      "@lighthouse-automation/backend/role-guard": [
+        "libs/backend/role-guard/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/setup": [
-        "libs/lha-backend/setup/src/index.ts"
+      "@lighthouse-automation/backend/setup": [
+        "libs/backend/setup/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/task": [
-        "libs/lha-backend/task/src/index.ts"
+      "@lighthouse-automation/backend/task": [
+        "libs/backend/task/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/task-execution": [
-        "libs/lha-backend/task-execution/src/index.ts"
+      "@lighthouse-automation/backend/task-average-score-update": [
+        "libs/backend/task-average-score-update/src/index.ts"
       ],
-      "@lighthouse-automation/lha-backend/user": [
-        "libs/lha-backend/user/src/index.ts"
+      "@lighthouse-automation/backend/task-execution": [
+        "libs/backend/task-execution/src/index.ts"
       ],
-      "@lighthouse-automation/lha-common": ["libs/lha-common/src/index.ts"],
-      "@lighthouse-automation/lha-frontend/data-access/account": [
-        "libs/lha-frontend/data-access/account/src/index.ts"
+      "@lighthouse-automation/backend/task-execution-score-aggregation": [
+        "libs/backend/task-execution-score-aggregation/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/authentication": [
-        "libs/lha-frontend/data-access/authentication/src/index.ts"
+      "@lighthouse-automation/backend/task-execution-score-update": [
+        "libs/backend/task-execution-score-update/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/report": [
-        "libs/lha-frontend/data-access/report/src/index.ts"
+      "@lighthouse-automation/backend/task-schedule": [
+        "libs/backend/task-schedule/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/role": [
-        "libs/lha-frontend/data-access/role/src/index.ts"
+      "@lighthouse-automation/backend/user": [
+        "libs/backend/user/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/setup": [
-        "libs/lha-frontend/data-access/setup/src/index.ts"
+      "@lighthouse-automation/common": ["libs/common/src/index.ts"],
+      "@lighthouse-automation/frontend/data-access/account": [
+        "libs/frontend/data-access/account/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/status": [
-        "libs/lha-frontend/data-access/status/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/authentication": [
+        "libs/frontend/data-access/authentication/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/task": [
-        "libs/lha-frontend/data-access/task/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/report": [
+        "libs/frontend/data-access/report/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/data-access/task-execution": [
-        "libs/lha-frontend/data-access/task-execution/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/role": [
+        "libs/frontend/data-access/role/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/account-routing": [
-        "libs/lha-frontend/feature/account-routing/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/setup": [
+        "libs/frontend/data-access/setup/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/account-settings": [
-        "libs/lha-frontend/feature/account-settings/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/status": [
+        "libs/frontend/data-access/status/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/admin/dashboard": [
-        "libs/lha-frontend/feature/admin/dashboard/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/task": [
+        "libs/frontend/data-access/task/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/admin/routing": [
-        "libs/lha-frontend/feature/admin/routing/src/index.ts"
+      "@lighthouse-automation/frontend/data-access/task-execution": [
+        "libs/frontend/data-access/task-execution/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/admin/toolbar": [
-        "libs/lha-frontend/feature/admin/toolbar/src/index.ts"
+      "@lighthouse-automation/frontend/feature/account-routing": [
+        "libs/frontend/feature/account-routing/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/admin/user-create": [
-        "libs/lha-frontend/feature/admin/user-create/src/index.ts"
+      "@lighthouse-automation/frontend/feature/account-settings": [
+        "libs/frontend/feature/account-settings/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/admin/user-details": [
-        "libs/lha-frontend/feature/admin/user-details/src/index.ts"
+      "@lighthouse-automation/frontend/feature/admin/dashboard": [
+        "libs/frontend/feature/admin/dashboard/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/admin/user-list": [
-        "libs/lha-frontend/feature/admin/user-list/src/index.ts"
+      "@lighthouse-automation/frontend/feature/admin/routing": [
+        "libs/frontend/feature/admin/routing/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/login": [
-        "libs/lha-frontend/feature/login/src/index.ts"
+      "@lighthouse-automation/frontend/feature/admin/toolbar": [
+        "libs/frontend/feature/admin/toolbar/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/report": [
-        "libs/lha-frontend/feature/report/src/index.ts"
+      "@lighthouse-automation/frontend/feature/admin/user-create": [
+        "libs/frontend/feature/admin/user-create/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/report-list": [
-        "libs/lha-frontend/feature/report-list/src/index.ts"
+      "@lighthouse-automation/frontend/feature/admin/user-details": [
+        "libs/frontend/feature/admin/user-details/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/setup": [
-        "libs/lha-frontend/feature/setup/src/index.ts"
+      "@lighthouse-automation/frontend/feature/admin/user-list": [
+        "libs/frontend/feature/admin/user-list/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/task": [
-        "libs/lha-frontend/feature/task/src/index.ts"
+      "@lighthouse-automation/frontend/feature/login": [
+        "libs/frontend/feature/login/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/task-create": [
-        "libs/lha-frontend/feature/task-create/src/index.ts"
+      "@lighthouse-automation/frontend/feature/report": [
+        "libs/frontend/feature/report/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/task-execution": [
-        "libs/lha-frontend/feature/task-execution/src/index.ts"
+      "@lighthouse-automation/frontend/feature/report-list": [
+        "libs/frontend/feature/report-list/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/task-execution-list": [
-        "libs/lha-frontend/feature/task-execution-list/src/index.ts"
+      "@lighthouse-automation/frontend/feature/setup": [
+        "libs/frontend/feature/setup/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/task-list": [
-        "libs/lha-frontend/feature/task-list/src/index.ts"
+      "@lighthouse-automation/frontend/feature/task": [
+        "libs/frontend/feature/task/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/task-routing": [
-        "libs/lha-frontend/feature/task-routing/src/index.ts"
+      "@lighthouse-automation/frontend/feature/task-create": [
+        "libs/frontend/feature/task-create/src/index.ts"
       ],
-      "@lighthouse-automation/lha-frontend/feature/toolbar": [
-        "libs/lha-frontend/feature/toolbar/src/index.ts"
+      "@lighthouse-automation/frontend/feature/task-execution": [
+        "libs/frontend/feature/task-execution/src/index.ts"
+      ],
+      "@lighthouse-automation/frontend/feature/task-execution-list": [
+        "libs/frontend/feature/task-execution-list/src/index.ts"
+      ],
+      "@lighthouse-automation/frontend/feature/task-list": [
+        "libs/frontend/feature/task-list/src/index.ts"
+      ],
+      "@lighthouse-automation/frontend/feature/task-routing": [
+        "libs/frontend/feature/task-routing/src/index.ts"
+      ],
+      "@lighthouse-automation/frontend/feature/toolbar": [
+        "libs/frontend/feature/toolbar/src/index.ts"
       ]
     }
   },

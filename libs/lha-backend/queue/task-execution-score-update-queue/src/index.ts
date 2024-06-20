@@ -1,2 +1,0 @@
-export { LhaBackendExecutionScoreUpdateQueueModule } from './lib/lha-backend-execution-score-update-queue.module';
-export { ExecutionScoreUpdateQueueService } from './lib/service/execution-score-update-queue.service';
