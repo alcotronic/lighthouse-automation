@@ -11,7 +11,7 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/backend/task-execution-score-updater",
+        "outputPath": "dist/apps/backend/lha-task-execution-score-updater",
         "main": "apps/backend/task-execution-score-updater/src/main.ts",
         "tsConfig": "apps/backend/task-execution-score-updater/tsconfig.app.json",
         "assets": ["apps/backend/task-execution-score-updater/src/assets"],

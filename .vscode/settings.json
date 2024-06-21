@@ -10,11 +10,22 @@
             "color": "red-500",
             "lightColor": "red-700",
             "folderNames": [
-                "report-generator",
+                "report-creater",
                 "task-average-score-updater",
+                "task-creater",
                 "task-execution-creater",
                 "task-execution-score-aggegator",
                 "task-execution-score-updater",
+                "task-scheduler",
+            ]
+        },
+        {
+            "name": "microservice",
+            "base": "folder-resource",
+            "color": "blue-500",
+            "lightColor": "red-700",
+            "folderNames": [
+                "dto",
             ]
         },
     ]

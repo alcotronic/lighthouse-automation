@@ -11,7 +11,7 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/backend/task-execution-creater",
+        "outputPath": "dist/apps/backend/lha-task-execution-creater",
         "main": "apps/backend/task-execution-creater/src/main.ts",
         "tsConfig": "apps/backend/task-execution-creater/tsconfig.app.json",
         "assets": ["apps/backend/task-execution-creater/src/assets"],

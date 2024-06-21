@@ -8,7 +8,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/backend/task-execution-score-aggegation",
+        "outputPath": "dist/libs/backend/lha-task-execution-score-aggegation",
         "tsConfig": "libs/backend/task-execution-score-aggegation/tsconfig.lib.json",
         "packageJson": "libs/backend/task-execution-score-aggegation/package.json",
         "main": "libs/backend/task-execution-score-aggegation/src/index.ts",

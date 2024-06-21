@@ -8,7 +8,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/backend/role-decorator",
+        "outputPath": "dist/libs/backend/lha-role-decorator",
         "tsConfig": "libs/backend/role-decorator/tsconfig.lib.json",
         "packageJson": "libs/backend/role-decorator/package.json",
         "main": "libs/backend/role-decorator/src/index.ts",

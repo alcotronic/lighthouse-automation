@@ -11,7 +11,7 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/backend/task-execution-score-aggegator",
+        "outputPath": "dist/apps/backend/lha-task-execution-score-aggegator",
         "main": "apps/backend/task-execution-score-aggegator/src/main.ts",
         "tsConfig": "apps/backend/task-execution-score-aggegator/tsconfig.app.json",
         "assets": ["apps/backend/task-execution-score-aggegator/src/assets"],

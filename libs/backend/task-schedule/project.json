@@ -8,7 +8,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/backend/task-schedule",
+        "outputPath": "dist/libs/backend/lha-task-schedule",
         "tsConfig": "libs/backend/task-schedule/tsconfig.lib.json",
         "packageJson": "libs/backend/task-schedule/package.json",
         "main": "libs/backend/task-schedule/src/index.ts",

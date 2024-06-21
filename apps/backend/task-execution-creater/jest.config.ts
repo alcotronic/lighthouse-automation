@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "lha-backend",
+  displayName: "lha-backend-task-execution-creater",
   preset: "../../jest.preset.js",
   testEnvironment: "node",
   transform: {

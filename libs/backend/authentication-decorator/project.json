@@ -8,7 +8,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/backend/authentication-decorator",
+        "outputPath": "dist/libs/backend/lha-authentication-decorator",
         "tsConfig": "libs/backend/authentication-decorator/tsconfig.lib.json",
         "packageJson": "libs/backend/authentication-decorator/package.json",
         "main": "libs/backend/authentication-decorator/src/index.ts",

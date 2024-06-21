@@ -2,7 +2,7 @@ import { InjectQueue } from '@nestjs/bull';
 import { Injectable, Logger } from '@nestjs/common';
 import { Queue } from 'bull';
 
-import { TaskExecutionScoreUpdateMessage } from '../message/task-execution-score-update.message';
+import { TaskExecutionScoreUpdateDto } from '../dto/task-execution-score-update.dto';
 
 @Injectable()
 export class TaskExecutionScoreUpdateQueueService {
@@ -16,11 +16,11 @@ export class TaskExecutionScoreUpdateQueueService {
   ) {}
 
   async addJobToExecutionScoreUpdateQueue(
-    message: TaskExecutionScoreUpdateMessage,
+    taskExecutionScoreUpdateDto: TaskExecutionScoreUpdateDto,
   ) {
     this.logger.debug(
-      `addJobToExecutionScoreUpdateQueue report.id: ${message.reportId} report.taskId: ${message.taskId} report.taskExecutionId: ${message.taskExecutionId}`,
+      `addJobToExecutionScoreUpdateQueue report.id: ${taskExecutionScoreUpdateDto.reportId} report.taskId: ${taskExecutionScoreUpdateDto.taskId} report.taskExecutionId: ${taskExecutionScoreUpdateDto.taskExecutionId}`,
     );
-    await this.queue.add(message);
+    await this.queue.add(taskExecutionScoreUpdateDto);
   }
 }

@@ -8,7 +8,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/backend/role-guard",
+        "outputPath": "dist/libs/backend/lha-role-guard",
         "tsConfig": "libs/backend/role-guard/tsconfig.lib.json",
         "packageJson": "libs/backend/role-guard/package.json",
         "main": "libs/backend/role-guard/src/index.ts",

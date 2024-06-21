@@ -8,7 +8,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/backend/setup",
+        "outputPath": "dist/libs/backend/lha-setup",
         "tsConfig": "libs/backend/setup/tsconfig.lib.json",
         "packageJson": "libs/backend/setup/package.json",
         "main": "libs/backend/setup/src/index.ts",

@@ -11,7 +11,7 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/backend/task-average-score-updater",
+        "outputPath": "dist/apps/backend/lha-task-average-score-updater",
         "main": "apps/backend/task-average-score-updater/src/main.ts",
         "tsConfig": "apps/backend/task-average-score-updater/tsconfig.app.json",
         "assets": ["apps/backend/task-average-score-updater/src/assets"],
